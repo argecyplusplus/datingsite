@@ -15,8 +15,7 @@ class Form(models.Model):
         ('О', 'Отношения'),
         ('С', 'Свидания'),
         ('Д', 'Дружба'),
-        ('', 'Общение+
-        '),
+        ('Т', 'Общение'),
     )
 
     name = models.CharField ('Имя', max_length=50)
@@ -24,8 +23,8 @@ class Form(models.Model):
     age = models.IntegerField("Возраст")
     gender = models.CharField ("Пол", choices=genders, max_length=1, default=genders[0])
     searching_for = models.CharField ("Ищу", choices=searching_for_list, max_length=1, default=searching_for_list[1])
-    city = models.CharField ('Город', max_length=100)
     point_of_searching = models.CharField ("Цель знакомства", choices=point_of_searching_list, max_length=1, default=point_of_searching_list[0])
+    city = models.CharField ('Город', max_length=100, default="Не указано")
     description = models.TextField ('О себе', max_length=50)
     #... можно расширить
 
