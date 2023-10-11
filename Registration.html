@@ -4,6 +4,7 @@
 	<head>
 		<title>Регистрация Анкета</title>
 		<style>
+
 			html {
 				height: 100%;
 			}
@@ -19,13 +20,28 @@
 			
 			h1 {
 				font-family: COMIC SANS MS;
+				text-align: center;
+				font-style: oblique;
 			}
 			
-			p {
+			.text {
 				font-family: comic sans ms;
+				margin-left: 10%;
+				font-style: oblique;
+			}
+
+			.text1 {
+				font-family: comic sans ms;
+				font-size: 15px;
+				font-style: oblique;
+				text-align: left
 			}
 			
-			.questionnaire {
+			.registration {
+				display: grid;
+				margin: auto;
+				justify-content: center;
+				align-items: center;
 				background: #F08080;
 				width: 70vh;
 				height: 70vh;
@@ -33,37 +49,61 @@
 			}
 			
 			.container_1 {
+				display: inline-table;
+				margin: auto;
 				background: white;
 				width: 60vh;
-				height: 10vh;
 				border-radius: 15px;
 			}
 			
 			.container_2 {
 				background: white;
+				margin: auto;
 				width: 50vh;
-				height: 10vh;
+				height: 8vh;
 				border-radius: 15px;
 			}
+			
+			.container_3 {
+				display: grid;
+				margin: auto;
+				width: 75%;
+			}
+
+			button {
+				margin: auto;
+				width: 20vh;
+				height: 5vh;
+			}
+
 		</style>
 	</head>
 	<body>
-		<div class = "questionnaire">
-		<center>
+	<form action="Questionnaire.html">
+		<div class = "registration">
 			<div class = "container_1">
-				<h1>AHKETA</h1>
+				<h1>РЕГИСТРАЦИЯ</h1>
 			</div>
-			<p>Электронная почта</p>
-			<div class = "container_2">
-				<p>Текст, жопы</p>
+			<div class="container_3">
+				<div class="text">Электронная почта</div>
+				<div class = "container_2">
+					<input type="text" name="userLogin" placeholder="Электронная почта (e-mail)" required/>
+				</div>
 			</div>
-			<p>Пароль</p>
-			<div class = "container_2">
-				<p>Текст, жопы</p>
+			<div class="container_3">
+				<div class="text">Пароль</div>
+				<div class = "container_2">
+					<input type="password" name="userPass" placeholder="Пароль (password)" required/>
+				</div>
 			</div>
+			<div class="container_3">
+				<div class="text1">Продолжая, Вы соглашаетесь с нашим пользовательским соглашением и подтверждаете, что понимаете политику конфиденциальности.</div>
 			</div>
-		<center>
+			<div class="container_3">
+				<button type="sumbit">Подтвердить</button>
+			</div>
 		</div>
+	<form>
 	</body>
 </html>
 
