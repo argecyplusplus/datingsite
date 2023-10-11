@@ -85,6 +85,12 @@
 				width: 75%;
 			}
 
+			.container_4 {
+				display: grid;
+				margin: auto;
+				width: 75%;
+			}
+
 			button {
 				margin: auto;
 				width: 20vh;
@@ -96,7 +102,7 @@
 			}
 
 			input {
-				height: 85%;
+				height: 185%;
 				border-radius: 15px;
 				background: white;
 				width: 98%;
@@ -109,27 +115,28 @@
 	<form action="Questionnaire.html">
 		<div class = "registration">
 			<div class="registration1">
-			<div class = "container_1">
-				<h1>РЕГИСТРАЦИЯ</h1>
-			</div>
-			<div class="container_3">
-				<div class="text">Электронная почта</div>
-				<div class = "container_2">
-					<input type="text" name="userLogin" placeholder="Электронная почта (e-mail)" required/>
+				<div class = "container_1">
+					<h1>РЕГИСТРАЦИЯ</h1>
 				</div>
-			</div>
-			<div class="container_3">
-				<div class="text">Пароль</div>
-				<div class = "container_2">
-					<input type="password" name="userPass" placeholder="Пароль (password)" required/>
+				<div class="container_3">
+					<div class="text">Электронная почта</div>
+					
+						<input type="text" name="userLogin" placeholder="Электронная почта (e-mail)" required/>
+					
 				</div>
-			</div>
-			<div class="container_3">
-				<div class="text1">Продолжая, Вы соглашаетесь с нашим пользовательским соглашением и подтверждаете, что понимаете политику конфиденциальности.</div>
-			</div>
-			<div class="container_3">
-				<button type="submit">Подтвердить</button>
-			</div>
+				<div class="container_3">
+					<div class="text">Пароль</div>
+					
+						<input type="password" name="userPass" placeholder="Пароль (password)" required/>
+					
+				</div>
+				<div class="container_4">
+					<input type="checkbox" id="Agreed" name="Agreed" value="Agreed" required>
+					<label for="Agreed"><div class="text1">Нажимая галочку, Вы соглашаетесь с нашим пользовательским соглашением и подтверждаете, что понимаете политику конфиденциальности.</div></label>
+				</div>
+				<div class="container_3">
+					<button type="submit">Зарегистрироваться</button>
+				</div>
 			</div>
 		</div>
 	</form>
