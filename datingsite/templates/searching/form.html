@@ -7,9 +7,13 @@
         <title>Анкеты пользователей</title>
     </head>
     <body style="font-size: 20px;">
-        {% for form in form_list %}
         <img src="{{form.avatar.url}}">
-        <a href="{{form.id}}"><h3>{{form.name}}, {{form.age}}, {{form.city}}</h3></a>
-        {% endfor %}
+        <h3>{{form.name}}</h3>
+        <h5>{{form.age}}</h5>
+        <h6>{{form.city}}</h6>
+        <h6>{{form.gender}}</h6>
+        <h6>Ищу: {{form.searching_for}}</h6>
+        <h6>Цель знакомства: {{form.point_of_searching}}</h6>
+        <p>{{form.description}}</p>
     </body>
 </html>
