@@ -19,7 +19,7 @@ class Form(models.Model):
     )
 
     name = models.CharField ('Имя', max_length=50)
-    avatar = models.ImageField ('Фото', default='https://www.meme-arsenal.com/memes/9deabcb50a53c324b3a4981528215040.jpg')
+    avatar = models.ImageField ('Фото', upload_to='photos/users', default='default_avatar.jpg')
     age = models.IntegerField("Возраст")
     gender = models.CharField ("Пол", choices=genders, max_length=30, default=genders[0])
     searching_for = models.CharField ("Ищу", choices=searching_for_list, max_length=30, default=searching_for_list[1])
