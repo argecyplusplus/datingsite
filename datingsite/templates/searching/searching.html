@@ -8,7 +8,7 @@
     </head>
     <body style="font-size: 20px;">
         {% for form in form_list %}
-        <img src="{{form.avatar.url}}">
+        <img src="{{form.avatar.url}}"  style="max-width: 30%;">
         <a href="{{form.id}}"><h3>{{form.name}}, {{form.age}}, {{form.city}}</h3></a>
         {% endfor %}
     </body>
