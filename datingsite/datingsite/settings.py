@@ -132,3 +132,4 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECTED_URL = reverse_lazy("searching:myprofile")
+REGISTER_REDIRECTED_URL = reverse_lazy("searching:myprofile")

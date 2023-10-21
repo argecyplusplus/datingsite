@@ -5,11 +5,13 @@
     </head>
     <body>
         <h1>Ваша анкета</h1>
-        <p>Имя:</p> <input value="Алёша">
-        <p>Возраст: </p><input value="69">
+        <p>Имя:</p> <input value="{{form.name}}">
+        <p>Возраст: </p><input value="{{form.age}}">
         <p>тутуту</p><input value="пук">
         <p>пупупу</p><input value="пук">
+        
 
         <button>Сохранить</button>
+        <button onclick="location.href='{% url 'logout' %}?next=/'">Выйти из аккаунта</button>
     </body>
 </html>
