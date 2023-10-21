@@ -25,7 +25,6 @@ class ProfileView(View):
         profile = Profile.objects.get(id=pk)
         return render(request, 'searching/form.html', {'profile': profile})
 
-@login_required
 def MyProfileView(request):
     return render (request, 'searching/myprofile.html')
 
