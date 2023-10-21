@@ -45,6 +45,11 @@
 				<div class="container_3">
 					<button type="submit">Зарегистрироваться</button>
 				</div>
+				
+				<div class="container_3">
+					<h5>Есть аккаунт?</h5>
+					<button onclick="location.href='{% url 'login' %}'">Войти</button>
+				</div>
 			</div>
 		</div>
 		{{ form.errors }}

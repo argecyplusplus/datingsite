@@ -14,6 +14,10 @@ class ProfileViewAll(View):
         profiles = Form.objects.all()
         return render(request, 'searching/searching.html', {'profile_list': profiles})
  
+@login_required
+def ProfileViewAllProtected(request):
+    profiles = Form.objects.all()
+    return render (request, 'searching/searching.html', {'profile_list': profiles})
 
 class ProfileView(View):
     '''одна анкета'''
@@ -25,14 +29,12 @@ class ProfileView(View):
 def MyProfileView(request):
     return render (request, 'searching/myprofile.html')
 
-@login_required
-def ProfileViewAllRequest(request):
-    return render (request, 'searching/searching.html')
+
 
 class RegisterView(FormView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
-    success_url = reverse_lazy("myprofile")
+    success_url = reverse_lazy("searching:myprofile")
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
