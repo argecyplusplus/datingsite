@@ -17,3 +17,7 @@ class FormView(View):
     def get(self, request, pk):
         form = Form.objects.get(id=pk)
         return render(request, 'searching/form.html', {'form': form})
+
+
+def MyProfileView(request):
+    return render (request, 'searching/myprofile.html')
