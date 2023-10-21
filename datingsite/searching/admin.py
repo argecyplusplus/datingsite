@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Form
+from .models import Profile
 
 # Register your models here.
-@admin.register(Form)
+@admin.register(Profile)
 class FormAdmin(admin.ModelAdmin):
     list_display = ('name',)
