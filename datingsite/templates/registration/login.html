@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<meta charset = 'utf-8'>
+	<head>
+		<title>Регистрация Анкета</title> 
+		<link rel="stylesheet" href="{% static 'css/registration.css' %}">
+	</head>
+	<body>
+	<form action="#" method="post">
+        {% csrf_token %}
+		<div class = "registration">
+			<div class="registration1">
+				<div class = "container_1">
+					<h1>ВОЙТИ</h1>
+				</div>
+				<div class="container_3">
+					<div class="text">Электронная почта</div>
+					
+						<input type="text" name="username" placeholder="Электронная почта (e-mail)" required/>
+					
+				</div>
+				<div class="container_3">
+					<div class="text">Пароль</div>
+					
+						<input type="password" name="password" placeholder="Пароль (password)" required/>
+					
+				</div>
+				<div class="container_3">
+					<button type="submit">Войти</button>
+				</div>
+                <div class="container_3">
+					<button type="">Создать аккаунт</button>
+				</div>
+			</div>
+		</div>
+    {{form.errors}}
+	</form>
+	</body>
+</html>
