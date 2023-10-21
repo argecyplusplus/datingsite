@@ -1,28 +1,41 @@
+{% load static %}
 <!DOCTYPE HTML>
 <html>
 <meta charset = 'utf-8'>
 	<head>
 		<title>Регистрация Анкета</title>
-		<!-- ИСПРАВИТЬ ПОТОМ ЭТУ ССЫЛКУ!!!-->
-		<link rel="stylesheet" href="datingsite/static/css/registration.css">
+		<link rel="stylesheet" href="{% static 'css/registration.css' %}">
 	</head>
 	<body>
-	<form action="Questionnaire.html">
+	<form method="post">
+		{% csrf_token %}
 		<div class = "registration">
 			<div class="registration1">
 				<div class = "container_1">
 					<h1>РЕГИСТРАЦИЯ</h1>
 				</div>
 				<div class="container_3">
+					<div class="text">Логин</div>
+					
+						<input type="text" name="username" placeholder="Электронная почта (e-mail)" required/>
+					
+				</div>
+				<div class="container_3">
 					<div class="text">Электронная почта</div>
 					
-						<input type="text" name="userLogin" placeholder="Электронная почта (e-mail)" required/>
+						<input type="text" name="email" placeholder="Электронная почта (e-mail)" required/>
 					
 				</div>
 				<div class="container_3">
 					<div class="text">Пароль</div>
 					
-						<input type="password" name="userPass" placeholder="Пароль (password)" required/>
+						<input type="password" name="password1" placeholder="Пароль (password)" required/>
+					
+				</div>
+                <div class="container_3">
+					<div class="text">Подтвердите пароль</div>
+					
+						<input type="password" name="password2" placeholder="Пароль (password)" required/>
 					
 				</div>
 				<div class="container_4">
@@ -34,6 +47,7 @@
 				</div>
 			</div>
 		</div>
+		{{ form.errors }}
 	</form>
 	</body>
 </html>
