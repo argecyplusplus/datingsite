@@ -25,13 +25,14 @@ class ProfileView(View):
         profile = Profile.objects.get(id=pk)
         return render(request, 'searching/form.html', {'profile': profile})
 
+@login_required
 def MyProfileView(request):
     return render (request, 'searching/myprofile.html')
 
 class RegisterView(FormView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
-    success_url = reverse_lazy("myprofile")
+    success_url = "/searching/myprofile"
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
