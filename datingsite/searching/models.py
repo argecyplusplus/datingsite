@@ -34,3 +34,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class MyProfile (Profile):
+    owner = models.ForeignKey(Profile, related_name='profile_owner', verbose_name='Пользователь', on_delete=models.CASCADE)

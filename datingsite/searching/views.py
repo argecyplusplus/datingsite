@@ -28,8 +28,6 @@ class ProfileView(View):
 def MyProfileView(request):
     return render (request, 'searching/myprofile.html')
 
-
-
 class RegisterView(FormView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
@@ -38,3 +36,10 @@ class RegisterView(FormView):
         form.save()
         return super().form_valid(form)
     
+
+
+class CreateMyProfile(View):
+    #создание и редактирование анкеты
+    def post(self, request):
+        print (request.POST)
+        return redirect('/searching/')
