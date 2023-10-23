@@ -8,7 +8,7 @@ body {
     align-items: center;
     height: 100%;
     background-image: url(Background_Hearts.jpg);
-    background-size: 25%;
+    background-size: 50%;
 }
 
 h1 {
@@ -60,8 +60,9 @@ h1 {
     margin: auto;
     background: white;
     width: 60vh;
-    
     border-radius: 15px;
+    border-color: #e87b7b;
+    border-style: inset;
 }
 
 .container_2 {
@@ -79,7 +80,8 @@ h1 {
 }
 
 .container_4 {
-    display: grid;
+    display: flex;
+    align-items: center;
     margin: auto;
     width: 75%;
 }
@@ -91,13 +93,22 @@ button {
     background-color: white;
     border-radius: 15px;
     border-style: outset;
-
 }
 
-input {
+button:hover {
+    background-color: #ededed;
+}
+
+input.string {
     height: 185%;
     border-radius: 15px;
     background: white;
     width: 98%;
+    text-align: center;
+}
+
+input.check {
+    background: white;
+    width: 25%;
     text-align: center;
 }
