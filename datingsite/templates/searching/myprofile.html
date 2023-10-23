@@ -20,6 +20,7 @@
 
         </form> 
         <button onclick="location.href='/searching/'">Смотреть анкеты (все)</button>
+        <button onclick="location.href='{% url 'password_change' %}'">Сменить пароль</button>
         <button onclick="location.href='{% url 'logout' %}?next=/'">Выйти из аккаунта</button>
     </body>
 </html>
