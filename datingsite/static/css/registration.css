@@ -76,6 +76,32 @@ h2 {
     border-color: #e87b7b;
 }
 
+.searching {
+    display: table;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+    background: #ffa8a8;
+    width: 70%;
+    height: 70%;
+    border-radius: 25px;
+    border-style: outset;
+    border-color: #e87b7b;
+}
+
+.searching2 {
+    display: flex;
+    margin: auto;
+    vertical-align: center;
+    background: #ffa8a8;
+    width: 70%;
+    height: 70%;
+    border-radius: 25px;
+    border-style: outset;
+    border-color: #e87b7b;
+}
+
 .container_1 {
     
     margin: auto;
@@ -109,6 +135,14 @@ h2 {
     display: inline;
     margin: auto;
     vertical-align: center
+    width: 75%;
+}
+
+.container_6 {
+    display: grid;
+    margin: auto;
+    vertical-align: center
+    align-items: center;
     width: 75%;
 }
 

@@ -1,17 +1,24 @@
 {% load static %}
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+<meta charset = 'utf-8'>
+	<head>
+		<meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/registration.css' %}" type="text/css">
         <title>Анкеты пользователей</title>
-    </head>
-    <body style="font-size: 20px;">
-        <button onclick="location.href='/searching/myprofile'">В профиль</button>
-        <h1>Все анкеты: </h1>
-        {% for profile in profile_list %}
-        <img src="{{profile.avatar.url}}"  style="max-width: 30%;">
-        <a href="{{profile.id}}"><h3>{{profile.name}}, {{profile.age}}, {{profile.city}}</h3></a>
-        {% endfor %}
-    </body>
+	</head>
+	<body>
+		<div class="searching">
+				<button onclick="location.href='/searching/myprofile'">В профиль</button>
+                <h1>Все анкет ы: </h1>
+				<div class="searching2">
+					{% for profile in profile_list %}
+					<div class="container_4">
+						<img src="{{profile.avatar.url}}"  style="max-width: 30%;">
+						<a href="{{profile.id}}"><h3>{{profile.name}}, {{profile.age}}, {{profile.city}}</h3></a>
+					</div>
+				</div>
+				{% endfor %}
+		</div>
+	</body>
 </html>
