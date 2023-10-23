@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from .models import Profile
-from .forms import RegisterForm
+from .forms import RegisterForm, MyProfileForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.urls import reverse_lazy
 
@@ -42,5 +42,9 @@ class RegisterView(FormView):
 class CreateMyProfile(View):
     #создание и редактирование анкеты
     def post(self, request):
-        print (request.POST)
+        form = MyProfileForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.save()
+            print (form)
         return redirect('/searching/')
