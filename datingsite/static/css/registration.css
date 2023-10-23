@@ -94,6 +94,7 @@ button {
     background-color: white;
     border-radius: 2vh;
     border-style: outset;
+
 }
 
 button:hover {
@@ -110,7 +111,8 @@ input.string {
 
 input.check {
     background: white;
-    width: 25vh;
+    width: 5vh;
+    height: 5vh;
     text-align: center;
 }
 
