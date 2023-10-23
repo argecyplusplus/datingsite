@@ -12,22 +12,23 @@ body {
 }
 
 h1 {
-    font-size: 25px;
+    font-size: 4vh;
     font-family: COMIC SANS MS;
     text-align: center;
     font-style: oblique;
 }
 
 .text {
+    font-size: 2vh;
     font-family: comic sans ms;
-    margin-left: 10%;
+    margin-left: 5vh;
     font-style: oblique;
 }
 
 
 .text1 {
     font-family: comic sans ms;
-    font-size: 15px;
+    font-size: 2vh;
     font-style: oblique;
 }
 
@@ -37,7 +38,7 @@ h1 {
     background: #F08080;
     width: 70vh;
     height: 70vh;
-    border-radius: 25px;
+    border-radius: 5vh;
     border-style: outset;
     border-color: #d67272;
 }
@@ -50,7 +51,7 @@ h1 {
     background: #ffa8a8;
     width: 68vh;
     height: 68vh;
-    border-radius: 25px;
+    border-radius: 5vh;
     border-style: outset;
     border-color: #e87b7b;
 }
@@ -59,8 +60,8 @@ h1 {
     
     margin: auto;
     background: white;
-    width: 60vh;
-    border-radius: 15px;
+    width: 55vh;
+    border-radius: 3vh;
     border-color: #e87b7b;
     border-style: inset;
 }
@@ -70,20 +71,20 @@ h1 {
     margin: auto;
     width: 50vh;
     height: 7vh;
-    border-radius: 15px;
+    border-radius: 3vh;
 }
 
 .container_3 {
     display: grid;
     margin: auto;
-    width: 75%;
+    width: 50vh;
 }
 
 .container_4 {
     display: flex;
     align-items: center;
     margin: auto;
-    width: 75%;
+    width: 50vh;
 }
 
 button {
@@ -91,7 +92,7 @@ button {
     width: 20vh;
     height: 5vh;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 2vh;
     border-style: outset;
 }
 
@@ -100,15 +101,19 @@ button:hover {
 }
 
 input.string {
-    height: 185%;
-    border-radius: 15px;
+    height: 5vh;
+    border-radius: 2vh;
     background: white;
-    width: 98%;
+    width: 50vh;
     text-align: center;
 }
 
 input.check {
     background: white;
-    width: 25%;
+    width: 25vh;
     text-align: center;
+}
+
+input::placeholder {
+    font-size: 2vh;
 }
