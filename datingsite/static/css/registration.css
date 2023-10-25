@@ -48,6 +48,7 @@ h2 {
     border-radius: 5vh;
     border-style: outset;
     border-color: #d67272;
+    border-width: 1vh;
 }
 
 .registration1 {
@@ -59,6 +60,7 @@ h2 {
     width: 68vh;
     height: 68vh;
     border-radius: 5vh;
+    border-width: 0.5vh;
     border-style: outset;
     border-color: #e87b7b;
 }
@@ -85,6 +87,7 @@ h2 {
     border-radius: 3vh;
     border-color: #e87b7b;
     border-style: inset;
+    border-width: 0.5vh;
 }
 
 .container_2 {
@@ -111,14 +114,14 @@ h2 {
 .container_5 {
     display: inline;
     margin: auto;
-    vertical-align: center
+    vertical-align: center;
     width: 75%;
 }
 
 .container_6 {
     display: grid;
     margin: auto;
-    vertical-align: center
+    vertical-align: center;
     align-items: center;
     width: 75%;
 }
@@ -160,6 +163,9 @@ button:hover {
 input.string {
     height: 5vh;
     border-radius: 2vh;
+    border-style: outset;
+    border-color: #d67272;
+    border-width: 0.5vh;
     background: white;
     width: 50vh;
     text-align: center;
@@ -170,6 +176,10 @@ input.check {
     width: 5vh;
     height: 5vh;
     text-align: center;
+    border-radius: 2vh;
+    border-style: outset;
+    border-color: #d67272;
+    border-width: 0.5vh;
 }
 
 input::placeholder {
