@@ -11,13 +11,13 @@
 		<div class="searching">
 				<button onclick="location.href='/searching/myprofile'">В профиль</button>
                 <h1>Все анкет ы: </h1>
-				<div class="searching2">
+
 					{% for profile in profile_list %}
 					<div class="container_4">
 						<img src="{{profile.avatar.url}}"  style="max-width: 30%;">
 						<a href="{{profile.id}}"><h3>{{profile.name}}, {{profile.age}}, {{profile.city}}</h3></a>
 					</div>
-				</div>
+
 				{% endfor %}
 		</div>
 	</body>
