@@ -5,22 +5,22 @@
     </head>
     <body>
         <h1>Ваша анкета</h1>
-        <form method="post">
+        <form action="{% url 'createprofile' %}" method="post">
             {% csrf_token %}
 
         
-        <!-- Дефолты надо подтянуть из БД -->
-        <p>Имя:</p> <input value="{{profile.name}}">
-        <p>Возраст: </p><input value="{{profile.age}}">
-        <p>тутуту</p><input value="пук">
-        <p>пупупу</p><input value="пук">
-        
+            <!-- Дефолты надо подтянуть из БД -->
+            <p>Имя:</p> <input value="{{profile.name}}" name="name">
+            <p>Возраст: </p><input value="{{profile.age}}"name="age">
+            <p>Город: </p><input value="пук" name="city">
+            <p>О себе: </p><textarea name="description"></textarea >
+            
 
-        <button type='submit'>Смотреть анкеты (с учетом фильтра)</button>
+            <button type='submit'>Смотреть анкеты (с учетом фильтра)</button>
 
         </form> 
         <button onclick="location.href='/searching/'">Смотреть анкеты (все)</button>
         <button onclick="location.href='{% url 'password_change' %}'">Сменить пароль</button>
-        <button onclick="location.href='{% url 'logout' %}?next=/'">Выйти из аккаунта</button>
+        <button onclick="location.href='{% url 'logout' %}?next=/searching/'">Выйти из аккаунта</button>
     </body>
 </html>

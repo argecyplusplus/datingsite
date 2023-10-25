@@ -18,6 +18,13 @@ h1 {
     font-style: oblique;
 }
 
+h2 {
+    font-size: 70px;
+    font-family: COMIC SANS MS;
+    text-align: center;
+    font-style: oblique;
+}
+
 .text {
     font-size: 2vh;
     font-family: comic sans ms;
@@ -56,6 +63,20 @@ h1 {
     border-color: #e87b7b;
 }
 
+.main {
+    display: block;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+    background: #ffa8a8;
+    width: 70%;
+    height: 70%;
+    border-radius: 25px;
+    border-style: outset;
+    border-color: #e87b7b;
+}
+
 .container_1 {
     
     margin: auto;
@@ -87,6 +108,21 @@ h1 {
     width: 50vh;
 }
 
+.container_5 {
+    display: inline;
+    margin: auto;
+    vertical-align: center
+    width: 75%;
+}
+
+.container_6 {
+    display: grid;
+    margin: auto;
+    vertical-align: center
+    align-items: center;
+    width: 75%;
+}
+
 button {
     margin: auto;
     width: 20vh;
@@ -94,7 +130,27 @@ button {
     background-color: white;
     border-radius: 2vh;
     border-style: outset;
+}
 
+button2 {
+    margin: auto;
+    width: 50%;
+    height: 300%;
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    border-style: outset;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-family: COMIC SANS MS;
+    text-align: center;
+    font-style: oblique;
+}
+
+button2:hover{
+    background-color: #ededed;
 }
 
 button:hover {
