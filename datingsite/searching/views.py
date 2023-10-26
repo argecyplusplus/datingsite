@@ -69,7 +69,7 @@ class CreateMyProfile(View):
             form = form.save(commit=False)
             form.save()
             print ("Анкета создана (нет)")
-            #в return записать реальные данные из формы
-            return ProfileViewAllProtected(request, filterinfo={'gender':gender, 'age':age, 'city':city})
-            
-        return render (request, 'searching/myprofile.html')
+
+            return 
+        filteredinfo={'gender':gender, 'age':age, 'city':city}
+        return redirect (request, "{% url 'searching' filteredinfo %}")
