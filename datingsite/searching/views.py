@@ -17,7 +17,7 @@ class ProfileViewAll(View):
         
 
 @login_required
-def ProfileViewAllProtected(request, filterinfo={'gender':'Парень', 'age':18, 'city':'Ярославль'}):
+def ProfileViewAllProtected(request, filterinfo):
     profiles = Profile.objects.all()
     profiles_filtered = []
     for profile in profiles:
@@ -27,7 +27,7 @@ def ProfileViewAllProtected(request, filterinfo={'gender':'Парень', 'age':
             searching_gender = 'Парень'
         if (profile.gender == searching_gender and 
             profile.city == searching_city and 
-            profile.age-4<=profile.age<=profile.age+4):
+            filterinfo['age']-4<=profile.age<=filterinfo['age']+4):
             profiles_filtered.append (profile)
     return render (request, 'searching/searching.html', {'profile_list': profiles_filtered, 'fgender':filterinfo['gender'], 'fage':filterinfo['age'], 'fcity':filterinfo['city']})
 
@@ -57,8 +57,19 @@ class CreateMyProfile(View):
         
         form = MyProfileForm(request.POST)
         if form.is_valid():
+            name = form.cleaned_data.get('name')
+            avatar = form.cleaned_data.get('avatar')
+            age = form.cleaned_data.get('age')
+            gender = form.cleaned_data.get('gender')
+            point_of_searching = form.cleaned_data.get('point_of_searching')
+            city = form.cleaned_data.get('city')
+            description = form.cleaned_data.get('description')
+
+            print ('форма валидная')
             form = form.save(commit=False)
             form.save()
-        print ("Анкета создана (нет)")
-        #в return записать реальные данные из формы
-        return ProfileViewAllProtected(request, filterinfo={'gender':'Парень', 'age':18, 'city':'Ярославль'})
+            print ("Анкета создана (нет)")
+            #в return записать реальные данные из формы
+            return ProfileViewAllProtected(request, filterinfo={'gender':gender, 'age':age, 'city':city})
+            
+        return render (request, 'searching/myprofile.html')
