@@ -8,6 +8,8 @@
     </head>
     <body style="font-size: 20px;">
         <button onclick="location.href='/searching/myprofile'">В профиль</button>
+
+
         <h1>Все анкеты: </h1>
         {% for profile in profile_list %}
         <img src="{{profile.avatar.url}}"  style="max-width: 30%;">

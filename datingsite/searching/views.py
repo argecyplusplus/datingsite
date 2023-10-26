@@ -9,15 +9,27 @@ from django.urls import reverse_lazy
 # Create your views here.
 
 class ProfileViewAll(View):
-    '''вывод всех анкет'''
+    #вывод всех анкет
     def get(self, request):
         profiles = Profile.objects.all()
         return render(request, 'searching/searching.html', {'profile_list': profiles})
- 
+
+        
+
 @login_required
-def ProfileViewAllProtected(request):
+def ProfileViewAllProtected(request, filterinfo={'gender':'Парень', 'age':18, 'city':'Ярославль'}):
     profiles = Profile.objects.all()
-    return render (request, 'searching/searching.html', {'profile_list': profiles})
+    profiles_filtered = []
+    for profile in profiles:
+        searching_gender = 'Девушка'
+        searching_city = filterinfo['city']
+        if filterinfo['gender'] == 'Девушка':
+            searching_gender = 'Парень'
+        if (profile.gender == searching_gender and 
+            profile.city == searching_city and 
+            profile.age-4<=profile.age<=profile.age+4):
+            profiles_filtered.append (profile)
+    return render (request, 'searching/searching.html', {'profile_list': profiles_filtered, 'fgender':filterinfo['gender'], 'fage':filterinfo['age'], 'fcity':filterinfo['city']})
 
 class ProfileView(View):
     '''одна анкета'''
@@ -42,9 +54,12 @@ class RegisterView(FormView):
 class CreateMyProfile(View):
     #создание и редактирование анкеты
     def post(self, request):
+        
         form = MyProfileForm(request.POST)
+        #print (form)
         if form.is_valid():
             form = form.save(commit=False)
             form.save()
             print (form)
+        print ("Анкета создана (нет)")
         return redirect('/searching/')

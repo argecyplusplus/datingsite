@@ -9,4 +9,9 @@ class RegisterForm (UserCreationForm):
 class MyProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('name', 'avatar', 'age', 'gender', 'searching_for', 'point_of_searching', 'city', 'description')
+        fields = ('name', 'avatar', 'age', 'gender', 'point_of_searching', 'city', 'description')
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('name', 'avatar', 'age', 'gender', 'point_of_searching', 'city', 'description')

@@ -6,11 +6,6 @@ class Profile(models.Model):
         ('Парень', 'Парень'),
         ('Девушка', 'Девушка')
     )
-    searching_for_list = (
-        ('Парня', 'Парня'),
-        ('Девушку', 'Девушку'),
-        ('Кого угодно', 'Кого угодно')
-    )
     point_of_searching_list = (
         ('Отношения', 'Отношения'),
         ('Свидания', 'Свидания'),
@@ -22,7 +17,6 @@ class Profile(models.Model):
     avatar = models.ImageField ('Фото', upload_to='photos/users', default='default_avatar.jpg')
     age = models.IntegerField("Возраст")
     gender = models.CharField ("Пол", choices=genders, max_length=30, default=genders[0])
-    searching_for = models.CharField ("Ищу", choices=searching_for_list, max_length=30, default=searching_for_list[1])
     point_of_searching = models.CharField ("Цель знакомства", choices=point_of_searching_list, max_length=30, default=point_of_searching_list[0])
     city = models.CharField ('Город', max_length=100, default="Не указано")
     description = models.TextField ('О себе', max_length=50)
