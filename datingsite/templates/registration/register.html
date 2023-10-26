@@ -3,7 +3,7 @@
 <html>
 <meta charset = 'utf-8'>
 	<head>
-		<title>Регистрация Анкета</title>
+		<title>Регистрация Tinder v2.0</title>
 		<link rel="stylesheet" href="{% static 'css/registration.css' %}">
 	</head>
 	<body>
@@ -17,38 +17,38 @@
 				<div class="container_3">
 					<div class="text">Логин</div>
 					
-						<input type="text" name="username" placeholder="Электронная почта (e-mail)" required/>
+						<input class="string" type="text" name="username" placeholder="Логин (Login)" required/>
 					
 				</div>
 				<div class="container_3">
 					<div class="text">Электронная почта</div>
 					
-						<input type="text" name="email" placeholder="Электронная почта (e-mail)" required/>
+						<input class="string" type="text" name="email" placeholder="Электронная почта (e-mail)" required/>
 					
 				</div>
 				<div class="container_3">
 					<div class="text">Пароль</div>
 					
-						<input type="password" name="password1" placeholder="Пароль (password)" required/>
+						<input class="string" type="password" name="password1" placeholder="Пароль (password)" required/>
 					
 				</div>
                 <div class="container_3">
 					<div class="text">Подтвердите пароль</div>
 					
-						<input type="password" name="password2" placeholder="Пароль (password)" required/>
+						<input class="string" type="password" name="password2" placeholder="Подтвердите пароль (password)" required/>
 					
 				</div>
 				<div class="container_4">
-					<input type="checkbox" id="Agreed" name="Agreed" value="Agreed" required>
+					<input class="check" type="checkbox" id="Agreed" name="Agreed" value="Agreed" required>
 					<label for="Agreed"><div class="text1">Нажимая галочку, Вы соглашаетесь с нашим пользовательским соглашением и подтверждаете, что понимаете политику конфиденциальности.</div></label>
 				</div>
-				<div class="container_3">
+				<div class="container_4">
 					<button type="submit">Зарегистрироваться</button>
 				</div>
 				
 				<div class="container_3">
 					<h5>Есть аккаунт?</h5>
-					<button onclick="location.href='{% url 'login' %}?next=/myprofile'">Войти</button>
+					<button onclick="location.href='{% url 'login' %}?next=/searching'">Войти</button>
 				</div>
 			</div>
 		</div>
