@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import MyProfile, Profile
+from .models import Profile
 
 
 class RegisterForm (UserCreationForm):
@@ -9,5 +9,5 @@ class RegisterForm (UserCreationForm):
 class MyProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('name', 'avatar', 'age', 'gender', 'point_of_searching', 'city', 'description')
+        fields = ('name', 'avatar', 'age', 'gender', 'point_of_searching', 'city', 'social', 'description')
 

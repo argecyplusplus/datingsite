@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
@@ -20,7 +21,8 @@ class Profile(models.Model):
     point_of_searching = models.CharField ("Цель знакомства", choices=point_of_searching_list, max_length=30, default=point_of_searching_list[0])
     city = models.CharField ('Город', max_length=100, default="Не указано")
     description = models.TextField ('О себе', max_length=50)
-    #... можно расширить
+    social = models.TextField ('СсылкаНаСоцсеть', max_length=50, default='@name')
+    #user = models.ForeignKey(User, verbose_name='АвторАнкеты', on_delete=models.CASCADE, default='admin')
 
     class Meta:
         verbose_name = "Анкета"
@@ -29,6 +31,6 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+class MyProfile(models.Model):
+    pass
 
-class MyProfile (Profile):
-    owner = models.ForeignKey(Profile, related_name='profile_owner', verbose_name='Пользователь', on_delete=models.CASCADE)

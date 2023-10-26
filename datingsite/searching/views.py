@@ -4,7 +4,9 @@ from django.views.generic.base import View
 from .models import Profile
 from .forms import RegisterForm, MyProfileForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.utils.http import urlencode
+from django.views.generic import RedirectView
 
 # Create your views here.
 
@@ -16,26 +18,29 @@ class ProfileViewAll(View):
 
         
 
-@login_required
-def ProfileViewAllProtected(request, filterinfo):
-    profiles = Profile.objects.all()
-    profiles_filtered = []
-    for profile in profiles:
-        searching_gender = 'Девушка'
-        searching_city = filterinfo['city']
-        if filterinfo['gender'] == 'Девушка':
-            searching_gender = 'Парень'
-        if (profile.gender == searching_gender and 
-            profile.city == searching_city and 
-            filterinfo['age']-4<=profile.age<=filterinfo['age']+4):
-            profiles_filtered.append (profile)
-    return render (request, 'searching/searching.html', {'profile_list': profiles_filtered, 'fgender':filterinfo['gender'], 'fage':filterinfo['age'], 'fcity':filterinfo['city']})
+class ProfileViewAllFiltered(View):
+    #вывод всех анкет c фильтром
+    def get(self, request):
+        profiles = Profile.objects.all()
+        profiles_filtered = []
+        filterinfo = {'gender':'Парень', 'age':18, 'city':'Ярославль'} #эти данные надо подтягивать из анкеты пользователя
+        for profile in profiles:
+            searching_gender = 'Девушка'
+            searching_city = filterinfo['city']
+            if filterinfo['gender'] == 'Девушка':
+                searching_gender = 'Парень'
+            if (profile.gender == searching_gender and 
+                profile.city == searching_city and 
+                filterinfo['age']-4<=profile.age<=filterinfo['age']+4):
+                profiles_filtered.append (profile)
+        return render (request, 'searching/searching.html', {'profile_list': profiles_filtered, 'fgender':filterinfo['gender'], 'fage':filterinfo['age'], 'fcity':filterinfo['city']})
+
 
 class ProfileView(View):
     '''одна анкета'''
-    def get(self, request, pk):
+    def get(self, request, pk, ):
         profile = Profile.objects.get(id=pk)
-        return render(request, 'searching/form.html', {'profile': profile})
+        return render(request, 'searching/profile.html', {'profile': profile})
 
 @login_required
 def MyProfileView(request):
@@ -51,7 +56,7 @@ class RegisterView(FormView):
     
 
 
-class CreateMyProfile(View):
+class CreateMyProfile(RedirectView):
     #создание и редактирование анкеты
     def post(self, request):
         
@@ -68,8 +73,8 @@ class CreateMyProfile(View):
             print ('форма валидная')
             form = form.save(commit=False)
             form.save()
+            #тут подключение/обновление анкеты с аккаунтом
             print ("Анкета создана (нет)")
-
-            return 
-        filteredinfo={'gender':gender, 'age':age, 'city':city}
-        return redirect (request, "{% url 'searching' filteredinfo %}")
+            filterinfo = {'gender': gender, 'age': age, 'city': city}
+            return redirect('profiles')
+        return redirect(reverse_lazy ('myprofile'))
