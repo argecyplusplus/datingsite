@@ -11,7 +11,3 @@ class MyProfileForm(forms.ModelForm):
         model = Profile
         fields = ('name', 'avatar', 'age', 'gender', 'point_of_searching', 'city', 'description')
 
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ('name', 'avatar', 'age', 'gender', 'point_of_searching', 'city', 'description')

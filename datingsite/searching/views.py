@@ -56,10 +56,9 @@ class CreateMyProfile(View):
     def post(self, request):
         
         form = MyProfileForm(request.POST)
-        #print (form)
         if form.is_valid():
             form = form.save(commit=False)
             form.save()
-            print (form)
         print ("Анкета создана (нет)")
-        return redirect('/searching/')
+        #в return записать реальные данные из формы
+        return ProfileViewAllProtected(request, filterinfo={'gender':'Парень', 'age':18, 'city':'Ярославль'})

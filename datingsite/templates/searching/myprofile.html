@@ -8,12 +8,92 @@
         <form action="{% url 'createprofile' %}" method="post">
             {% csrf_token %}
 
-        
-            <!-- Дефолты надо подтянуть из БД -->
-            <p>Имя:</p> <input value="{{profile.name}}" name="name">
-            <p>Возраст: </p><input value="{{profile.age}}"name="age">
-            <p>Город: </p><input value="пук" name="city">
-            <p>О себе: </p><textarea name="description"></textarea >
+            <tr>
+                <th><label for="id_name">Имя:</label></th>
+                <td>
+                  <ul class="errorlist"><li>Обязательное поле.</li></ul>
+                  <input type="text" name="name" maxlength="50" required id="id_name">
+            
+            
+                </td>
+              </tr>
+            
+              <tr>
+                <th><label for="id_avatar">Фото:</label></th>
+                <td>
+            
+                  <input type="file" name="avatar" accept="image/*" id="id_avatar">
+            
+            
+                </td>
+              </tr>
+            
+              <tr>
+                <th><br><label for="id_age">Возраст:</label></th>
+                <td>
+                  <ul class="errorlist"><li>Обязательное поле.</li></ul>
+                  <input type="number" name="age" required id="id_age">
+            
+            
+                </td>
+              </tr>
+            
+              <tr>
+                <th><label for="id_gender">Пол:</label></th>
+                <td>
+                  <ul class="errorlist"><li>Обязательное поле.</li></ul>
+                  <select name="gender" id="id_gender">
+              <option value="Парень">Парень</option>
+            
+              <option value="Девушка">Девушка</option>
+            
+            </select>
+            
+            
+                </td>
+              </tr>
+            
+              <tr>
+                <th><label for="id_point_of_searching">Цель знакомства:</label></th>
+                <td>
+                  <ul class="errorlist"><li>Обязательное поле.</li></ul>
+                  <select name="point_of_searching" id="id_point_of_searching">
+              <option value="Отношения">Отношения</option>
+            
+              <option value="Свидания">Свидания</option>
+            
+              <option value="Дружба">Дружба</option>
+            
+              <option value="Общение">Общение</option>
+            
+            </select>
+            
+            
+                </td>
+              </tr>
+            
+              <tr>
+                <th><label for="id_city">Город:</label></th>
+                <td>
+            
+                  <input type="text" name="city" value="пук" maxlength="100" required id="id_city">
+            
+            
+                </td>
+              </tr>
+            
+              <tr>
+                <th><label for="id_description">О себе:</label></th>
+                <td>
+                  <ul class="errorlist"><li>Обязательное поле.</li></ul>
+                  <textarea name="description" cols="40" rows="10" maxlength="50" required id="id_description">
+            </textarea>
+            
+            
+            
+            
+                </td>
+              </tr>
             
 
             <button type='submit'>Смотреть анкеты (с учетом фильтра)</button>
