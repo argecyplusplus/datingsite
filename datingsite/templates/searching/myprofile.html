@@ -12,17 +12,17 @@
                 <th><label for="id_name">Имя:</label></th>
                 <td>
                   <ul class="errorlist"><li>Обязательное поле.</li></ul>
-                  <input type="text" name="name" maxlength="50" required id="id_name">
+                  <input type="text" value="{{dname}}" name="name" maxlength="50" required id="id_name">
             
             
                 </td>
               </tr>
             
               <tr>
-                <th><label for="id_avatar">Фото:</label></th>
+                <th><label  for="id_avatar">Фото:</label></th>
                 <td>
             
-                  <input type="file" name="avatar" accept="image/*" id="id_avatar">
+                  <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar">
             
             
                 </td>
@@ -32,7 +32,7 @@
                 <th><br><label for="id_age">Возраст:</label></th>
                 <td>
                   <ul class="errorlist"><li>Обязательное поле.</li></ul>
-                  <input type="number" name="age" required id="id_age">
+                  <input type="number" value="{{dage}}" name="age" required id="id_age">
             
             
                 </td>
@@ -43,11 +43,11 @@
                 <td>
                   <ul class="errorlist"><li>Обязательное поле.</li></ul>
                   <select name="gender" id="id_gender">
-              <option value="Парень">Парень</option>
-            
-              <option value="Девушка">Девушка</option>
-            
-            </select>
+                  
+                  <option {% if dgender == "Парень" %}selected{% endif %} value="Парень">Парень</option>
+                  <option {% if dgender == "Девушка" %}selected{% endif %} value="Девушка">Девушка</option>
+          
+                  </select>
             
             
                 </td>
@@ -58,13 +58,10 @@
                 <td>
                   <ul class="errorlist"><li>Обязательное поле.</li></ul>
                   <select name="point_of_searching" id="id_point_of_searching">
-              <option value="Отношения">Отношения</option>
-            
-              <option value="Свидания">Свидания</option>
-            
-              <option value="Дружба">Дружба</option>
-            
-              <option value="Общение">Общение</option>
+                <option {% if dpoint_of_searching == "Отношения" %}selected{% endif %} value="Отношения">Отношения</option>
+                <option {% if dpoint_of_searching == "Свидания" %}selected{% endif %} value="Свидания">Свидания</option>
+                <option {% if dpoint_of_searching == "Дружба" %}selected{% endif %} value="Дружба">Дружба</option>
+                <option {% if dpoint_of_searching == "Общение" %}selected{% endif %} value="Общение">Общение</option>
             
             </select>
             
@@ -76,7 +73,7 @@
                 <th><label for="id_city">Город:</label></th>
                 <td>
             
-                  <input type="text" name="city" value="Ярославль" maxlength="100" required id="id_city">
+                  <input type="text" name="city" value="{{dcity}}" maxlength="100" required id="id_city">
             
             
                 </td>
@@ -86,7 +83,7 @@
                 <th><label for="id_city">Ссылка на соцсеть (для связи):</label></th>
                 <td>
             
-                  <input type="text" name="social" value="@name" maxlength="50" required id="id_social">
+                  <input type="text" name="social" value="{{dsocial}}" maxlength="50" required id="id_social">
             
             
                 </td>
@@ -97,15 +94,12 @@
                 <th><label for="id_description">О себе:</label></th>
                 <td>
                   <ul class="errorlist"><li>НЕобязательное поле.</li></ul>
-                  <textarea name="description" required  id="id_description">Не указано</textarea>
-            
-            
-            
-            
+                  <textarea name="description" required  id="id_description">{{ddescription}}</textarea>
+
                 </td>
               </tr>
             
-
+            <input type="text" hidden name="user" value="{{username}}" maxlength="50" required id="id_social">
             <button type='submit'>Смотреть анкеты (с учетом фильтра)</button>
 
         </form> 

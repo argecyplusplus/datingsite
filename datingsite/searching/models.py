@@ -22,7 +22,7 @@ class Profile(models.Model):
     city = models.CharField ('Город', max_length=100, default="Не указано")
     description = models.TextField ('О себе', max_length=50)
     social = models.CharField ('Ссылка на соцсеть', max_length=50, default='@name')
-    user = models.ForeignKey(User, verbose_name='Автор анкеты', on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(User, verbose_name='Автор анкеты', on_delete=models.CASCADE)
     
     class Meta:
         verbose_name = "Анкета"

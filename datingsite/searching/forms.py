@@ -9,5 +9,5 @@ class RegisterForm (UserCreationForm):
 class MyProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('name', 'avatar', 'age', 'gender', 'point_of_searching', 'city', 'social', 'description')
+        fields = ('name', 'avatar', 'age', 'gender', 'point_of_searching', 'city', 'social', 'description', 'user')
 

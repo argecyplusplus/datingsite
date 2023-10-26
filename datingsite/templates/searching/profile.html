@@ -7,7 +7,7 @@
         <title>Анкеты пользователей</title>
     </head>
     <body style="font-size: 20px;">
-        <button onclick="location.href='{% url 'createprofile' %}'">Назад</button>
+        <button onclick="location.href='{% url 'profiles' %}'">Назад</button>
         <img src="{{profile.avatar.url}}" style="max-width: 30%;">
         <h3>{{profile.name}}</h3>
         <h5>{{profile.age}}</h5>

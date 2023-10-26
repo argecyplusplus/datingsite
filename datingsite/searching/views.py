@@ -7,8 +7,23 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormVi
 from django.urls import reverse_lazy, reverse
 from django.utils.http import urlencode
 from django.views.generic import RedirectView
+from django.contrib.auth.models import User
 
 # Create your views here.
+
+def makefilters(username):
+    profiles = Profile.objects.all()
+    for profile in profiles:
+        if profile.user.username == username:
+            return {'city':profile.city, 'age': profile.age, 'gender': profile.gender}
+
+
+def load_defaults(request):
+    profiles = Profile.objects.all()
+    for profile in profiles:
+        if str(profile.user) == str(request.user.username):
+            return {'profileid':profile.id, 'name':profile.name, 'avatar':profile.avatar, 'city':profile.city, 'age': profile.age, 'gender': profile.gender, 'point_of_searching':profile.point_of_searching, 'social':profile.social, 'description':profile.description}
+    return {'name':'', 'avatar':'', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':''}
 
 class ProfileViewAll(View):
     #вывод всех анкет
@@ -23,7 +38,7 @@ class ProfileViewAllFiltered(View):
     def get(self, request):
         profiles = Profile.objects.all()
         profiles_filtered = []
-        filterinfo = {'gender':'Парень', 'age':18, 'city':'Ярославль'} #эти данные надо подтягивать из анкеты пользователя
+        filterinfo = makefilters(request.user.username)
         for profile in profiles:
             searching_gender = 'Девушка'
             searching_city = filterinfo['city']
@@ -42,9 +57,12 @@ class ProfileView(View):
         profile = Profile.objects.get(id=pk)
         return render(request, 'searching/profile.html', {'profile': profile})
 
+
+
 @login_required
 def MyProfileView(request):
-    return render (request, 'searching/myprofile.html')
+    defaults = load_defaults(request)
+    return render (request, 'searching/myprofile.html', {'username': request.user.id, 'dname':defaults['name'], 'davatar':defaults['avatar'], 'dcity':defaults['city'], 'dage': defaults['age'], 'dgender': defaults['gender'], 'dpoint_of_searching':defaults['point_of_searching'], 'dsocial':defaults['social'], 'ddescription':defaults['description']})
 
 class RegisterView(FormView):
     form_class = RegisterForm
@@ -69,7 +87,8 @@ class CreateMyProfile(RedirectView):
             point_of_searching = form.cleaned_data.get('point_of_searching')
             city = form.cleaned_data.get('city')
             description = form.cleaned_data.get('description')
-
+            user = form.cleaned_data.get('user')
+            user = request.user.id
             print ('форма валидная')
             form = form.save(commit=False)
             form.save()
@@ -77,4 +96,6 @@ class CreateMyProfile(RedirectView):
             print ("Анкета создана (нет)")
             filterinfo = {'gender': gender, 'age': age, 'city': city}
             return redirect('profiles')
+        else:
+            print (form.errors)
         return redirect(reverse_lazy ('myprofile'))
