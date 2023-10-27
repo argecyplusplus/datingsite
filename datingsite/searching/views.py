@@ -77,25 +77,38 @@ class RegisterView(FormView):
 class CreateMyProfile(RedirectView):
     #создание и редактирование анкеты
     def post(self, request):
+        #проверка есть ли анкеты
+        already_created = False
+        profiles = Profile.objects.all()
+        for profile in profiles:
+            if profile.user.username == request.user.username:
+                already_created = True
+                user_profile = profile.id
         
+
         form = MyProfileForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data.get('name')
-            avatar = form.cleaned_data.get('avatar')
-            age = form.cleaned_data.get('age')
-            gender = form.cleaned_data.get('gender')
-            point_of_searching = form.cleaned_data.get('point_of_searching')
-            city = form.cleaned_data.get('city')
-            description = form.cleaned_data.get('description')
-            user = form.cleaned_data.get('user')
-            user = request.user.id
             print ('форма валидная')
-            form = form.save(commit=False)
-            form.save()
+            
+            if already_created:
+                old_profile = Profile.objects.get(pk=user_profile)
+                old_profile.name = form.cleaned_data.get('name')
+                old_profile.avatar = form.cleaned_data.get('avatar')
+                old_profile.age = form.cleaned_data.get('age')
+                old_profile.gender = form.cleaned_data.get('gender')
+                old_profile.point_of_searching = form.cleaned_data.get('point_of_searching')
+                old_profile.city = form.cleaned_data.get('city')
+                old_profile.description = form.cleaned_data.get('description')
+                old_profile.social = form.cleaned_data.get('social')
+                old_profile.save()
+                print ('форма обновлена')
+            else:
+                form = form.save(commit=False)
+                form.save()
+                print ('форма сохранена')
             #тут подключение/обновление анкеты с аккаунтом
-            print ("Анкета создана (нет)")
-            filterinfo = {'gender': gender, 'age': age, 'city': city}
+            print ("Анкета создана")
             return redirect('profiles')
         else:
-            print (form.errors)
-        return redirect(reverse_lazy ('myprofile'))
+            return redirect(reverse_lazy ('myprofile'))
+    
