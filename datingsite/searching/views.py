@@ -15,7 +15,7 @@ def makefilters(username):
     profiles = Profile.objects.all()
     for profile in profiles:
         if profile.user.username == username:
-            return {'city':profile.city, 'age': profile.age, 'gender': profile.gender}
+            return {'profileid':profile.id,'city':profile.city, 'gender': profile.gender}
 
 
 def load_defaults(request):
