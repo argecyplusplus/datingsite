@@ -32,7 +32,7 @@
                 <th><br><label for="id_age">Возраст:</label></th>
                 <td>
                   <ul class="errorlist"><li>Обязательное поле.</li></ul>
-                  <input type="number" value="{{dage}}" name="age" required id="id_age">
+                  <input type="number" value="{{dage}}" name="age" required id="id_age" min='16'>
             
             
                 </td>
@@ -100,10 +100,31 @@
               </tr>
             
             <input type="text" hidden name="user" value="{{username}}" maxlength="50" required id="id_social">
-            <button type='submit'>Смотреть анкеты (с учетом фильтра)</button>
+            
+            <tr>
+              <th><br><label for="id_minage">Искать от:</label></th>
+              <td>
+                <ul class="errorlist"><li>Обязательное поле.</li></ul>
+                <input type="number" value="{{dminage}}" name="age_search_min" required id="id_age" min='16' max='100'>
+          
+          
+              </td>
+            </tr>
+            <tr>
+              <th><br><label for="id_maxage">Искать до:</label></th>
+              <td>
+                <ul class="errorlist"><li>Обязательное поле.</li></ul>
+                <input type="number" value="{{dmaxage}}" name="age_search_max" required id="id_age" min='16' max='101'>
+          
+          
+              </td>
+            </tr>
+            
+            
+            
+            <button type='submit'>Начать поиск</button>
 
         </form> 
-        <button onclick="location.href='{% url 'allprofiles' %}'">Смотреть анкеты (все)</button>
         <button onclick="location.href='{% url 'password_change' %}'">Сменить пароль</button>
         <button onclick="location.href='{% url 'logout' %}?next=/'">Выйти из аккаунта</button>
     </body>

@@ -22,11 +22,11 @@ def load_defaults(request):
     profiles = Profile.objects.all()
     for profile in profiles:
         if str(profile.user) == str(request.user.username):
-            return {'profileid':profile.id, 'name':profile.name, 'avatar':profile.avatar, 'city':profile.city, 'age': profile.age, 'gender': profile.gender, 'point_of_searching':profile.point_of_searching, 'social':profile.social, 'description':profile.description}
-    return {'name':'', 'avatar':'', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':''}
+            return {'profileid':profile.id, 'name':profile.name, 'avatar':profile.avatar, 'city':profile.city, 'age': profile.age, 'gender': profile.gender, 'point_of_searching':profile.point_of_searching, 'social':profile.social, 'description':profile.description, 'minage':profile.age_search_min, 'maxage':profile.age_search_max}
+    return {'name':'', 'avatar':'', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':'', 'minage':'', 'maxage':''}
 
 class ProfileViewAll(View):
-    #вывод всех анкет
+    #вывод всех анкет (убрать потом)
     def get(self, request):
         profiles = Profile.objects.all()
         return render(request, 'searching/searching.html', {'profile_list': profiles})
@@ -42,13 +42,14 @@ class ProfileViewAllFiltered(View):
         for profile in profiles:
             searching_gender = 'Девушка'
             searching_city = filterinfo['city']
+            user_profile = Profile.objects.get(pk=filterinfo['profileid'])
             if filterinfo['gender'] == 'Девушка':
                 searching_gender = 'Парень'
             if (profile.gender == searching_gender and 
                 profile.city == searching_city and 
-                filterinfo['age']-4<=profile.age<=filterinfo['age']+4):
+                user_profile.age_search_min<=profile.age<=user_profile.age_search_max):
                 profiles_filtered.append (profile)
-        return render (request, 'searching/searching.html', {'profile_list': profiles_filtered, 'fgender':filterinfo['gender'], 'fage':filterinfo['age'], 'fcity':filterinfo['city']})
+        return render (request, 'searching/searching.html', {'profile_list': profiles_filtered})
 
 
 class ProfileView(View):
@@ -62,7 +63,7 @@ class ProfileView(View):
 @login_required
 def MyProfileView(request):
     defaults = load_defaults(request)
-    return render (request, 'searching/myprofile.html', {'username': request.user.id, 'dname':defaults['name'], 'davatar':defaults['avatar'], 'dcity':defaults['city'], 'dage': defaults['age'], 'dgender': defaults['gender'], 'dpoint_of_searching':defaults['point_of_searching'], 'dsocial':defaults['social'], 'ddescription':defaults['description']})
+    return render (request, 'searching/myprofile.html', {'username': request.user.id, 'dname':defaults['name'], 'davatar':defaults['avatar'], 'dcity':defaults['city'], 'dage': defaults['age'], 'dgender': defaults['gender'], 'dpoint_of_searching':defaults['point_of_searching'], 'dsocial':defaults['social'], 'ddescription':defaults['description'], 'dminage':defaults['minage'], 'dmaxage':defaults['maxage']})
 
 class RegisterView(FormView):
     form_class = RegisterForm
@@ -100,6 +101,8 @@ class CreateMyProfile(RedirectView):
                 old_profile.city = form.cleaned_data.get('city')
                 old_profile.description = form.cleaned_data.get('description')
                 old_profile.social = form.cleaned_data.get('social')
+                old_profile.age_search_min = form.cleaned_data.get('age_search_min')
+                old_profile.age_search_max = form.cleaned_data.get('age_search_max')
                 old_profile.save()
                 print ('форма обновлена')
             else:

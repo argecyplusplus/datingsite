@@ -24,10 +24,13 @@ class Profile(models.Model):
     social = models.CharField ('Ссылка на соцсеть', max_length=50, default='@name')
     user = models.ForeignKey(User, verbose_name='Автор анкеты', on_delete=models.CASCADE)
     
+    #для фильтрации поиска по возрасту
+    age_search_min = models.IntegerField("Возраст поиска (от)", default=16)
+    age_search_max = models.IntegerField("Возраст поиска (до)", default=100)
+
     class Meta:
         verbose_name = "Анкета"
         verbose_name_plural = "Анкеты"
 
     def __str__(self):
         return f'{self.name}'
-
