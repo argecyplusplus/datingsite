@@ -3,33 +3,37 @@
 <html>
 <meta charset = 'utf-8'>
 	<head>
-		<title>Регистрация Анкета</title> 
+		<title>Авторизация Tinder v2.0</title> 
 		<link rel="stylesheet" href="{% static 'css/registration.css' %}">
 	</head>
 	<body>
 	<form action="#" method="post">
         {% csrf_token %}
-		<div class = "registration">
-			<div class="registration1">
+		<div class = "registration2">
+			<div class="registration3">
 				<div class = "container_1">
 					<h1>ВОЙТИ</h1>
 				</div>
 				<div class="container_3">
 					<div class="text">Электронная почта</div>
 					
-						<input type="text" name="username" placeholder="Электронная почта (e-mail)" required/>
+						<input class="string" type="text" name="username" placeholder="Электронная почта (e-mail)" required/>
 					
 				</div>
 				<div class="container_3">
 					<div class="text">Пароль</div>
 					
-						<input type="password" name="password" placeholder="Пароль (password)" required/>
+						<input class="string" type="password" name="password" placeholder="Пароль (password)" required/>
 					
 				</div>
-				<div class="container_5">
-					<button type="submit">Войти</button>
-					<button type="button" onclick="location.href='{% url 'register' %}?next=/myprofile'">Создать аккаунт</button>
+				<div class="container_4">
+					<button type="submit" class="text2">Войти</button>
+					<button type="button" onclick="location.href='{% url 'register' %}?next=/myprofile'" class="text2">Зарегистрироваться</button>
 				</div>
+				<!-- <div class="container_5">
+					<button type="submit">Войти</button>
+					<button type="button" onclick="location.href='{% url 'register' %}?next=/myprofile'">Зарегистрироваться</button>
+				</div> -->
 			</div>
 		</div>
     {{form.errors}}
