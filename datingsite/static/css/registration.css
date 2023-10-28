@@ -37,18 +37,25 @@ h2 {
     font-family: comic sans ms;
     font-size: 2vh;
     font-style: oblique;
+    margin-left: 5vh;
+}
+
+.text2 {
+    font-family: comic sans ms;
+    font-size: 2vh;
+    font-style: oblique;
 }
 
 
 .registration {
     display: grid;
     background: #F08080;
-    width: 70vh;
-    height: 70vh;
+    width: 68vh;
+    height: 75vh;
     border-radius: 5vh;
     border-style: outset;
     border-color: #d67272;
-    border-width: 1vh;
+    border-width: 0.75vh;
 }
 
 .registration1 {
@@ -57,8 +64,8 @@ h2 {
     justify-content: center;
     align-items: center;
     background: #ffa8a8;
-    width: 68vh;
-    height: 68vh;
+    width: 65vh;
+    height: 72vh;
     border-radius: 5vh;
     border-width: 0.5vh;
     border-style: outset;
@@ -132,6 +139,7 @@ h2 {
 
 .container_4 {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin: auto;
     width: 50vh;
@@ -155,21 +163,22 @@ h2 {
 .container_6 {
     display: grid;
     margin: auto;
-    vertical-align: center
+    vertical-align: center;
     align-items: center;
     width: 75%;
 }
 
 button {
     margin: auto;
-    width: 20vh;
+    width: 22vh;
     height: 5vh;
+    border-width: 0.35vh;
     background-color: white;
     border-radius: 2vh;
     border-style: outset;
 }
 
-button2 {
+.button2 {
     margin: auto;
     width: 50%;
     height: 300%;
@@ -186,7 +195,7 @@ button2 {
     font-style: oblique;
 }
 
-button2:hover{
+.button2:hover{
     background-color: #ededed;
 }
 
@@ -203,19 +212,7 @@ input.string {
     background: white;
     width: 50vh;
     text-align: center;
-}
-
-input.check {
-    background: white;
-    width: 5vh;
-    height: 5vh;
-    text-align: center;
-    border-radius: 2vh;
-    border-style: outset;
-    border-color: #d67272;
-    border-width: 0.5vh;
-}
-
-input::placeholder {
+    font-family: comic sans ms;
     font-size: 2vh;
+    font-style: oblique;
 }
