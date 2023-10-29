@@ -11,7 +11,9 @@
     <body style="font-size: 20px;">
         <header>
             <button onclick="location.href='/searching/myprofile'">В профиль</button>
-            <img class="mainlogo" src='{% static "css/bg_mini.jpg" %}' >
+
+            <a class="logocontainer" href="{% url 'homepage' %}"><img class="mainlogo" src='{% static "css/bg_mini.jpg" %}' ></a>
+
             <button onclick="#">Мои лайки</button>
         </header>
         <main>

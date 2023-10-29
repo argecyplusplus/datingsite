@@ -87,31 +87,21 @@ header button{
 header button:hover{
     background-color: rgba(0, 0, 0, 0)
 }
-header img{
+
+.mainlogo{
+    max-width: 100%;
+    cursor: pointer;
+}
+
+
+.logocontainer{
+    max-width: 6%;
+    display: flex;
     justify-self: center;
 }
 
 
 
-.mainlogo{
-    max-width: 6%;
-    display: flex;
-    
-}
-
-
-
-
-
-#logocontainer{
-
-    display: flex;
-    margin: auto;
-    vertical-align: center;
-    align-items: center;
-    width: 75%;
-    justify-content: center;
-}
 
 
 @font-face {
