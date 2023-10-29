@@ -7,7 +7,9 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #FFE5E6;
-    background-size: 50%;
+    background-image: url("hearts.jpg");
+    background-size: 60%;
+    background-position:top;
     font-family: "Forum-Regular";
 }
 h2 {
@@ -28,7 +30,6 @@ h2 {
     justify-content: center;
     align-items: center;
     vertical-align: center;
-    /*background: #ffa8a8;*/
     width: 90%;
     height: 90%;
 }
@@ -45,10 +46,10 @@ h2 {
 
 
 #slogancontainer{
-    display: inline;
     margin: auto;
     vertical-align: center;
     width: 75%;
+    background-color: #FFE5E6;
 }
 
 #startcontainer{
