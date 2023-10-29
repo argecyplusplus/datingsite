@@ -1,0 +1,97 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFE5E6;
+    background-size: 50%;
+    font-family: "Forum-Regular";
+}
+h2 {
+    font-size: 70px;
+    text-align: center;
+}
+
+
+.mainlogo{
+    max-width: 25%;
+    display: flex;
+}
+
+
+.main {
+    display: block;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+    /*background: #ffa8a8;*/
+    width: 90%;
+    height: 90%;
+}
+
+#logocontainer{
+
+    display: flex;
+    margin: auto;
+    vertical-align: center;
+    align-items: center;
+    width: 75%;
+    justify-content: center;
+}
+
+
+#slogancontainer{
+    display: inline;
+    margin: auto;
+    vertical-align: center;
+    width: 75%;
+}
+
+#startcontainer{
+    display: flex;
+    margin: auto;
+    vertical-align: center;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+}
+
+
+button2 {
+    margin: 0px;
+    width: 65%;
+    height: 300%;
+    text-align: center;
+    background-color: rgba(211, 189, 190, 0.6);
+    border-radius: 1vh;
+    /*border-style:solid;
+    border-color: #D4AF37;*/
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    user-select:none;
+}
+
+button2:hover{
+    backdrop-filter: blur(0px);
+    background-color: rgba(222, 199, 200, 1);
+}
+
+button:hover {
+    background-color: #ededed;
+}
+
+
+@font-face {
+    font-family: "Forum-Regular"; 
+    src: url("Forum-Regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+  } 

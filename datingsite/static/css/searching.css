@@ -1,0 +1,117 @@
+html {
+    height: 100%;
+    font-family: "Forum-Regular";
+    margin: 0%;
+}
+
+body {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: #D5BFC0;
+    background-size: 50%;
+    font-family: "Forum-Regular";
+    margin: 0px;
+}
+
+header{
+    margin: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFE5E6;
+    position:fixed;
+}
+
+main{
+    
+    display: flex;
+    padding: 2%;
+    padding-top: 5%;
+}
+
+
+button{
+    font-family: "Forum-Regular";
+
+}
+
+.oneprofile{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    margin: 0.5%;
+    background-color: #EADCDC;
+    flex-direction: column;
+}
+.oneprofile img{
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration:none;
+    color: black;
+    height: auto;
+    width: 100%;
+    border-bottom: 1px solid;
+}
+.oneprofile a{
+    
+    text-align: center;
+    text-decoration:none;
+    color: black;
+}
+
+.profilephoto{
+    width: 100%;
+}
+.profilephoto a {
+    width: 100%;
+}
+
+.profiletext{
+    height: 100%;
+}
+
+
+header button{
+    font-size: 25px;
+    width: 25%;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+header button:hover{
+    background-color: rgba(0, 0, 0, 0)
+}
+header img{
+    justify-self: center;
+}
+
+
+
+.mainlogo{
+    max-width: 6%;
+    display: flex;
+    
+}
+
+
+
+
+
+#logocontainer{
+
+    display: flex;
+    margin: auto;
+    vertical-align: center;
+    align-items: center;
+    width: 75%;
+    justify-content: center;
+}
+
+
+@font-face {
+    font-family: "Forum-Regular"; 
+    src: url("Forum-Regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+  } 

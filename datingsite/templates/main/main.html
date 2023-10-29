@@ -5,14 +5,17 @@
 <meta charset = 'utf-8'>
 	<head>
 		<title>Главная страница</title>
-		<link rel="stylesheet" href="{% static 'css/registration.css' %}">
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
 	</head>
 	<body>
 		<div class="main">
-				<div class = "container_5">
-					<h2>Добро пожаловат ь!</h2>
+				<div id = "logocontainer">
+					<img class="mainlogo" src='{% static "css/bg_main.jpg" %}' >
 				</div>
-				<div class="container_6">
+				<div id = "slogancontainer">
+					<h2>Добро пожаловать!</h2>
+				</div>
+				<div id="startcontainer">
 					<button2 onclick="location.href='/searching/myprofile'">Начать знакомиться</button2>
 				</div>
 			</div>
