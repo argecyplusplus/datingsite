@@ -24,6 +24,11 @@ header{
     position:fixed;
 }
 
+header button {
+    cursor: pointer;
+}
+
+
 main{
     
     display: flex;
