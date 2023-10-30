@@ -18,10 +18,22 @@ header {
     margin: 0px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #FFE5E6;
     position:fixed;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+header button{
+    font-size: 25px;
+    width: 25%;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+header button:hover{
+    background-color: rgba(0, 0, 0, 0)
 }
 
 main {
@@ -37,6 +49,14 @@ main {
 button{
     font-family: "Forum-Regular";
 
+}
+
+.main_list {
+    display: flex;
+    justify-content: center;
+    width: 50vw;
+    border-radius: 5vh;
+    background-color: #FFE5E6;
 }
 
 .oneprofile{
