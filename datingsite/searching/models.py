@@ -33,4 +33,15 @@ class Profile(models.Model):
         verbose_name_plural = "Анкеты"
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.name}, {self.age}, {self.city}'
+
+class Reactions(models.Model):
+    like_sender = models.ForeignKey(User, verbose_name='Отправитель', related_name='like_sender', on_delete=models.CASCADE)
+    like_receiver = models.ForeignKey(User, verbose_name='Получатель', related_name='like_receiver', on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name = "Реакция"
+        verbose_name_plural = "Реакции"
+
+    def __str__(self):
+        return f'{self.like_sender}, {self.like_receiver}'

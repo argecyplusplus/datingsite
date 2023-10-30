@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
-from .models import Profile
+from .models import Profile, Reactions
 from .forms import RegisterForm, MyProfileForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.urls import reverse_lazy, reverse
@@ -16,7 +16,7 @@ def makefilters(username):
     for profile in profiles:
         if profile.user.username == username:
             return {'profileid':profile.id,'city':profile.city, 'gender': profile.gender}
-
+    return {}
 
 def load_defaults(request):
     profiles = Profile.objects.all()
@@ -25,20 +25,15 @@ def load_defaults(request):
             return {'profileid':profile.id, 'name':profile.name, 'avatar':profile.avatar, 'city':profile.city, 'age': profile.age, 'gender': profile.gender, 'point_of_searching':profile.point_of_searching, 'social':profile.social, 'description':profile.description, 'minage':profile.age_search_min, 'maxage':profile.age_search_max}
     return {'name':'', 'avatar':'', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':'', 'minage':'', 'maxage':''}
 
-class ProfileViewAll(View):
-    #вывод всех анкет (убрать потом)
-    def get(self, request):
-        profiles = Profile.objects.all()
-        return render(request, 'searching/searching.html', {'profile_list': profiles})
-
         
-
 class ProfileViewAllFiltered(View):
     #вывод всех анкет c фильтром
     def get(self, request):
         profiles = Profile.objects.all()
         profiles_filtered = []
         filterinfo = makefilters(request.user.username)
+        if filterinfo == {}:
+            return redirect ('myprofile')
         for profile in profiles:
             searching_gender = 'Девушка'
             searching_city = filterinfo['city']
@@ -115,3 +110,13 @@ class CreateMyProfile(RedirectView):
         else:
             return redirect(reverse_lazy ('myprofile'))
     
+
+class ReactionsView(View):
+    #вывод моих лайков
+    def get(self, request):
+        reactions = Reactions.objects.all()
+        my_reactions = []
+        for reaction in reactions:
+            if reaction.user.username == request.user.username:
+                my_reactions.append (reaction)
+        #сделать отрисовку на станицу

@@ -7,5 +7,6 @@ urlpatterns = [
     path ('myprofile/', views.MyProfileView, name='myprofile'), #настройка своего профиля
     path ('register/', views.RegisterView.as_view(), name='register'), #регистрация
     path('', views.ProfileViewAllFiltered.as_view(), name='profiles'), #все профили с фильтром
-    path('createprofile/', views.CreateMyProfile.as_view(), name='createprofile') #создание профиля
+    path('createprofile/', views.CreateMyProfile.as_view(), name='createprofile'), #создание профиля
+    path ('reactions/', views.ReactionsView.as_view(), name='reactions') #реакции на мою анкету
 ]
