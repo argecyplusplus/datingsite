@@ -3,8 +3,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-        <link rel="stylesheet" href="{% static 'css/searching.css' %}" type="text/css">
-        <title>Анкеты пользователей</title>
+        <link rel="stylesheet" href="{% static 'css/reactions.css' %}" type="text/css">
+        <title>Ваши лайки</title>
     </head>
 
     <body style="font-size: 20px;">
@@ -13,7 +13,7 @@
 
             <a class="logocontainer" href="{% url 'profiles' %}"><img class="mainlogo" src='{% static "css/bg_mini.jpg" %}' ></a>
 
-            <button onclick="location.href='{% url 'reactions' %}'">Мои лайки</button>
+            <button onclick="#">Хз че тут будет</button>
         </header>
         <main>
             {% for profile in profile_list %}

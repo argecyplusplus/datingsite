@@ -54,6 +54,10 @@ class ProfileView(View):
         return render(request, 'searching/profile.html', {'profile': profile})
 
 
+@login_required
+def startworking(request):
+    return redirect('profiles')
+
 
 @login_required
 def MyProfileView(request):
@@ -63,7 +67,8 @@ def MyProfileView(request):
 class RegisterView(FormView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
-    success_url = "/searching/myprofile"
+    #success_url = "/searching/myprofile"
+    success_url = '/'
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
@@ -103,9 +108,6 @@ class CreateMyProfile(RedirectView):
             else:
                 form = form.save(commit=False)
                 form.save()
-                print ('форма сохранена')
-            #тут подключение/обновление анкеты с аккаунтом
-            print ("Анкета создана")
             return redirect('profiles')
         else:
             return redirect(reverse_lazy ('myprofile'))
@@ -117,6 +119,6 @@ class ReactionsView(View):
         reactions = Reactions.objects.all()
         my_reactions = []
         for reaction in reactions:
-            if reaction.user.username == request.user.username:
+            if reaction.like_receiver.username == request.user.username:
                 my_reactions.append (reaction)
-        #сделать отрисовку на станицу
+        return render(request, 'searching/reactions.html', {'profile_list': my_reactions})

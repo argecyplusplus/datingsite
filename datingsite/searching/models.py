@@ -38,7 +38,8 @@ class Profile(models.Model):
 class Reactions(models.Model):
     like_sender = models.ForeignKey(User, verbose_name='Отправитель', related_name='like_sender', on_delete=models.CASCADE)
     like_receiver = models.ForeignKey(User, verbose_name='Получатель', related_name='like_receiver', on_delete=models.CASCADE)
-    
+    like_sender_profile = models.ForeignKey(Profile, verbose_name='Анкета отправителя', related_name='like_sender_profile', default=5,on_delete=models.CASCADE)
+
     class Meta:
         verbose_name = "Реакция"
         verbose_name_plural = "Реакции"
