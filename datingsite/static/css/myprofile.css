@@ -21,7 +21,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #FFE5E6;
-    position:fixed;
+    position: fixed;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -43,20 +43,52 @@ main {
     align-items: center;
     padding: 2%;
     padding-top: 5%;
+
 }
 
-
-button{
+button {
     font-family: "Forum-Regular";
+}
 
+button[class="important"]:hover {
+    background: #e8babc;
+
+}
+
+textarea {
+    font-family: "Forum-Regular";
+    font-size: 20px;
+    width: 80%;
+    height: 30px;
+    min-height: 30px;
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #EFC3C5;
+    padding-left: 10px;
+    padding-right: 10px;
+    resize: vertical;
 }
 
 .main_list {
     display: flex;
     justify-content: center;
-    width: 50vw;
+    align-items: center;
+    width: 40vw;
     border-radius: 5vh;
     background-color: #FFE5E6;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#main_lvl_1 {
+    display: grid;
+}
+
+.main_lvl_2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .oneprofile{
@@ -77,10 +109,42 @@ button{
     border-bottom: 1px solid;
 }
 .oneprofile a{
-    
     text-align: center;
     text-decoration:none;
     color: black;
+}
+
+.important {
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-size: 25px;
+    width: 70%;
+    background: #EFC3C5;
+    border-radius: 20px;
+    border: none;
+}
+
+#containertextbox {
+    display: block;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 22px;
+}
+
+.textbox {
+    font-family: "Forum-Regular";
+    font-size: 20px;
+    width: 30%;
+    height: 30px;
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #EFC3C5;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: auto;
 }
 
 .profilephoto{
