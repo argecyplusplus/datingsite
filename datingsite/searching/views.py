@@ -85,12 +85,10 @@ class CreateMyProfile(RedirectView):
             if profile.user.username == request.user.username:
                 already_created = True
                 user_profile = profile.id
-        
 
         form = MyProfileForm(request.POST)
         if form.is_valid():
-            print ('форма валидная')
-            
+            print (request.user.id)
             if already_created:
                 old_profile = Profile.objects.get(pk=user_profile)
                 old_profile.name = form.cleaned_data.get('name')
@@ -104,9 +102,9 @@ class CreateMyProfile(RedirectView):
                 old_profile.age_search_min = form.cleaned_data.get('age_search_min')
                 old_profile.age_search_max = form.cleaned_data.get('age_search_max')
                 old_profile.save()
-                print ('форма обновлена')
             else:
                 form = form.save(commit=False)
+                form.user = User.objects.get(username =request.user.username)
                 form.save()
             return redirect('profiles')
         else:
