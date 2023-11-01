@@ -11,19 +11,19 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
-def makefilters(username):
-    profiles = Profile.objects.all()
-    for profile in profiles:
-        if profile.user.username == username:
-            return {'profileid':profile.id,'city':profile.city, 'gender': profile.gender}
-    return {}
+def makefilters(request):
+    try:
+        profile = Profile.objects.get(user = User.objects.get(username = request.user.username))
+        return {'profileid':profile.id,'city':profile.city, 'gender': profile.gender}
+    except Exception:
+        return {}
 
 def load_defaults(request):
-    profiles = Profile.objects.all()
-    for profile in profiles:
-        if str(profile.user) == str(request.user.username):
-            return {'profileid':profile.id, 'name':profile.name, 'avatar':profile.avatar, 'city':profile.city, 'age': profile.age, 'gender': profile.gender, 'point_of_searching':profile.point_of_searching, 'social':profile.social, 'description':profile.description, 'minage':profile.age_search_min, 'maxage':profile.age_search_max}
-    return {'name':'', 'avatar':'', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':'', 'minage':'', 'maxage':''}
+    try:
+        profile = Profile.objects.get(user = User.objects.get(username = request.user.username))
+        return {'profileid':profile.id, 'name':profile.name, 'avatar':profile.avatar, 'city':profile.city, 'age': profile.age, 'gender': profile.gender, 'point_of_searching':profile.point_of_searching, 'social':profile.social, 'description':profile.description, 'minage':profile.age_search_min, 'maxage':profile.age_search_max}
+    except Exception:
+        return {'name':'', 'avatar':'', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':'', 'minage':'', 'maxage':''}
 
         
 class ProfileViewAllFiltered(View):
@@ -31,7 +31,7 @@ class ProfileViewAllFiltered(View):
     def get(self, request):
         profiles = Profile.objects.all()
         profiles_filtered = []
-        filterinfo = makefilters(request.user.username)
+        filterinfo = makefilters(request)
         if filterinfo == {}:
             return redirect ('myprofile')
         for profile in profiles:
@@ -67,30 +67,21 @@ def MyProfileView(request):
 class RegisterView(FormView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
-    #success_url = "/searching/myprofile"
     success_url = '/'
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
     
 
-
 class CreateMyProfile(RedirectView):
     #создание и редактирование анкеты
     def post(self, request):
         #проверка есть ли анкеты
-        already_created = False
-        profiles = Profile.objects.all()
-        for profile in profiles:
-            if profile.user.username == request.user.username:
-                already_created = True
-                user_profile = profile.id
-
-        form = MyProfileForm(request.POST)
-        if form.is_valid():
-            print (request.user.id)
-            if already_created:
-                old_profile = Profile.objects.get(pk=user_profile)
+        try:
+            #форма найдена
+            old_profile = Profile.objects.get(user = User.objects.get(username = request.user.username))
+            form = MyProfileForm(request.POST)
+            if form.is_valid():
                 old_profile.name = form.cleaned_data.get('name')
                 old_profile.avatar = form.cleaned_data.get('avatar')
                 old_profile.age = form.cleaned_data.get('age')
@@ -102,14 +93,18 @@ class CreateMyProfile(RedirectView):
                 old_profile.age_search_min = form.cleaned_data.get('age_search_min')
                 old_profile.age_search_max = form.cleaned_data.get('age_search_max')
                 old_profile.save()
-            else:
+                return redirect('profiles')
+            return redirect(reverse_lazy ('myprofile'))
+        except Exception:
+            #форма не найдена
+            form = MyProfileForm(request.POST)
+            if form.is_valid():
                 form = form.save(commit=False)
                 form.user = User.objects.get(username =request.user.username)
                 form.save()
-            return redirect('profiles')
-        else:
+                return redirect('profiles')
             return redirect(reverse_lazy ('myprofile'))
-    
+   
 
 class ReactionsView(View):
     #вывод моих лайков
