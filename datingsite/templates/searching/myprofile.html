@@ -26,47 +26,55 @@
                     <!-- <label  for="id_avatar">Фото:</label>
                       <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar"> -->
                   <div class="main_lvl_2">
+                    <div class="main_lvl_3">
                     <label for="id_name">Имя:</label> 
-                      <input type="text" value="{{dname}}" name="name" maxlength="50" required id="id_name" class="textbox">
-
+                      <input type="text" value="{{dname}}" name="name" maxlength="50" required id="id_name" class="textbox"></div>
+                  
+                    <div class="main_lvl_3">
                     <label for="id_age">Возраст:</label>
-                      <input type="number" value="{{dage}}" name="age" required id="id_age" min='16' class="textbox">
+                      <input type="number" value="{{dage}}" name="age" required id="id_age" min='16' class="textbox"></div>
                   </div>
                   <div class="main_lvl_2">
+                    <div class="main_lvl_3">
                     <label for="id_gender">Пол:</label>
-                      <select class="textbox" name="gender" id="id_gender">
+                      <select name="gender" id="id_gender">
                         <option {% if dgender == "Парень" %}selected{% endif %} value="Парень">Парень</option>
                         <option {% if dgender == "Девушка" %}selected{% endif %} value="Девушка">Девушка</option>
-                      </select>
+                      </select></div>
 
+                    <div class="main_lvl_3">
                     <label for="id_point_of_searching">Цель знакомства:</label>
 
-                    <select class="textbox" name="point_of_searching" id="id_point_of_searching">
+                    <select name="point_of_searching" id="id_point_of_searching">
                       <option {% if dpoint_of_searching == "Отношения" %}selected{% endif %} value="Отношения">Отношения</option>
                       <option {% if dpoint_of_searching == "Свидания" %}selected{% endif %} value="Свидания">Свидания</option>
                       <option {% if dpoint_of_searching == "Дружба" %}selected{% endif %} value="Дружба">Дружба</option>
                       <option {% if dpoint_of_searching == "Общение" %}selected{% endif %} value="Общение">Общение</option>
-                    </select>
+                    </select></div>
                   </div>
                   <div class="main_lvl_2">
+                    <div class="main_lvl_3">
                     <label for="id_city">Город:</label>
-                      <input type="text" name="city" value="{{dcity}}" maxlength="100" required id="id_city" class="textbox">
-
+                      <input type="text" name="city" value="{{dcity}}" maxlength="100" required id="id_city" class="textbox"></div>
+                    
+                    <div class="main_lvl_3">
                     <label for="id_city">Ссылка на соцсеть:</label>
-                      <input type="text" name="social" value="{{dsocial}}" maxlength="50" required id="id_social" class="textbox">
+                      <input type="text" name="social" value="{{dsocial}}" maxlength="50" required id="id_social" class="textbox"></div>
                   </div>
-                  <div class="main_lvl_2">
+                  <div id="main_lvl_for_description">
                     <label for="id_description">О себе:</label>
                       <textarea name="description" required  id="id_description">{{ddescription}}</textarea>
                       <input type="text" hidden name="user" value="{{username}}" maxlength="50" required id="id_social">
                   </div>
                     
                   <div class="main_lvl_2">
+                    <div class="main_lvl_3">
                     <label for="id_minage">Искать от:</label>
-                      <input type="number" value="{{dminage}}" name="age_search_min" required id="id_age" min='16' max='100' step='1' value='50' class="textbox">
+                      <input type="number" value="{{dminage}}" name="age_search_min" required id="id_age" min='16' max='100' step='1' value='50' class="textbox"></div>
 
+                    <div class="main_lvl_3">
                     <label for="id_maxage">Искать до:</label>
-                        <input type="number" value="{{dmaxage}}" name="age_search_max" required id="id_age" min='16' max='100' step='1' value='50' class="textbox">
+                        <input type="number" value="{{dmaxage}}" name="age_search_max" required id="id_age" min='16' max='100' step='1' value='50' class="textbox"></div>
                   </div>
                 </div>
               </div>

@@ -58,7 +58,7 @@ button[class="important"]:hover {
 textarea {
     font-family: "Forum-Regular";
     font-size: 20px;
-    width: 80%;
+    width: 94%;
     height: 30px;
     min-height: 30px;
     background: white;
@@ -83,12 +83,27 @@ textarea {
 
 #main_lvl_1 {
     display: grid;
+    width: 100%;
+    padding-bottom: 1%;
 }
 
 .main_lvl_2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.main_lvl_3 {
+    display: grid;
+    width: 50%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#main_lvl_for_description {
+    display: grid;
+    width: 100%;
+
 }
 
 .oneprofile{
@@ -127,26 +142,37 @@ textarea {
 
 #containertextbox {
     display: block;
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    padding-left: 10%;
-    padding-right: 10%;
     font-size: 22px;
 }
 
 .textbox {
     font-family: "Forum-Regular";
     font-size: 20px;
-    width: 30%;
+    width: 80%;
     height: 30px;
     background: white;
     border-radius: 20px;
     border: 2px solid #EFC3C5;
     padding-left: 10px;
     padding-right: 10px;
-    margin: auto;
 }
 
+select {
+    font-family: "Forum-Regular";
+    font-size: 20px;
+    width: 90%;
+    height: 35px;
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #EFC3C5;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+label {
+    margin-left: 25px;
+    font-size: 20px;
+}
 .profilephoto{
     width: 100%;
 }
