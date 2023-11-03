@@ -30,6 +30,10 @@ class ProfileViewAllFiltered(View):
     #вывод всех анкет c фильтром
     def get(self, request):
         profiles = Profile.objects.all()
+        reactions = Reactions.objects.all()
+        liked_profiles_owners = []
+        for reaction in reactions:
+            liked_profiles_owners.append (reaction.like_receiver.username)
         profiles_filtered = []
         filterinfo = makefilters(request)
         if filterinfo == {}:
@@ -40,9 +44,11 @@ class ProfileViewAllFiltered(View):
             user_profile = Profile.objects.get(pk=filterinfo['profileid'])
             if filterinfo['gender'] == 'Девушка':
                 searching_gender = 'Парень'
+            print ()
             if (profile.gender == searching_gender and 
                 profile.city == searching_city and 
-                user_profile.age_search_min<=profile.age<=user_profile.age_search_max):
+                user_profile.age_search_min<=profile.age<=user_profile.age_search_max and
+                not(profile.user.username in liked_profiles_owners)):
                 profiles_filtered.append (profile)
         return render (request, 'searching/searching.html', {'profile_list': profiles_filtered})
 
@@ -51,7 +57,7 @@ class ProfileView(View):
     '''одна анкета'''
     def get(self, request, pk, ):
         profile = Profile.objects.get(id=pk)
-        return render(request, 'searching/profile.html', {'profile': profile})
+        return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0})
 
 
 @login_required
@@ -100,7 +106,7 @@ class CreateMyProfile(RedirectView):
             form = MyProfileForm(request.POST)
             if form.is_valid():
                 form = form.save(commit=False)
-                form.user = User.objects.get(username =request.user.username)
+                form.user = User.objects.get(username=request.user.username)
                 form.save()
                 return redirect('profiles')
             return redirect(reverse_lazy ('myprofile'))
@@ -113,5 +119,35 @@ class ReactionsView(View):
         my_reactions = []
         for reaction in reactions:
             if reaction.like_receiver.username == request.user.username:
-                my_reactions.append (reaction)
+                my_reactions.append (reaction.like_sender_profile)
+
+        
         return render(request, 'searching/reactions.html', {'profile_list': my_reactions})
+    
+class ReactionProfile(View):
+    #вывод анкеты человека который отправил лайк
+    def get(self, request, pk):
+        profile = Profile.objects.get(id=pk)
+        return render(request, 'searching/profile.html', {'profile': profile, 'reply': 1})
+    
+class ReactView(View):
+    def get(self, request, pk):
+        liked_profile = Profile.objects.get(id=pk) # анкета которую лайкнули
+        sender = User.objects.get(username=request.user.username)
+        new_reaction = Reactions.objects.get_or_create (like_sender = sender, like_receiver = liked_profile.user, like_sender_profile = Profile.objects.get(user = sender), like_receiver_profile = liked_profile)
+        return redirect ('profiles')
+
+class ReactReplyView(View):
+    #полученная анкета понравилась
+    def get(self, request, pk):
+
+        return render (request, 'searching/newpair.html', {})
+
+class ReactReplyViewDislike(View):
+    #полученная анкета не понравилась
+    def get(self, request, pk):
+        receiver = User.objects.get(username=request.user.username)
+        sender_profile = Profile.objects.get(id=pk) #анкета отправителя
+        #доделать строку ниже
+        got_reaction = Reactions.objects.get(like_receiver = User.objects.get(username = sender_profile.user.username), like_sender = receiver).delete()
+        return redirect ('profiles')

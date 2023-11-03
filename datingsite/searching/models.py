@@ -22,7 +22,7 @@ class Profile(models.Model):
     city = models.CharField ('Город', max_length=100, default="Не указано")
     description = models.TextField ('О себе', max_length=50)
     social = models.CharField ('Ссылка на соцсеть', max_length=50, default='@name')
-    user = models.ForeignKey(User, verbose_name='Автор анкеты', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, verbose_name='Автор анкеты', on_delete=models.CASCADE)
     
     #для фильтрации поиска по возрасту
     age_search_min = models.IntegerField("Возраст поиска (от)", default=16)
@@ -39,7 +39,7 @@ class Reactions(models.Model):
     like_sender = models.ForeignKey(User, verbose_name='Отправитель', related_name='like_sender', on_delete=models.CASCADE)
     like_receiver = models.ForeignKey(User, verbose_name='Получатель', related_name='like_receiver', on_delete=models.CASCADE)
     like_sender_profile = models.ForeignKey(Profile, verbose_name='Анкета отправителя', related_name='like_sender_profile', default=5,on_delete=models.CASCADE)
-
+    like_receiver_profile = models.ForeignKey(Profile, verbose_name='Анкета отправителя', related_name='like_receiver_profile', default=5,on_delete=models.CASCADE)
     class Meta:
         verbose_name = "Реакция"
         verbose_name_plural = "Реакции"
