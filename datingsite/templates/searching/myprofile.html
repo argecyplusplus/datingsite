@@ -22,9 +22,11 @@
                 Ваш профиль
               </div>
                 <div id="main_lvl_1">
-                    <!-- <label  for="id_avatar">Фото:</label>
-                      <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar"> -->
-                      <img class="profilephoto" src="../../static/css/Avatar.jpg" title="Аватар пользователя">
+                    
+                    <img class="profilephoto" src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя">
+                    <label for="id_avatar">Фото:</label>
+                    <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar">
+
                     <table>
                     <tr>
                       <td class="column_long45"><label for="id_name">Имя:</label></td>
