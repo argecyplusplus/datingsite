@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('<int:pk>/', views.ProfileView.as_view()), #один профиль
+    path('<int:pk>/', views.ProfileView.as_view(), name='oneprofile'), #один профиль
     path ('myprofile/', views.MyProfileView, name='myprofile'), #настройка своего профиля
     path ('register/', views.RegisterView.as_view(), name='register'), #регистрация
     path('', views.ProfileViewAllFiltered.as_view(), name='profiles'), #все профили с фильтром

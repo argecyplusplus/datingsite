@@ -22,7 +22,7 @@
                     <img src="{{profile.avatar.url}}">
                 </div>
                 <div class="profiletext" >
-                    <a href="{{profile.id}}"><h3>{{profile.name}}, {{profile.age}}, {{profile.city}}</h3></a>
+                    <a href="{% url 'oneprofile' profile.id %}"><h3>{{profile.name}}, {{profile.age}}, {{profile.city}}</h3></a>
                 </div>
             </div>
             {% endfor %}

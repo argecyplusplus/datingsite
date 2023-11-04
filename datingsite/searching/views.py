@@ -55,7 +55,7 @@ class ProfileViewAllFiltered(View):
 
 class ProfileView(View):
     '''одна анкета'''
-    def get(self, request, pk, ):
+    def get(self, request, pk):
         profile = Profile.objects.get(id=pk)
         return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0})
 
