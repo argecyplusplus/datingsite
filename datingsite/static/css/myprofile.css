@@ -190,8 +190,13 @@ label {
 }
 
 .profilephoto{
-    width: 100%;
+    max-width: 192px;
+    max-height: 192px;
+    border: 1vh solid #EFC3C5;
+    border-radius: 5vh;
+    margin: 10px auto 10px;
 }
+
 .profilephoto a {
     width: 100%;
 }
