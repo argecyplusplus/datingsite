@@ -82,7 +82,8 @@ class CreateMyProfile(RedirectView):
                 user_profile = profile.id
         
 
-        form = MyProfileForm(request.POST)
+        form = MyProfileForm(request.POST, request.FILES)
+        print(form)
         if form.is_valid():
             print ('форма валидная')
             

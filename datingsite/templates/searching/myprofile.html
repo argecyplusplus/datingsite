@@ -16,7 +16,7 @@
         </header>
         <main>
         <div class="main_list">
-          <form action="{% url 'createprofile' %}" method="post">
+          <form action="{% url 'createprofile' %}" method="post" enctype="multipart/form-data">
               {% csrf_token %}
               <div class="important">
                 Ваш профиль
