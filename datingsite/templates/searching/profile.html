@@ -15,6 +15,10 @@
         <h6>{{profile.gender}}</h6>
         <h6>Цель знакомства: {{profile.point_of_searching}}</h6>
         <p>{{profile.description}}</p>
-        <button>Лайк</button>
+        
+        {% if reply == 0 %}<button onclick="location.href='{% url 'like' profile.id %}'">Нравится</button>{% endif %}
+        {% if reply == 1 %}<button onclick="location.href='{% url 'like_reply' profile.id %}'">Нравится (взаимно)</button>
+        <button onclick="location.href='{% url 'dislike_reply' profile.id %}'">Не нравится</button>{% endif %}
+        
     </body>
 </html>
