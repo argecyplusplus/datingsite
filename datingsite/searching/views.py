@@ -88,8 +88,8 @@ class CreateMyProfile(RedirectView):
             form = MyProfileForm(request.POST, request.FILES)
             if form.is_valid():
                 old_profile.name = form.cleaned_data.get('name')
-                print (form.cleaned_data.get('avatar') == '')
-                old_profile.avatar = form.cleaned_data.get('avatar')
+                if (form.cleaned_data.get('avatar') != 'photos/users/default_avatar.jpg'):
+                    old_profile.avatar = form.cleaned_data.get('avatar')
                 old_profile.age = form.cleaned_data.get('age')
                 old_profile.gender = form.cleaned_data.get('gender')
                 old_profile.point_of_searching = form.cleaned_data.get('point_of_searching')
