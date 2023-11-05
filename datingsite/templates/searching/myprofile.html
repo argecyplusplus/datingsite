@@ -22,10 +22,11 @@
                 Ваш профиль
               </div>
                 <div id="main_lvl_1">
-                    
-                    <img class="profilephoto" src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя">
-                    <label for="id_avatar">Фото:</label>
-                    <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar">
+                    <div class="image-container">
+                      <img src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя">
+                    </div>
+                      <label for="id_avatar">Фото:</label>
+                      <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar">
 
                     <table>
                     <tr>
