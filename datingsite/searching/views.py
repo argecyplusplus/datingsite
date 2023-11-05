@@ -44,7 +44,6 @@ class ProfileViewAllFiltered(View):
             user_profile = Profile.objects.get(pk=filterinfo['profileid'])
             if filterinfo['gender'] == 'Девушка':
                 searching_gender = 'Парень'
-            print ()
             if (profile.gender == searching_gender and 
                 profile.city == searching_city and 
                 user_profile.age_search_min<=profile.age<=user_profile.age_search_max and
@@ -86,9 +85,10 @@ class CreateMyProfile(RedirectView):
         try:
             #форма найдена
             old_profile = Profile.objects.get(user = User.objects.get(username = request.user.username))
-            form = MyProfileForm(request.POST)
+            form = MyProfileForm(request.POST, request.FILES)
             if form.is_valid():
                 old_profile.name = form.cleaned_data.get('name')
+                print (form.cleaned_data.get('avatar') == '')
                 old_profile.avatar = form.cleaned_data.get('avatar')
                 old_profile.age = form.cleaned_data.get('age')
                 old_profile.gender = form.cleaned_data.get('gender')
