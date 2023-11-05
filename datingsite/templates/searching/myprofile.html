@@ -16,16 +16,17 @@
         </header>
         <main>
         <div class="main_list">
-          <form action="{% url 'createprofile' %}" method="post">
+          <form action="{% url 'createprofile' %}" method="post" enctype="multipart/form-data">
               {% csrf_token %}
               <div class="important">
                 Ваш профиль
               </div>
                 <div id="main_lvl_1">
-                    
-                    <img class="profilephoto" src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя">
-                    <label for="id_avatar">Фото:</label>
-                    <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar">
+                    <div class="image-container">
+                      <img src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя">
+                    </div>
+                      <label for="id_avatar">Фото:</label>
+                      <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar">
 
                     <table>
                     <tr>
