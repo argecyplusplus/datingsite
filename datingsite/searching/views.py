@@ -83,20 +83,11 @@ class CreateMyProfile(RedirectView):
     #создание и редактирование анкеты
     def post(self, request):
         #проверка есть ли анкеты
-        already_created = False
-        profiles = Profile.objects.all()
-        for profile in profiles:
-            if profile.user.username == request.user.username:
-                already_created = True
-                user_profile = profile.id
-        
-
-        form = MyProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            print ('форма валидная')
-            
-            if already_created:
-                old_profile = Profile.objects.get(pk=user_profile)
+        try:
+            #форма найдена
+            old_profile = Profile.objects.get(user = User.objects.get(username = request.user.username))
+            form = MyProfileForm(request.POST)
+            if form.is_valid():
                 old_profile.name = form.cleaned_data.get('name')
                 old_profile.avatar = form.cleaned_data.get('avatar')
                 old_profile.age = form.cleaned_data.get('age')
