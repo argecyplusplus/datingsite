@@ -1,3 +1,4 @@
+import os
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
@@ -25,7 +26,15 @@ def load_defaults(request):
     except Exception:
         return {'name':'', 'avatar':'', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':'', 'minage':'', 'maxage':''}
 
-        
+def cleardata():
+    usedphotos = []
+    for profile in Profile.objects.all():
+        usedphotos.append (str(profile.avatar)[13:])
+    for files in os.walk("media/photos/users"):  
+        for file in files[2]:
+            if not(file in usedphotos):
+                os.remove('media/photos/users/' + str(file))
+
 class ProfileViewAllFiltered(View):
     #вывод всех анкет c фильтром
     def get(self, request):
@@ -44,7 +53,6 @@ class ProfileViewAllFiltered(View):
             user_profile = Profile.objects.get(pk=filterinfo['profileid'])
             if filterinfo['gender'] == 'Девушка':
                 searching_gender = 'Парень'
-            print ()
             if (profile.gender == searching_gender and 
                 profile.city == searching_city and 
                 user_profile.age_search_min<=profile.age<=user_profile.age_search_max and
@@ -67,6 +75,7 @@ def startworking(request):
 
 @login_required
 def MyProfileView(request):
+    cleardata() #чистка лишних файлов в media
     defaults = load_defaults(request)
     return render (request, 'searching/myprofile.html', {'username': request.user.id, 'dname':defaults['name'], 'davatar':defaults['avatar'], 'dcity':defaults['city'], 'dage': defaults['age'], 'dgender': defaults['gender'], 'dpoint_of_searching':defaults['point_of_searching'], 'dsocial':defaults['social'], 'ddescription':defaults['description'], 'dminage':defaults['minage'], 'dmaxage':defaults['maxage']})
 
@@ -146,8 +155,9 @@ class ReactReplyView(View):
 class ReactReplyViewDislike(View):
     #полученная анкета не понравилась
     def get(self, request, pk):
-        receiver = User.objects.get(username=request.user.username)
         sender_profile = Profile.objects.get(id=pk) #анкета отправителя
-        #доделать строку ниже
-        got_reaction = Reactions.objects.get(like_receiver = User.objects.get(username = sender_profile.user.username), like_sender = receiver).delete()
+        allreactions = Reactions.objects.all()
+        for reaction in allreactions:
+            if (reaction.like_receiver == request.user) and (reaction.like_sender_profile == sender_profile):
+                reaction.delete()
         return redirect ('profiles')

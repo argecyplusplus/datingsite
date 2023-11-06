@@ -15,7 +15,7 @@ class Profile(models.Model):
     )
 
     name = models.CharField ('Имя', max_length=50)
-    avatar = models.ImageField ('Фото', upload_to='photos/users', default='photos/users/default_avatar.jpg')
+    avatar = models.ImageField ('Фото', upload_to='photos/users', default='photos/default_avatar.jpg')
     age = models.IntegerField("Возраст")
     gender = models.CharField ("Пол", choices=genders, max_length=30, default=genders[0])
     point_of_searching = models.CharField ("Цель знакомства", choices=point_of_searching_list, max_length=30, default=point_of_searching_list[0])
