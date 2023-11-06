@@ -39,10 +39,24 @@ class Reactions(models.Model):
     like_sender = models.ForeignKey(User, verbose_name='Отправитель', related_name='like_sender', on_delete=models.CASCADE)
     like_receiver = models.ForeignKey(User, verbose_name='Получатель', related_name='like_receiver', on_delete=models.CASCADE)
     like_sender_profile = models.ForeignKey(Profile, verbose_name='Анкета отправителя', related_name='like_sender_profile', default=5,on_delete=models.CASCADE)
-    like_receiver_profile = models.ForeignKey(Profile, verbose_name='Анкета отправителя', related_name='like_receiver_profile', default=5,on_delete=models.CASCADE)
+    like_receiver_profile = models.ForeignKey(Profile, verbose_name='Анкета получателя', related_name='like_receiver_profile', default=5,on_delete=models.CASCADE)
     class Meta:
         verbose_name = "Реакция"
         verbose_name_plural = "Реакции"
 
     def __str__(self):
         return f'{self.like_sender}, {self.like_receiver}'
+    
+
+class NewPair(models.Model):
+    user1 = models.ForeignKey(User, verbose_name='Отправитель', related_name='user1', on_delete=models.CASCADE)
+    user2 = models.ForeignKey(User, verbose_name='Получатель', related_name='user2', on_delete=models.CASCADE)
+    profile1 = models.ForeignKey(Profile, verbose_name='Анкета отправителя', related_name='profile1', default=5,on_delete=models.CASCADE)
+    profile2 = models.ForeignKey(Profile, verbose_name='Анкета получателя', related_name='profile2', default=5,on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name = "Полученная пара"
+        verbose_name_plural = "Полученные пары"
+
+    def __str__(self):
+        return f'{self.user1}, {self.user2}'

@@ -16,6 +16,7 @@
             <button onclick="#">Хз че тут будет</button>
         </header>
         <main>
+            Ожидают ответа:
             {% for profile in profile_list %}
             <div class="oneprofile" >
                 <div class="profilephoto" >
@@ -26,6 +27,19 @@
                 </div>
             </div>
             {% endfor %}
+
+            Получившиеся пары:
+            {% for pair in pair_list %}
+            <div class="oneprofile" >
+                <div class="profilephoto" >
+                    <img src="{{pair.avatar.url}}">
+                </div>
+                <div class="profiletext" >
+                    <a href="{{pair.id}}"><h3>{{pair.name}}, {{pair.age}}, {{pair.city}}</h3></a>
+                </div>
+            </div>
+            {% endfor %}
+
         </main>
 
     

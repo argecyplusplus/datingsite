@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+        <title></title>
+    </head>
+    <body style="font-size: 20px;">
+        <h1>У вас новая пара!</h1>
+        <img src = "{{profile.avatar.url}}">
+        {{profile.name}}
+        Начните общаться:
+        {{profile.social}}
+    </body>
+</html>

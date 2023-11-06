@@ -2,7 +2,7 @@ import os
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
-from .models import Profile, Reactions
+from .models import Profile, Reactions, NewPair
 from .forms import RegisterForm, MyProfileForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.urls import reverse_lazy, reverse
@@ -122,16 +122,25 @@ class CreateMyProfile(RedirectView):
    
 
 class ReactionsView(View):
-    #вывод моих лайков
+    #вывод моих лайков и полученных пар
     def get(self, request):
+        #полученные лайки
         reactions = Reactions.objects.all()
         my_reactions = []
         for reaction in reactions:
             if reaction.like_receiver.username == request.user.username:
                 my_reactions.append (reaction.like_sender_profile)
+        #полученные пары
+        pairs = NewPair.objects.all()
+        my_pairs = []
+        for pair in pairs:
+            if pair.user1.username == request.user.username:
+                my_pairs.append(pair.profile2)
+            if pair.user2.username == request.user.username:
+                print('есть такой')
+                my_pairs.append(pair.profile1)
 
-        
-        return render(request, 'searching/reactions.html', {'profile_list': my_reactions})
+        return render(request, 'searching/reactions.html', {'profile_list': my_reactions, 'pairs_list':my_pairs})
     
 class ReactionProfile(View):
     #вывод анкеты человека который отправил лайк
@@ -147,17 +156,23 @@ class ReactView(View):
         return redirect ('profiles')
 
 class ReactReplyView(View):
-    #полученная анкета понравилась
-    def get(self, request, pk):
-
-        return render (request, 'searching/newpair.html', {})
+        #полученная анкета понравилась
+        def get(self, request, pk):
+            try:
+                #создание модели NewPair
+                sender_profile = Profile.objects.get(id=pk) #анкета отправителя
+                new_reaction = Reactions.objects.get (like_receiver = request.user, like_sender_profile = sender_profile)
+                new_pair = NewPair.objects.get_or_create(user1 = new_reaction.like_sender, user2 = new_reaction.like_receiver, profile1 = new_reaction.like_sender_profile, profile2=  new_reaction.like_receiver_profile)
+                #вывод информации
+                showedprofile = NewPair.objects.get(user1 = new_reaction.like_sender, user2 = new_reaction.like_receiver, profile1 = new_reaction.like_sender_profile, profile2=  new_reaction.like_receiver_profile).profile1
+                new_reaction = new_reaction.delete()
+                return render (request, 'searching/newpair.html', {'profile': showedprofile})
+            except Exception:
+                return redirect ('reactions')
 
 class ReactReplyViewDislike(View):
     #полученная анкета не понравилась
     def get(self, request, pk):
         sender_profile = Profile.objects.get(id=pk) #анкета отправителя
-        allreactions = Reactions.objects.all()
-        for reaction in allreactions:
-            if (reaction.like_receiver == request.user) and (reaction.like_sender_profile == sender_profile):
-                reaction.delete()
+        new_reaction = Reactions.objects.get (like_receiver = request.user, like_sender_profile = sender_profile).delete()
         return redirect ('profiles')
