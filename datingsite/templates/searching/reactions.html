@@ -23,7 +23,7 @@
                     <img src="{{profile.avatar.url}}">
                 </div>
                 <div class="profiletext" >
-                    <a href="{{profile.id}}"><h3>{{profile.name}}, {{profile.age}}, {{profile.city}}</h3></a>
+                    <a href="{% url 'oneprofile' profile.id %}"><h3>{{profile.name}}, {{profile.age}}, {{profile.city}}</h3></a>
                 </div>
             </div>
             {% endfor %}
@@ -35,7 +35,7 @@
                     <img src="{{pair.avatar.url}}">
                 </div>
                 <div class="profiletext" >
-                    <a href="{{pair.id}}"><h3>{{pair.name}}, {{pair.age}}, {{pair.city}}</h3></a>
+                    <a href="{% url 'oneprofile' pair.id %}"><h3>{{pair.name}}, {{pair.age}}, {{pair.city}}</h3></a>
                 </div>
             </div>
             {% endfor %}

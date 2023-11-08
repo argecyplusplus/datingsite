@@ -40,6 +40,7 @@ class Reactions(models.Model):
     like_receiver = models.ForeignKey(User, verbose_name='Получатель', related_name='like_receiver', on_delete=models.CASCADE)
     like_sender_profile = models.ForeignKey(Profile, verbose_name='Анкета отправителя', related_name='like_sender_profile', default=5,on_delete=models.CASCADE)
     like_receiver_profile = models.ForeignKey(Profile, verbose_name='Анкета получателя', related_name='like_receiver_profile', default=5,on_delete=models.CASCADE)
+    viewed = models.BooleanField (verbose_name='Просмотрено', default=False)
     class Meta:
         verbose_name = "Реакция"
         verbose_name_plural = "Реакции"
@@ -53,7 +54,9 @@ class NewPair(models.Model):
     user2 = models.ForeignKey(User, verbose_name='Получатель', related_name='user2', on_delete=models.CASCADE)
     profile1 = models.ForeignKey(Profile, verbose_name='Анкета отправителя', related_name='profile1', default=5,on_delete=models.CASCADE)
     profile2 = models.ForeignKey(Profile, verbose_name='Анкета получателя', related_name='profile2', default=5,on_delete=models.CASCADE)
-    
+    viewed1 = models.BooleanField (verbose_name='Просмотрено отправителем', default=False)
+    viewed2 = models.BooleanField (verbose_name='Просмотрено получателем', default=False)
+
     class Meta:
         verbose_name = "Полученная пара"
         verbose_name_plural = "Полученные пары"

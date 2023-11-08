@@ -58,14 +58,35 @@ class ProfileViewAllFiltered(View):
                 user_profile.age_search_min<=profile.age<=user_profile.age_search_max and
                 not(profile.user.username in liked_profiles_owners)):
                 profiles_filtered.append (profile)
+        
         return render (request, 'searching/searching.html', {'profile_list': profiles_filtered})
 
 
+
 class ProfileView(View):
-    '''одна анкета'''
+    #вывод анкеты человека который отправил лайк и полученных пар
     def get(self, request, pk):
         profile = Profile.objects.get(id=pk)
-        return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0})
+        showsocial = 0
+        #если оба есть в созданной паре
+        try:
+            newpair = NewPair.objects.get (user1 = request.user, profile2 = profile)
+            showsocial = 1
+        except Exception:
+            pass
+        try:
+            newpair = NewPair.objects.get (user2 = request.user, profile1 = profile)
+            showsocial = 1
+        except Exception:
+            pass
+        try:
+            reaction = Reactions.objects.get (like_receiver = request.user, like_sender_profile = profile)
+            reply = 1
+        except Exception:
+            reply = 0
+
+        return render(request, 'searching/profile.html', {'profile': profile, 'reply': reply, 'showsocial':showsocial})
+    
 
 
 @login_required
@@ -137,17 +158,10 @@ class ReactionsView(View):
             if pair.user1.username == request.user.username:
                 my_pairs.append(pair.profile2)
             if pair.user2.username == request.user.username:
-                print('есть такой')
                 my_pairs.append(pair.profile1)
+        return render(request, 'searching/reactions.html', {'profile_list': my_reactions, 'pair_list':my_pairs})
+    
 
-        return render(request, 'searching/reactions.html', {'profile_list': my_reactions, 'pairs_list':my_pairs})
-    
-class ReactionProfile(View):
-    #вывод анкеты человека который отправил лайк
-    def get(self, request, pk):
-        profile = Profile.objects.get(id=pk)
-        return render(request, 'searching/profile.html', {'profile': profile, 'reply': 1})
-    
 class ReactView(View):
     def get(self, request, pk):
         liked_profile = Profile.objects.get(id=pk) # анкета которую лайкнули
