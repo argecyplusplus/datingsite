@@ -226,9 +226,9 @@ class ReactReplyView(View):
                 #создание модели NewPair
                 sender_profile = Profile.objects.get(id=pk) #анкета отправителя
                 new_reaction = Reactions.objects.get (like_receiver = request.user, like_sender_profile = sender_profile)
-                new_pair = NewPair.objects.get_or_create(user1 = new_reaction.like_sender, user2 = new_reaction.like_receiver, profile1 = new_reaction.like_sender_profile, profile2=  new_reaction.like_receiver_profile)
+                new_pair = NewPair.objects.get_or_create(user1 = new_reaction.like_sender, user2 = new_reaction.like_receiver, profile1 = new_reaction.like_sender_profile, profile2=  new_reaction.like_receiver_profile, viewed2 = True)
                 #вывод информации
-                showedprofile = NewPair.objects.get(user1 = new_reaction.like_sender, user2 = new_reaction.like_receiver, profile1 = new_reaction.like_sender_profile, profile2=  new_reaction.like_receiver_profile).profile1
+                showedprofile = NewPair.objects.get(user1 = new_reaction.like_sender, user2 = new_reaction.like_receiver, profile1 = new_reaction.like_sender_profile, profile2=  new_reaction.like_receiver_profile, viewed2 = True).profile1
                 new_reaction = new_reaction.delete()
                 return render (request, 'searching/newpair.html', {'profile': showedprofile})
             except Exception:
