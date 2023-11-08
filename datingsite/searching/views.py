@@ -35,18 +35,49 @@ def cleardata():
             if not(file in usedphotos):
                 os.remove('media/photos/users/' + str(file))
 
+def countUnchecked(request):
+    count = 0
+    reactions = Reactions.objects.all()
+    pairs = NewPair.objects.all()
+    for reaction in reactions:
+        if reaction.like_receiver == request.user and not(reaction.viewed):
+            #maybe delete "and not(reaction.viewed)"
+            count +=1
+    for pair in pairs:
+        if pair.user1 == request.user and not (pair.viewed1):
+            count +=1
+        if pair.user2 == request.user and not (pair.viewed2):
+            count +=1
+    return count
+
 class ProfileViewAllFiltered(View):
     #вывод всех анкет c фильтром
     def get(self, request):
         profiles = Profile.objects.all()
         reactions = Reactions.objects.all()
-        liked_profiles_owners = []
+        pairs = NewPair.objects.all()
+        
+        #удаление рассмотренных профилей
+        profiles_i_liked = []
         for reaction in reactions:
-            liked_profiles_owners.append (reaction.like_receiver.username)
-        profiles_filtered = []
+            if reaction.like_sender == request.user:
+                profiles_i_liked.append (reaction.like_receiver_profile)
+        profiles_we_paired = []
+        for pair in pairs:
+            if pair.user1 == request.user:
+                profiles_we_paired.append (pair.profile2)
+            elif pair.user2 == request.user:
+                profiles_we_paired.append (pair.profile1)
+       
+        #счетчик непрочитанных
+        unchecked_counter = countUnchecked(request)
+        
+        #отфильтрованный вывод
         filterinfo = makefilters(request)
         if filterinfo == {}:
+            #если анкета не заполнена
             return redirect ('myprofile')
+        profiles_filtered = []
         for profile in profiles:
             searching_gender = 'Девушка'
             searching_city = filterinfo['city']
@@ -56,10 +87,10 @@ class ProfileViewAllFiltered(View):
             if (profile.gender == searching_gender and 
                 profile.city == searching_city and 
                 user_profile.age_search_min<=profile.age<=user_profile.age_search_max and
-                not(profile.user.username in liked_profiles_owners)):
+                not(profile in profiles_i_liked) and not (profile in profiles_we_paired)):
                 profiles_filtered.append (profile)
         
-        return render (request, 'searching/searching.html', {'profile_list': profiles_filtered})
+        return render (request, 'searching/searching.html', {'profile_list': profiles_filtered, 'unchecked_counter': unchecked_counter})
 
 
 
@@ -157,18 +188,28 @@ class ReactionsView(View):
         #полученные лайки
         reactions = Reactions.objects.all()
         my_reactions = []
+        marked_profiles = [] #collect ids
         for reaction in reactions:
             if reaction.like_receiver.username == request.user.username:
+                # - если непросмотрена то с отметкой
+                if reaction.viewed == False:
+                    marked_profiles.append(reaction.like_sender_profile.id)
                 my_reactions.append (reaction.like_sender_profile)
         #полученные пары
         pairs = NewPair.objects.all()
         my_pairs = []
         for pair in pairs:
             if pair.user1.username == request.user.username:
+                # - если непросмотрена то с отметкой
+                if pair.viewed1 == False:
+                    marked_profiles.append(pair.profile2.id)
                 my_pairs.append(pair.profile2)
             if pair.user2.username == request.user.username:
+                # - если непросмотрена то с отметкой
+                if pair.viewed2 == False:
+                    marked_profiles.append(pair.profile1.id)
                 my_pairs.append(pair.profile1)
-        return render(request, 'searching/reactions.html', {'profile_list': my_reactions, 'pair_list':my_pairs})
+        return render(request, 'searching/reactions.html', {'profile_list': my_reactions, 'pair_list':my_pairs, 'marked_profiles': marked_profiles})
     
 
 class ReactView(View):

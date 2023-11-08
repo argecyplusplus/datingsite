@@ -19,6 +19,7 @@
             Ожидают ответа:
             {% for profile in profile_list %}
             <div class="oneprofile" >
+                {% if profile.id in marked_profiles %}NEW!{% endif %}
                 <div class="profilephoto" >
                     <img src="{{profile.avatar.url}}">
                 </div>
@@ -31,6 +32,7 @@
             Получившиеся пары:
             {% for pair in pair_list %}
             <div class="oneprofile" >
+                {% if pair.id in marked_profiles %}NEW!{% endif %}
                 <div class="profilephoto" >
                     <img src="{{pair.avatar.url}}">
                 </div>
