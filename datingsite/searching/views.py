@@ -66,21 +66,30 @@ class ProfileViewAllFiltered(View):
 class ProfileView(View):
     #вывод анкеты человека который отправил лайк и полученных пар
     def get(self, request, pk):
+
         profile = Profile.objects.get(id=pk)
         showsocial = 0
-        #если оба есть в созданной паре
+        #просмотр новой пары
         try:
             newpair = NewPair.objects.get (user1 = request.user, profile2 = profile)
+            newpair.viewed1 = True
+            newpair.save()
             showsocial = 1
         except Exception:
             pass
         try:
             newpair = NewPair.objects.get (user2 = request.user, profile1 = profile)
+            newpair.viewed2 = True
+            newpair.save()
             showsocial = 1
         except Exception:
             pass
+        #просмотр входящей анкеты
         try:
             reaction = Reactions.objects.get (like_receiver = request.user, like_sender_profile = profile)
+            print (f'анкета {reaction} найдена и  просмотрена')
+            reaction.viewed = True
+            reaction.save()
             reply = 1
         except Exception:
             reply = 0
