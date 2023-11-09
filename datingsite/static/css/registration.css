@@ -1,235 +1,110 @@
+*:not(.main_list, label) {
+    margin-bottom: 25px;
+}
+
 html {
     height: 100%;
+    font-family: "Forum-Regular";
+    margin: 0%;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-image: url(Background_Hearts.jpg);
+    background-image: url("darkhearts.jpg");
     background-size: 50%;
+    font-family: "Forum-Regular";
 }
 
-h1 {
-    font-size: 4vh;
-    font-family: COMIC SANS MS;
-    text-align: center;
-    font-style: oblique;
-}
-
-h2 {
-    font-size: 70px;
-    font-family: COMIC SANS MS;
-    text-align: center;
-    font-style: oblique;
-}
-
-.text {
-    font-size: 2vh;
-    font-family: comic sans ms;
-    margin-left: 5vh;
-    font-style: oblique;
-}
-
-
-.text1 {
-    font-family: comic sans ms;
-    font-size: 2vh;
-    font-style: oblique;
-    margin-left: 5vh;
-}
-
-.text2 {
-    font-family: comic sans ms;
-    font-size: 2vh;
-    font-style: oblique;
-}
-
-
-.registration {
-    display: grid;
-    background: #F08080;
-    width: 68vh;
-    height: 75vh;
-    border-radius: 5vh;
-    border-style: outset;
-    border-color: #d67272;
-    border-width: 0.75vh;
-}
-
-.registration1 {
-    display: grid;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    background: #ffa8a8;
-    width: 65vh;
-    height: 72vh;
-    border-radius: 5vh;
-    border-width: 0.5vh;
-    border-style: outset;
-    border-color: #e87b7b;
-}
-
-.registration2 {
-    display: grid;
-    background: #F08080;
-    width: 68vh;
-    height: 50vh;
-    border-radius: 5vh;
-    border-style: outset;
-    border-color: #d67272;
-    border-width: 0.75vh;
-}
-
-.registration3 {
-    display: grid;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    background: #ffa8a8;
-    width: 65vh;
-    height: 47vh;
-    border-radius: 5vh;
-    border-width: 0.5vh;
-    border-style: outset;
-    border-color: #e87b7b;
-}
-
-.main {
-    display: block;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    vertical-align: center;
-    background: #ffa8a8;
-    width: 70%;
-    height: 70%;
-    border-radius: 25px;
-    border-style: outset;
-    border-color: #e87b7b;
-}
-
-.searching {
-    display: table;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    vertical-align: center;
-    background: #ffa8a8;
-    width: 70%;
-    height: 70%;
-    border-radius: 25px;
-    border-style: outset;
-    border-color: #e87b7b;
-}
-
-.searching2 {
-    display: flex;
-    margin: auto;
-    vertical-align: center;
-    background: #ffa8a8;
-    width: 70%;
-    height: 70%;
-    border-radius: 25px;
-    border-style: outset;
-    border-color: #e87b7b;
-}
-
-.container_1 {
-    
-    margin: auto;
-    background: white;
-    width: 55vh;
-    border-radius: 3vh;
-    border-color: #e87b7b;
-    border-style: inset;
-    border-width: 0.5vh;
-}
-
-.container_2 {
-    background: white;
-    margin: auto;
-    width: 50vh;
-    height: 7vh;
-    border-radius: 3vh;
-}
-
-.container_3 {
-    display: grid;
-    margin: auto;
-    width: 50vh;
-}
-
-.container_4 {
+.block {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: auto;
-    width: 50vh;
-}
-
-.container_5 {
-    display: inline;
-    margin: auto;
-    vertical-align: center;
-    width: 75%;
-}
-
-.container_6 {
-    display: grid;
-    margin: auto;
-    vertical-align: center;
-    align-items: center;
-    width: 75%;
+    width: 80%;
 }
 
 button {
-    margin: auto;
-    width: 22vh;
-    height: 5vh;
-    border-width: 0.35vh;
-    background-color: white;
-    border-radius: 2vh;
-    border-style: outset;
+    font-family: "Forum-Regular";
+    max-height: 30px;
 }
 
-button2 {
+button[class="important"] {
+    background: #EFC3C5;
+}
+
+button[class="important"]:hover {
+    border-color: #e8babc;
+    background: #e8babc;
+}
+
+#main_list {
+    display: grid;
+    width: 640px;
+    padding: 1.5% 0;
+    border-radius: 5vh;
+    background-color: #FFE5E6;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.important {
+    display: block;
     margin: auto;
+    text-align: center;
+    font-size: 28px;
     width: 50%;
-    height: 300%;
-    text-align: center;
-    background-color: white;
-    border-radius: 3vh;
-    border-style: outset;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-family: COMIC SANS MS;
-    text-align: center;
-    font-style: oblique;
+    height: 30px;
+    line-height: 30px;
+    background: #EFC3C5;
+    border-radius: 20px;
+    border: 0;
 }
 
-button2:hover{
-    background-color: #ededed;
+div[class="important"] {
+    margin-bottom: 10px;
 }
 
-button:hover {
-    background-color: #ededed;
+button[class="important"] {
+    width: 45%;
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
 }
 
-input.string {
-    height: 5vh;
-    border-radius: 2vh;
-    border-style: outset;
-    border-color: #d67272;
-    border-width: 0.5vh;
-    background: white;
-    width: 50vh;
+label {
+    margin-left: 20%;
+    font-size: 24px;
+}
+
+label[for="Agreed"] {
+    font-size: 20px;
     text-align: center;
-    font-family: comic sans ms;
-    font-size: 2vh;
-    font-style: oblique;
+    margin: auto auto 10px;
+    width: 80%;
 }
+
+input {
+    font-family: "Forum-Regular";
+    font-size: 24px;
+    text-align: center;
+    padding: 5px 10px;
+    border: 2px solid #EFC3C5;
+    border-radius: 20px;
+    width: 70%;
+    margin: auto;
+}
+
+input::placeholder {
+    text-align: center;
+    font-size: 18px;
+}
+
+@font-face {
+    font-family: "Forum-Regular"; 
+    src: url("Forum-Regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+  } 

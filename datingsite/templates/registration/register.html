@@ -9,7 +9,29 @@
 	<body>
 	<form method="post">
 		{% csrf_token %}
-		<div class = "registration">
+		<div id="main_list">
+			<div class="important">Регистрация</div>
+			<label for="username">Логин</label>
+			<input type="text" name="username" id="username" placeholder="Логин (Login)" required>
+
+			{% comment %} <label for="email">Электронная почта</label>
+			<input type="email" name="email" id="email" placeholder="Электронная почта (e-mail)" required> {% endcomment %}
+
+			<label for="password1">Пароль</label>
+			<input type="password" name="password1" id="password1" placeholder="Пароль (password)" required>
+
+			<label for="password2">Подтвердите пароль</label>
+			<input type="password" name="password2" id="password2" placeholder="Подтвердите пароль (password)" required>
+
+			<label for="Agreed">Нажимая галочку, Вы соглашаетесь с нашим пользовательским соглашением и подтверждаете, что понимаете политику конфиденциальности.</label>
+			<input type="checkbox" name="Agreed" id="Agreed" required>
+
+			<div class="block">
+				<button type="submit" class="important">Зарегистрироваться</button>
+				<button onclick="location.href='{% url 'login' %}?next=/searching/'" class="important">Войти</button>
+			</div>
+		</div>
+		{% comment %} <div class = "registration">
 			<div class="registration1">
 				<div class = "container_1">
 					<h1>РЕГИСТРАЦИЯ</h1>
@@ -47,7 +69,7 @@
 					<button onclick="location.href='{% url 'login' %}?next=/searching/'" class="text2">Войти</button>
 				</div>
 			</div>
-		</div>
+		</div> {% endcomment %}
 		{{ form.errors }}
 	</form>
 	</body>
