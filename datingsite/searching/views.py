@@ -24,7 +24,7 @@ def load_defaults(request):
         profile = Profile.objects.get(user = User.objects.get(username = request.user.username))
         return {'profileid':profile.id, 'name':profile.name, 'avatar':profile.avatar, 'city':profile.city, 'age': profile.age, 'gender': profile.gender, 'point_of_searching':profile.point_of_searching, 'social':profile.social, 'description':profile.description, 'minage':profile.age_search_min, 'maxage':profile.age_search_max}
     except Exception:
-        return {'name':'', 'avatar':'', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':'', 'minage':'', 'maxage':''}
+        return {'name':'', 'avatar':'photos/default_avatar.jpg', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':'', 'minage':'', 'maxage':''}
 
 def cleardata():
     usedphotos = []
@@ -159,7 +159,7 @@ class CreateMyProfile(RedirectView):
             form = MyProfileForm(request.POST, request.FILES)
             if form.is_valid():
                 old_profile.name = form.cleaned_data.get('name')
-                if (form.cleaned_data.get('avatar') != 'photos/users/default_avatar.jpg'):
+                if (form.cleaned_data.get('avatar') != 'photos/default_avatar.jpg'):
                     old_profile.avatar = form.cleaned_data.get('avatar')
                 old_profile.age = form.cleaned_data.get('age')
                 old_profile.gender = form.cleaned_data.get('gender')
