@@ -13,23 +13,30 @@ body {
     margin: 0px;
 }
 
-header{
+header {
     margin: 0px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
     background-color: #FFE5E6;
-    position:fixed;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-header button {
-    cursor: pointer;
+header button{
+    font-size: 25px;
+    width: 25%;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+header button:hover{
+    background-color: rgba(0, 0, 0, 0)
 }
 
 
-main{
-    
+main {
     display: flex;
     padding: 2%;
     padding-top: 5%;
@@ -76,17 +83,6 @@ button{
     height: 100%;
 }
 
-
-header button{
-    font-size: 25px;
-    width: 25%;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-}
-header button:hover{
-    background-color: rgba(0, 0, 0, 0)
-}
-
 .mainlogo{
     max-width: 100%;
     cursor: pointer;
@@ -98,10 +94,6 @@ header button:hover{
     display: flex;
     justify-self: center;
 }
-
-
-
-
 
 @font-face {
     font-family: "Forum-Regular"; 

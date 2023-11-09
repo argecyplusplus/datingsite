@@ -8,7 +8,7 @@ body {
     display: block;
     justify-content: center;
     align-items: center;
-    background-color: #D5BFC0;
+    background-image: url("darkhearts.jpg");
     background-size: 50%;
     font-family: "Forum-Regular";
     margin: 0px;
@@ -114,6 +114,7 @@ textarea {
     font-size: 25px;
     width: 70%;
     height: 30px;
+    line-height: 30px;
     background: #EFC3C5;
     border-radius: 20px;
     border: 2px solid #EFC3C5;
