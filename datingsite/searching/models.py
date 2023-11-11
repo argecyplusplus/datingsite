@@ -20,7 +20,7 @@ class Profile(models.Model):
     gender = models.CharField ("Пол", choices=genders, max_length=30, default=genders[0])
     point_of_searching = models.CharField ("Цель знакомства", choices=point_of_searching_list, max_length=30, default=point_of_searching_list[0])
     city = models.CharField ('Город', max_length=100, default="Не указано")
-    description = models.TextField ('О себе', max_length=50)
+    description = models.TextField ('О себе', max_length=300)
     social = models.CharField ('Ссылка на соцсеть', max_length=50, default='@name')
     user = models.OneToOneField(User, verbose_name='Автор анкеты', on_delete=models.CASCADE)
     
