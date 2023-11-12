@@ -5,6 +5,11 @@
     <head>
       <title>Мой профиль</title>
       <link rel="stylesheet" href="{% static 'css/myprofile.css' %}">
+      <script>
+        function selectAvatar() {
+          document.getElementById('id_avatar').click();
+        }
+      </script>
     </head>
     <body>
         <header>
@@ -21,13 +26,15 @@
             <div class="important">
               Ваш профиль
             </div>
-            <div class="image-container">
+            <div class="parent">
               <img src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя">
-              <!-- <img class="overlay-container" src='{% static "css/Avatar.jpg" %}' title="Загрузить изображение"> -->
+              <div class="child">
+                <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar" style="display: none">
+                <img src='{% static "css/Download.png" %}' title="Загрузить изображение" onclick="selectAvatar()">
+              </div>
             </div>
             
-              <label for="id_avatar">Фото:</label>
-              <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar">
+            
 
             <table>
             <tr>

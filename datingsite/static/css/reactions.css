@@ -93,9 +93,8 @@ button{
     border-radius: 20px;
 }
 
-.oneprofile:not(:last-of-type) {
-    margin-bottom: 10px;
-}
+
+
 .oneprofile a {
     width: 100%;
     min-height: 80px;
