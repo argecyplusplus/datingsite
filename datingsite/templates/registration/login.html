@@ -3,13 +3,29 @@
 <html>
 <meta charset = 'utf-8'>
 	<head>
-		<title>Авторизация Tinder v2.0</title> 
+		<title>Авторизация GL</title> 
 		<link rel="stylesheet" href="{% static 'css/registration.css' %}">
 	</head>
 	<body>
 	<form action="#" method="post">
         {% csrf_token %}
-		<div class = "registration2">
+		<div id="main_list">
+			<div class="important">Авторизация</div>
+			<label for="username">Логин</label>
+			<input type="text" name="username" id="username" placeholder="Логин (Login)" required>
+
+			{% comment %} <label for="email">Электронная почта</label>
+			<input type="email" name="email" id="email" placeholder="Электронная почта (e-mail)" required> {% endcomment %}
+
+			<label for="password">Пароль</label>
+			<input type="password" name="password" id="password" placeholder="Пароль (password)" required>
+
+			<div class="block">
+				<button type="submit" class="important">Войти</button>
+				<button type="button" onclick="location.href='{% url 'register' %}?next=/myprofile'" class="important">Зарегистрироваться</button>
+			</div>
+		</div>
+		{% comment %} <div class = "registration2">
 			<div class="registration3">
 				<div class = "container_1">
 					<h1>ВОЙТИ</h1>
@@ -35,7 +51,7 @@
 					<button type="button" onclick="location.href='{% url 'register' %}?next=/myprofile'">Зарегистрироваться</button>
 				</div> -->
 			</div>
-		</div>
+		</div> {% endcomment %}
     {{form.errors}}
 	</form>
 	</body>
