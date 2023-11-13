@@ -180,7 +180,7 @@ class CreateMyProfile(RedirectView):
             return redirect(reverse_lazy ('myprofile'))
         except Exception:
             #форма не найдена
-            form = MyProfileForm(request.POST)
+            form = MyProfileForm(request.POST, request.FILES)
             if form.is_valid():
                 form = form.save(commit=False)
                 form.user = User.objects.get(username=request.user.username)
