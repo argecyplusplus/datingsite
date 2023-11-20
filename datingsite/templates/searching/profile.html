@@ -3,11 +3,19 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css">
         <title>Анкеты пользователей</title>
     </head>
     <body style="font-size: 20px;">
-        <button onclick="location.href='{% url 'profiles' %}'">Назад</button>
+		<header>
+			{% if reply == 0}<button onclick="location.href='{% url 'profiles' %}'">Назад</button>{% endif %}
+			{% if reply == 1}<button onclick="location.href='{% url 'reactions' %}'">Назад</button>{% endif %}
+				
+			<a class="logocontainer" href="{% url 'profiles' %}"><img class="mainlogo" src='{% static "css/bg_mini.jpg" %}' ></a>
+
+        <button onclick="location.href='{% url 'reactions' %}'">Мои лайки{% if unchecked_counter != 0 %}({{unchecked_counter}}){% endif %}</button>
+        </header>
+		
         <img src="{{profile.avatar.url}}" style="max-width: 30%;">
         <h3>{{profile.name}}</h3>
         <h5>{{profile.age}}</h5>
