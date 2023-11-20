@@ -45,12 +45,11 @@ header button:hover{
 
 main {
     display: flex;
+    justify-content: center;
     flex-flow: row wrap;
     float: left;
-    width: 80%;
     margin: 3% 10% 0 10%;
 }
-
 
 button{
     font-family: "Forum-Regular";
@@ -63,7 +62,7 @@ button{
     justify-content: center;
     width: 175px;
     height: 280px;
-    margin: 2.5%;
+    margin: 1.5%;
     background-color: #FFE5E6;
     border-radius: 25px;
     flex-direction: column;

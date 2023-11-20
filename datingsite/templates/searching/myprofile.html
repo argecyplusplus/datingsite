@@ -7,8 +7,23 @@
       <link rel="stylesheet" href="{% static 'css/myprofile.css' %}">
       <script>
         function selectAvatar() {
-          document.getElementById('id_avatar').click();
+          document.getElementById("id_avatar").click();
         }
+
+      /* document.getElementById("id_avatar").addEventListener("change",
+        function() {
+          var img = document.getElementById("avatar_img");
+          var file = this.files[0];
+
+          var reader = new FileReader();
+
+          reader.onload = function(e) {
+            img.src = e.target.result;
+          };
+
+          reader.readAsDataURL(file);
+          }
+        }); */
       </script>
     </head>
     <body>
@@ -27,14 +42,12 @@
               Ваш профиль
             </div>
             <div class="parent">
-              <img src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя">
+              <img src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя" id="preview">
               <div class="child">
                 <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar" style="display: none">
                 <img src='{% static "css/Download.png" %}' title="Загрузить изображение" onclick="selectAvatar()">
               </div>
             </div>
-            
-            
 
             <table>
             <tr>
