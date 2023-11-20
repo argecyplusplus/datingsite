@@ -1,0 +1,74 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("hearts.jpg");
+    background-size: 60%;
+    background-position:top;
+    font-family: "Forum-Regular";
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 70px;
+    text-align: center;
+}
+
+
+.mainlogo{
+    max-width: 25%;
+    display: flex;
+}
+
+
+.main {
+    display: block;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+    width: 90%;
+    height: 90%;
+}
+
+#logocontainer{
+
+    display: flex;
+    margin: auto;
+    vertical-align: center;
+    align-items: center;
+    width: 75%;
+    justify-content: center;
+}
+
+
+#slogancontainer{
+    margin: auto;
+    vertical-align: center;
+    width: 75%;
+}
+
+#startcontainer{
+    display: flex;
+    margin: auto;
+    vertical-align: center;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+}
+
+
+@font-face {
+    font-family: "Forum-Regular"; 
+    src: url("Forum-Regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+  } 

@@ -1,16 +1,25 @@
 {% load static %}
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-        <title></title>
-    </head>
-    <body style="font-size: 20px;">
-        <h1>У вас новая пара!</h1>
-        <img src = "{{profile.avatar.url}}">
-        {{profile.name}}
-        Начните общаться:
-        {{profile.social}}
-    </body>
+<meta charset = 'utf-8'>
+	<head>
+		<title>Новая пара</title>
+		<link rel="stylesheet" href="{% static 'css/newpair.css' %}">
+	</head>
+	<body>
+		<div class="main">
+				<div id = "slogancontainer">
+					<h2>У вас новая пара!</h2>
+				</div>
+				<div id = "logocontainer">
+					<img class="mainlogo" src = "{{profile.avatar.url}}">
+				</div>
+				<div id="startcontainer">
+				    <h1>
+						<center>{{profile.name}}</center><br>Начните общаться: <a href={{profile.social}}>{{profile.social}}</a>
+					</h1>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
