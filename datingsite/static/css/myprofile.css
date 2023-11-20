@@ -47,7 +47,6 @@ main {
 
 button {
     font-family: "Forum-Regular";
-    max-height: 30px;
 }
 
 button[class="important"] {
