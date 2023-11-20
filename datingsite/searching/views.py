@@ -22,9 +22,10 @@ def makefilters(request):
 def load_defaults(request):
     try:
         profile = Profile.objects.get(user = User.objects.get(username = request.user.username))
+        print ('ава профиля: ', profile.avatar)
         return {'profileid':profile.id, 'name':profile.name, 'avatar':profile.avatar, 'city':profile.city, 'age': profile.age, 'gender': profile.gender, 'point_of_searching':profile.point_of_searching, 'social':profile.social, 'description':profile.description, 'minage':profile.age_search_min, 'maxage':profile.age_search_max}
     except Exception:
-        return {'name':'', 'avatar':'photos/default_avatar.jpg', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':'', 'minage':'', 'maxage':''}
+        return {'name':'', 'avatar':'', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':'', 'minage':'', 'maxage':''}
 
 def cleardata():
     usedphotos = []
@@ -92,41 +93,43 @@ class ProfileViewAllFiltered(View):
         
         return render (request, 'searching/searching.html', {'profile_list': profiles_filtered, 'unchecked_counter': unchecked_counter})
 
-
-
 class ProfileView(View):
     #вывод анкеты человека который отправил лайк и полученных пар
-    def get(self, request, pk):
-
-        profile = Profile.objects.get(id=pk)
-        showsocial = 0
-        #просмотр новой пары
-        try:
-            newpair = NewPair.objects.get (user1 = request.user, profile2 = profile)
-            newpair.viewed1 = True
-            newpair.save()
-            showsocial = 1
+    def get(self, request, pk): 
+        #получить профиль
+        try:      
+            profile = Profile.objects.get(id=pk)
+            
+            #проверка доступа
+            defaults = load_defaults(request)
+            if not(defaults['city'] == profile.city and defaults['gender'] != profile.gender and defaults['minage']<=profile.age<=defaults['maxage']):          
+                return redirect('profiles')
+            #просмотр анкеты
+            try:
+                #это анкета мэтча
+                newpair = NewPair.objects.get (user1 = request.user, profile2 = profile)
+                newpair.viewed1 = True
+                newpair.save()
+                return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0, 'showsocial':1})
+            except Exception:
+                try:
+                    newpair = NewPair.objects.get (user2 = request.user, profile1 = profile)
+                    newpair.viewed2 = True
+                    newpair.save()
+                    return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0, 'showsocial':1})
+                except Exception:
+                    #это анкета входящего лайка
+                    try:
+                        reaction = Reactions.objects.get (like_receiver = request.user, like_sender_profile = profile)
+                        reaction.viewed = True
+                        reaction.save()
+                        return render(request, 'searching/profile.html', {'profile': profile, 'reply': 1, 'showsocial':0})
+                    except Exception:
+                        #это обычная анкета
+                        return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0, 'showsocial':0})
         except Exception:
-            pass
-        try:
-            newpair = NewPair.objects.get (user2 = request.user, profile1 = profile)
-            newpair.viewed2 = True
-            newpair.save()
-            showsocial = 1
-        except Exception:
-            pass
-        #просмотр входящей анкеты
-        try:
-            reaction = Reactions.objects.get (like_receiver = request.user, like_sender_profile = profile)
-            print (f'анкета {reaction} найдена и  просмотрена')
-            reaction.viewed = True
-            reaction.save()
-            reply = 1
-        except Exception:
-            reply = 0
-
-        return render(request, 'searching/profile.html', {'profile': profile, 'reply': reply, 'showsocial':showsocial})
-    
+            #анкета не найдена
+            return redirect ('profiles')
 
 
 @login_required
@@ -145,9 +148,12 @@ class RegisterView(FormView):
     template_name = 'registration/register.html'
     success_url = '/'
     def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-    
+        try:
+            form.save()
+            return super().form_valid(form)
+        except Exception:
+            return redirect('homepage')
+
 
 class CreateMyProfile(RedirectView):
     #создание и редактирование анкеты
@@ -174,7 +180,7 @@ class CreateMyProfile(RedirectView):
             return redirect(reverse_lazy ('myprofile'))
         except Exception:
             #форма не найдена
-            form = MyProfileForm(request.POST)
+            form = MyProfileForm(request.POST, request.FILES)
             if form.is_valid():
                 form = form.save(commit=False)
                 form.user = User.objects.get(username=request.user.username)
