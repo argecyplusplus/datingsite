@@ -85,6 +85,12 @@ label[for="Agreed"] {
     width: 80%;
 }
 
+.errorlist {
+    font-size: 20px;
+    margin: auto auto 10px;
+    width: 80%;
+}
+
 input {
     font-family: "Forum-Regular";
     font-size: 24px;

@@ -88,12 +88,15 @@ button{
     width: 80%;
     min-height: 80px;
     margin: auto;
+    margin-bottom: 10px;
     background-color: #EFC3C5;
     border: 5px solid #EFC3C5;
     border-radius: 20px;
 }
 
-
+.oneprofile:last-of-type {
+    margin-bottom: 5px;
+}
 
 .oneprofile a {
     width: 100%;
@@ -103,7 +106,6 @@ button{
     text-decoration:none;
     color: black;
 }
-
 
 .oneprofile img {
     height: 80px;
@@ -141,3 +143,23 @@ header button:hover{
     font-style: normal; 
     font-weight: normal; 
   } 
+
+/*
+<!DOCTYPE HTML>
+<meta charset="utf-8">
+<html>
+    <head>
+        <style>
+            #block_1 {
+                background: green;
+                text-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="block_1">
+        Какой-то текст, реально жестко...
+        </div>
+    </body>
+</html>
+*/
