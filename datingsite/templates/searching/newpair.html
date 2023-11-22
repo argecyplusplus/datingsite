@@ -1,22 +1,31 @@
 {% load static %}
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<meta charset = 'utf-8'>
 	<head>
+		<meta charset = 'utf-8'>
 		<title>Новая пара</title>
-		<link rel="stylesheet" href="{% static 'css/newpair.css' %}">
+		<link rel="stylesheet" href="{% static 'css/newpair.css' %}" type="text/css">
 	</head>
 	<body>
+	
+		<header>
+            <button onclick="location.href='{% url 'reactions' %}'">Назад</button>
+				
+			<a class="logocontainer" href="{% url 'profiles' %}"><img class="mainlogo" src='{% static "css/bg_mini.jpg" %}' ></a>
+
+        <button onclick="location.href='{% url 'myprofile' %}'">Мой профиль</button>
+        </header>
+	
 		<div class="main">
-				<div id = "slogancontainer">
+				<div id = "textUpcontainer">
 					<h2>У вас новая пара!</h2>
 				</div>
-				<div id = "logocontainer">
-					<img class="mainlogo" src = "{{profile.avatar.url}}">
+				<div id = "photocontainer">
+					<img class="photo" src = "{{profile.avatar.url}}">
 				</div>
-				<div id="startcontainer">
+				<div id="textDowncontainer">
 				    <h1>
-						<center>{{profile.name}}</center><br>Начните общаться: <a href={{profile.social}}>{{profile.social}}</a>
+						<center>{{profile.name}}<br>Начните общаться: <a href={{profile.social}}>{{profile.social}}</a></center>
 					</h1>
 				</div>
 			</div>
