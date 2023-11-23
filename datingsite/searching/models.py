@@ -25,7 +25,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, verbose_name='Автор анкеты', on_delete=models.CASCADE)
     
     #для фильтрации поиска по возрасту
-    age_search_min = models.IntegerField("Возраст поиска (от)", default=16)
+    age_search_min = models.IntegerField("Возраст поиска (от)", default=18)
     age_search_max = models.IntegerField("Возраст поиска (до)", default=100)
 
     class Meta:
