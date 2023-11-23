@@ -32,8 +32,8 @@
                 {% for pair in pair_list %}
                 <div class="oneprofile" >
                     {% if pair.id in marked_profiles %}{% endif %}
-                        <img src="{{pair.avatar.url}}">
-                        <a href="{% url 'oneprofile' pair.id %}"><h3>{{pair.name}}, {{pair.age}}, {{pair.city}}</h3></a>
+                    <img src="{{pair.avatar.url}}">
+                    <a href="{% url 'oneprofile' pair.id %}"><h3>{{pair.name}}, {{pair.age}}, {{pair.city}}</h3></a>
                 </div>
             {% endfor %}
             </div>
