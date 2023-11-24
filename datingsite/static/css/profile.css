@@ -24,6 +24,7 @@ header {
     position: fixed;
     background-color: #FFE5E6;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid #EFC3C5;
 }
 
 header button{
@@ -38,10 +39,12 @@ header button:hover{
 }
 
 main {
-    padding-top: 5.5%;
+    padding-top: 5.5vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-content: center;
+    height: 94.5vh;
 }
 
 button {
@@ -204,6 +207,33 @@ input {
     max-width: 6%;
     display: flex;
     justify-self: center;
+}
+
+.oneprofile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    width: 75%;
+    background: #FFE5E6;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 4vw;
+    border-radius: 50px;
+    border: 5px solid #EFC3C5;
+}
+
+.oneprofile img {
+    max-height: 432px;
+    border-radius: 50px;
+    border: 5px solid #EFC3C5;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.oneprofile .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: green;
 }
 
 @font-face {
