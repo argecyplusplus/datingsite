@@ -5,40 +5,7 @@
     <head>
       <title>Мой профиль</title>
       <link rel="stylesheet" href="{% static 'css/myprofile.css' %}">
-      <script>
-        function selectAvatar() {
-          document.getElementById("id_avatar").click();
-        }
-
-        function compareValues() {
-          const input1Value = document.getElementById("min");
-          const input2Value = document.getElementById("max");
-
-          var form = document.getElementById("myForm");
-          form.addEventListener("submit", function(event) {
-            if (input1Value > input2Value) {
-              form.submit();
-            }
-            else {
-              event.preventDefault();
-            }
-          });
-        }
-      /* document.getElementById("id_avatar").addEventListener("change",
-        function() {
-          var img = document.getElementById("avatar_img");
-          var file = this.files[0];
-
-          var reader = new FileReader();
-
-          reader.onload = function(e) {
-            img.src = e.target.result;
-          };
-
-          reader.readAsDataURL(file);
-          }
-        }); */
-      </script>
+      <script src="{% static 'js/myprofile.js' %}"></script>
     </head>
     <body>
         <header>
@@ -58,7 +25,7 @@
               <img src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя">
               <div class="child">
                 <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar" style="display: none">
-                <img src='{% static "css/Download.png" %}' title="Загрузить изображение" onclick="selectAvatar()">
+                <img src='{% static "css/Download.png" %}' title="Загрузить изображение" onclick="selectAvatar();">
               </div>
             </div>
 
@@ -125,12 +92,12 @@
             </tr>
             
             <tr>
-              <td class="column_long45"><input type="number" value="{{dminage}}" name="age_search_min" required id="min" min='18' max='100' step='1' value='50' class="textbox"></td>
+              <td class="column_long45"><input type="number" value="{{dminage}}" name="age_search_min" required id="minV" min='18' max='100' step='1' value='50' class="textbox"></td>
               <td class="column_short10"></td>
-              <td class="column_long45"><input type="number" value="{{dmaxage}}" name="age_search_max" required id="max" min='18' max='100' step='1' value='50' class="textbox"></td>
+              <td class="column_long45"><input type="number" value="{{dmaxage}}" name="age_search_max" required id="maxV" min='18' max='100' step='1' value='50' class="textbox"></td>
             </tr>
           </table>
-          <button type='submit' class="important" onclick="compareValues">Начать поиск</button>
+          <button type='submit' class="important" >Начать поиск</button>
         </form> 
       </main>
     </body>
