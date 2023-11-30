@@ -249,10 +249,6 @@ input {
     padding: 15px;
 }
 
-.oneprofile .text * {
-    margin-bottom: 10px;
-}
-
 h3 {
     display: flex;
     justify-content: center;
@@ -264,14 +260,17 @@ h3 {
     border-radius: 50px;
 }
 
+h6 {
+    margin-top: 2%;
+    font-size: 20px;
+}
 .buttons {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     align-content: center;
     width: 100%;
-    background: green;
-    margin-bottom: 0;
+
 }
 
 .buttons button {
@@ -282,13 +281,19 @@ h3 {
     border-radius: 50px;
     border: 0;
     font-family: "Forum-Regular";
-    font-size: 30px;
-    margin-bottom: 0;
+    font-size: 22px;
 }
 
+p {
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    text-align: justify;
+    font-size: 24px;
+}
 .buttons button:hover {
     background: #d8a6a7;
-    margin-bottom: 0;
 }
 
 @font-face {
