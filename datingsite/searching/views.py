@@ -100,10 +100,7 @@ class ProfileView(View):
         try:      
             profile = Profile.objects.get(id=pk)
             
-            #проверка доступа
-            defaults = load_defaults(request)
-            if not(defaults['city'] == profile.city and defaults['gender'] != profile.gender and defaults['minage']<=profile.age<=defaults['maxage']):          
-                return redirect('profiles')
+
             #просмотр анкеты
             try:
                 #это анкета мэтча
@@ -126,6 +123,10 @@ class ProfileView(View):
                         return render(request, 'searching/profile.html', {'profile': profile, 'reply': 1, 'showsocial':0})
                     except Exception:
                         #это обычная анкета
+                        #проверка доступа
+                        defaults = load_defaults(request)
+                        if not(defaults['city'] == profile.city and defaults['gender'] != profile.gender and defaults['minage']<=profile.age<=defaults['maxage']):          
+                            return redirect('profiles')
                         return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0, 'showsocial':0})
         except Exception:
             #анкета не найдена
