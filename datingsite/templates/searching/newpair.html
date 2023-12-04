@@ -1,34 +1,32 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset = 'utf-8'>
-		<title>Новая пара</title>
-		<link rel="stylesheet" href="{% static 'css/newpair.css' %}" type="text/css">
-	</head>
-	<body>
-	
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css">
+        <title>Новая пара</title>
+    </head>
+    <body style="font-size: 20px;">
 		<header>
-            <button onclick="location.href='{% url 'reactions' %}'">Назад</button>
+            <button onclick="location.href='{% if reply == 0 %}{% url 'profiles' %}{% endif %}{% if reply == 1 %}{% url 'reactions' %}{% endif %}'">Назад</button>
 				
 			<a class="logocontainer" href="{% url 'profiles' %}"><img class="mainlogo" src='{% static "css/bg_mini.jpg" %}' ></a>
 
-        <button onclick="location.href='{% url 'myprofile' %}'">Мой профиль</button>
+        <button onclick="location.href='{% url 'reactions' %}'">Мои лайки{% if unchecked_counter != 0 %}({{unchecked_counter}}){% endif %}</button>
         </header>
-	
-		<div class="main">
-				<div id = "textUpcontainer">
-					<h2>У вас новая пара!</h2>
-				</div>
-				<div id = "photocontainer">
-					<img class="photo" src = "{{profile.avatar.url}}">
-				</div>
-				<div id="textDowncontainer">
-				    <h1>
-						<center>{{profile.name}}<br>Начните общаться: <a href={{profile.social}}>{{profile.social}}</a></center>
-					</h1>
-				</div>
-			</div>
-		</div>
-	</body>
+		<main>
+            <div class="oneprofile">
+                <div class="text">
+                    <h3>У вас новая пара!</h3>
+					<img src="{{profile.avatar.url}}" style="max-width: 30%; margin-top: 3%; ">
+                    <p>{{profile.name}},
+                    {{profile.age}},
+                    {{profile.city}}</p>
+                    <div class="buttons">
+                        Начните общаться: <a href={{profile.social}}>{{profile.social}}</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
