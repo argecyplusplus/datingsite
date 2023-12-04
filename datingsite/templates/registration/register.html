@@ -25,6 +25,8 @@
 
 			<label for="Agreed">Нажимая галочку, Вы соглашаетесь с нашим пользовательским соглашением и подтверждаете, что понимаете политику конфиденциальности.</label>
 			<input type="checkbox" name="Agreed" id="Agreed" required>
+			<div id="error">
+			{{ form.errors }}</div>
 
 			<div class="block">
 				<button type="submit" class="important">Зарегистрироваться</button>
@@ -70,7 +72,7 @@
 				</div>
 			</div>
 		</div> {% endcomment %}
-		{{ form.errors }}
+
 	</form>
 	</body>
 </html>

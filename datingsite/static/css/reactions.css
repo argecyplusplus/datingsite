@@ -37,6 +37,7 @@ header button {
 
 .main_list {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     padding: 10px;
@@ -46,8 +47,6 @@ header button {
 }
 
 .important {
-    display: block;
-    margin: auto;
     text-align: center;
     font-size: 25px;
     width: 40%;
@@ -56,23 +55,25 @@ header button {
     background: #EFC3C5;
     border-radius: 20px;
     border: 2px solid #EFC3C5;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 main {
-    width: 56%;
-    margin: 5% 2%;
     display: flex;
     float: left;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    width: 56%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 5.5%;
 }
 
 aside {
-    width: 36%;
-    margin: 5% 2%;
-    display: block;
+    display: flex;
     float: left;
+    width: 36%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 5.5%;
 }
 
 button{
@@ -82,18 +83,14 @@ button{
 
 .oneprofile {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     position: relative;
-    overflow: hidden;
     width: 80%;
     min-height: 80px;
     margin: auto;
-    background-color: #EFC3C5;
-    border: 5px solid #EFC3C5;
-    border-radius: 20px;
+    margin-bottom: 40px;
 }
-
-
 
 .oneprofile a {
     width: 100%;
@@ -104,9 +101,27 @@ button{
     color: black;
 }
 
-
 .oneprofile img {
+    height: 100px;
+    border-radius: 20px;
+    z-index: 2;
+    position: absolute;
+    border: 5px solid #EFC3C5;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
     height: 80px;
+    width: 80%;
+    margin-left: 20%;
+    background: #EFC3C5;
+    border-radius: 20px;
+}
+
+h3:hover {
+    background: #e9adaf;
 }
 
 header button{

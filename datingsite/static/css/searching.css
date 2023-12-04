@@ -18,10 +18,11 @@ body {
     font-size: 20px;
 }
 
-header{
+header {
     margin: 0px;
     width: 100%;
     display: flex;
+    z-index: 1;
     float: top;
     justify-content: space-between;
     align-items: center;
@@ -30,7 +31,7 @@ header{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-header button {
+header button{
     font-size: 25px;
     width: 25%;
     background-color: rgba(0, 0, 0, 0);
@@ -38,19 +39,19 @@ header button {
 }
 
 header button:hover{
-    background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0)
 }
 
 
 main {
     display: flex;
+    justify-content: center;
     flex-flow: row wrap;
     float: left;
     width: 80%;
-    margin: 3% 10% 0 10%;
+    margin: 5.5% 10% 0 10%;
+    min-height: 94.5%;
 }
-
 
 button{
     font-family: "Forum-Regular";
@@ -63,7 +64,7 @@ button{
     justify-content: center;
     width: 175px;
     height: 280px;
-    margin: 2.5%;
+    margin: 1.5%;
     background-color: #FFE5E6;
     border-radius: 25px;
     flex-direction: column;

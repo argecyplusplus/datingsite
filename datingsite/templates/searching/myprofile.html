@@ -5,11 +5,7 @@
     <head>
       <title>Мой профиль</title>
       <link rel="stylesheet" href="{% static 'css/myprofile.css' %}">
-      <script>
-        function selectAvatar() {
-          document.getElementById('id_avatar').click();
-        }
-      </script>
+      <script src="{% static 'js/myprofile.js' %}"></script>
     </head>
     <body>
         <header>
@@ -20,22 +16,18 @@
           <button onclick="location.href='{% url 'logout' %}?next=/'">Выйти из аккаунта</button>
         </header>
         <main>
-        <div id="main_list">
-          <form action="{% url 'createprofile' %}" method="post" enctype="multipart/form-data">
+          <form action="{% url 'createprofile' %}" method="post" enctype="multipart/form-data" id="myForm">
             {% csrf_token %}
             <div class="important">
               Ваш профиль
             </div>
             <div class="parent">
-              
-              <img src="{% if davatar.url == None %}/media/photos/default_avatar.jpg{% endif %}{{davatar.url}}" title="Аватар пользователя" alt="Аватар пользователя">
+              <img src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя">
               <div class="child">
                 <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar" style="display: none">
-                <img src='{% static "css/Download.png" %}' title="Загрузить изображение" onclick="selectAvatar()">
+                <img src='{% static "css/Download.png" %}' title="Загрузить изображение" onclick="selectAvatar();">
               </div>
             </div>
-            
-            
 
             <table>
             <tr>
@@ -47,7 +39,7 @@
             <tr>
               <td class="column_long45"><input type="text" value="{{dname}}" name="name" maxlength="50" required id="id_name" class="textbox"></td>
               <td class="column_short10"></td>
-              <td class="column_long45"><input type="number" value="{{dage}}" name="age" required id="id_age" min='16' class="textbox"></td>
+              <td class="column_long45"><input type="number" value="{{dage}}" name="age" required id="id_age" min='18' class="textbox"></td>
             </tr>
 
 
@@ -100,14 +92,13 @@
             </tr>
             
             <tr>
-              <td class="column_long45"><input type="number" value="{{dminage}}" name="age_search_min" required id="id_age" min='16' max='100' step='1' value='50' class="textbox"></td>
+              <td class="column_long45"><input type="number" value="{{dminage}}" name="age_search_min" required id="minV" min='18' max='100' step='1' value='50' class="textbox"></td>
               <td class="column_short10"></td>
-              <td class="column_long45"><input type="number" value="{{dmaxage}}" name="age_search_max" required id="id_age" min='16' max='100' step='1' value='50' class="textbox"></td>
+              <td class="column_long45"><input type="number" value="{{dmaxage}}" name="age_search_max" required id="maxV" min='18' max='100' step='1' value='50' class="textbox"></td>
             </tr>
           </table>
-          <button type='submit' class="important">Начать поиск</button>
+          <button type='submit' class="important" >Начать поиск</button>
         </form> 
-      </div>
       </main>
     </body>
 </html>

@@ -100,10 +100,7 @@ class ProfileView(View):
         try:      
             profile = Profile.objects.get(id=pk)
             
-            #проверка доступа
-            defaults = load_defaults(request)
-            if not(defaults['city'] == profile.city and defaults['gender'] != profile.gender and defaults['minage']<=profile.age<=defaults['maxage']):          
-                return redirect('profiles')
+
             #просмотр анкеты
             try:
                 #это анкета мэтча
@@ -126,6 +123,10 @@ class ProfileView(View):
                         return render(request, 'searching/profile.html', {'profile': profile, 'reply': 1, 'showsocial':0})
                     except Exception:
                         #это обычная анкета
+                        #проверка доступа
+                        defaults = load_defaults(request)
+                        if not(defaults['city'] == profile.city and defaults['gender'] != profile.gender and defaults['minage']<=profile.age<=defaults['maxage']):          
+                            return redirect('profiles')
                         return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0, 'showsocial':0})
         except Exception:
             #анкета не найдена
@@ -173,8 +174,12 @@ class CreateMyProfile(RedirectView):
                 old_profile.city = form.cleaned_data.get('city')
                 old_profile.description = form.cleaned_data.get('description')
                 old_profile.social = form.cleaned_data.get('social')
-                old_profile.age_search_min = form.cleaned_data.get('age_search_min')
-                old_profile.age_search_max = form.cleaned_data.get('age_search_max')
+                if form.cleaned_data.get('age_search_min') <= form.cleaned_data.get('age_search_max'):
+                    old_profile.age_search_min = form.cleaned_data.get('age_search_min')
+                    old_profile.age_search_max = form.cleaned_data.get('age_search_max')
+                else:
+                    old_profile.age_search_min = form.cleaned_data.get('age_search_max')
+                    old_profile.age_search_max = form.cleaned_data.get('age_search_min')
                 old_profile.save()
                 return redirect('profiles')
             return redirect(reverse_lazy ('myprofile'))
