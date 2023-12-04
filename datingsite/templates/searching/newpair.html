@@ -16,19 +16,10 @@
         <button onclick="location.href='{% url 'myprofile' %}'">Мой профиль</button>
         </header>
 	
-		<div class="main">
-				<div id = "textUpcontainer">
-					<h2>У вас новая пара!</h2>
-				</div>
-				<div id = "photocontainer">
-					<img class="photo" src = "{{profile.avatar.url}}">
-				</div>
-				<div id="textDowncontainer">
-				    <h1>
-						<center>{{profile.name}}<br>Начните общаться: <a href={{profile.social}}>{{profile.social}}</a></center>
-					</h1>
-				</div>
-			</div>
-		</div>
+		<main>
+			У вас новая пара!
+			<img style="width: 192px; height: 192px;" src = "{{profile.avatar.url}}">
+			{{profile.name}}<br>Начните общаться: <a href={{profile.social}}>{{profile.social}}</a>
+		</main>
 	</body>
 </html>

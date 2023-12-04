@@ -11,8 +11,6 @@ html {
 
 body {
     display: block;
-    justify-content: center;
-    align-items: center;
     background-image: url("darkhearts.jpg");
     background-size: 50%;
     font-family: "Forum-Regular";
@@ -23,7 +21,7 @@ header {
     margin: 0px;
     width: 100%;
     display: flex;
-    float: top;
+    float: left;
     justify-content: space-between;
     align-items: center;
     position: fixed;

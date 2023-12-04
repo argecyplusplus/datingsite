@@ -19,7 +19,7 @@
           <form action="{% url 'createprofile' %}" method="post" enctype="multipart/form-data" id="myForm">
             {% csrf_token %}
             <div class="important">
-              Ваш профиль
+              Мой профиль
             </div>
             <div class="parent">
               <img src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя">

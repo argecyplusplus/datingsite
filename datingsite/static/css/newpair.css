@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     height: 100%;
     font-family: "Forum-Regular";
@@ -6,8 +11,6 @@ html {
 
 body {
     display: block;
-    justify-content: center;
-    align-items: center;
     background-image: url("darkhearts.jpg");
     background-size: 50%;
     font-family: "Forum-Regular";
@@ -18,12 +21,13 @@ header {
     margin: 0px;
     width: 100%;
     display: flex;
-    float: top;
+    float: left;
     justify-content: space-between;
-	position: fixed;
     align-items: center;
+    position: fixed;
     background-color: #FFE5E6;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid #EFC3C5;
 }
 
 header button{
@@ -37,59 +41,14 @@ header button:hover{
     background-color: rgba(0, 0, 0, 0)
 }
 
-h1 {
-    font-size: 50px;
-    text-align: center;
-}
-
-h2 {
-    font-size: 60px;
-    text-align: center;
-}
-
-
-.photo{
-    max-width: 25%;
+main {
+    padding-top: 5.5vh;
     display: flex;
-}
-
-
-.main {
-    display: block;
-    margin: auto;
     justify-content: center;
     align-items: center;
-    vertical-align: center;
-    width: 65%;
-    height: 65%;
+    align-content: center;
+    height: 94.5vh;
 }
-
-#photocontainer{
-
-    display: flex;
-    margin: auto;
-    vertical-align: center;
-    align-items: center;
-    width: 75%;
-    justify-content: center;
-}
-
-
-#textUpcontainer{
-    margin: auto;
-    vertical-align: center;
-    width: 75%;
-}
-
-#textDowncontainer{
-    display: flex;
-    margin: auto;
-    vertical-align: center;
-    align-items: center;
-    width: 50%;
-    justify-content: center;
-}
-
 
 button {
     font-family: "Forum-Regular";
@@ -251,6 +210,88 @@ input {
     max-width: 6%;
     display: flex;
     justify-self: center;
+}
+
+.oneprofile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    width: 75%;
+    background: #FFE5E6;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 4vw;
+    border-radius: 50px;
+    border: 5px solid #EFC3C5;
+}
+
+.oneprofile img {
+    max-height: 432px;
+    border-radius: 50px;
+    border: 5px solid #EFC3C5;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+.oneprofile .text {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    width: 60%;
+    background: #ffdcdd;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    border: 5px solid #EFC3C5;
+    padding: 15px;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 60%;
+    min-height: 40px;
+    background: #e8babc;
+    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+    border-radius: 50px;
+}
+
+h6 {
+    margin-top: 2%;
+    font-size: 20px;
+}
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+
+}
+
+.buttons button {
+    min-width: 30%;
+    min-height: 35px;
+    background: #e8babc;
+    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+    border-radius: 50px;
+    border: 0;
+    font-family: "Forum-Regular";
+    font-size: 22px;
+}
+
+p {
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    text-align: justify;
+    font-size: 24px;
+}
+.buttons button:hover {
+    background: #d8a6a7;
 }
 
 @font-face {
