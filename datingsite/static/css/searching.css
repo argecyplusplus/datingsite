@@ -22,13 +22,13 @@ header {
     margin: 0px;
     width: 100%;
     display: flex;
-    z-index: 1;
-    float: top;
+    float: left;
     justify-content: space-between;
     align-items: center;
     position: fixed;
     background-color: #FFE5E6;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid #EFC3C5;
 }
 
 header button{
@@ -36,6 +36,7 @@ header button{
     width: 25%;
     background-color: rgba(0, 0, 0, 0);
     border: none;
+    cursor: pointer;
 }
 
 header button:hover{

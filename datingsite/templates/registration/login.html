@@ -14,9 +14,6 @@
 			<label for="username">Логин</label>
 			<input type="text" name="username" id="username" placeholder="Логин (Login)" required>
 
-			{% comment %} <label for="email">Электронная почта</label>
-			<input type="email" name="email" id="email" placeholder="Электронная почта (e-mail)" required> {% endcomment %}
-
 			<label for="password">Пароль</label>
 			<input type="password" name="password" id="password" placeholder="Пароль (password)" required>
 
@@ -25,34 +22,7 @@
 				<button type="button" onclick="location.href='{% url 'register' %}?next=/myprofile'" class="important">Зарегистрироваться</button>
 			</div>
 		</div>
-		{% comment %} <div class = "registration2">
-			<div class="registration3">
-				<div class = "container_1">
-					<h1>ВОЙТИ</h1>
-				</div>
-				<div class="container_3">
-					<div class="text">Электронная почта</div>
-					
-						<input class="string" type="text" name="username" placeholder="Электронная почта (e-mail)" required/>
-					
-				</div>
-				<div class="container_3">
-					<div class="text">Пароль</div>
-					
-						<input class="string" type="password" name="password" placeholder="Пароль (password)" required/>
-					
-				</div>
-				<div class="container_4">
-					<button type="submit" class="text2">Войти</button>
-					<button type="button" onclick="location.href='{% url 'register' %}?next=/myprofile'" class="text2">Зарегистрироваться</button>
-				</div>
-				<!-- <div class="container_5">
-					<button type="submit">Войти</button>
-					<button type="button" onclick="location.href='{% url 'register' %}?next=/myprofile'">Зарегистрироваться</button>
-				</div> -->
-			</div>
-		</div> {% endcomment %}
-    {{form.errors}}
+    	{{form.errors}}
 	</form>
 	</body>
 </html>
