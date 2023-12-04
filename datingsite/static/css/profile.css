@@ -35,6 +35,7 @@ header button{
     width: 25%;
     background-color: rgba(0, 0, 0, 0);
     border: none;
+    cursor: pointer;
 }
 
 header button:hover{
@@ -53,152 +54,6 @@ main {
 button {
     font-family: "Forum-Regular";
     max-height: 30px;
-}
-
-button[class="important"] {
-    background: #EFC3C5;
-    margin: 10px auto 0;
-}
-
-button[class="important"]:hover {
-    border-color: #e8babc;
-    background: #e8babc;
-    margin: 10px auto 0;
-}
-
-table {
-    width: 100%;
-    border-spacing: 0px;
-}
-
-.column_long100 {
-    width: 100%;
-
-}
-
-.column_long45 {
-    width: 45%;
-
-}
-
-.column_short10 {
-    width: 10%;
-
-}
-
-textarea {
-    font-family: "Forum-Regular";
-    font-size: 20px;
-    height: 30px;
-    min-height: 30px;
-    background: white;
-    border-radius: 20px;
-    border: 2px solid #EFC3C5;
-    padding-left: 10px;
-    padding-right: 10px;
-    resize: vertical;
-}
-
-#main_list {
-    display: grid;
-    width: 480px;
-    padding: 1% 2.5%;
-    border-radius: 5vh;
-    background-color: #FFE5E6;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin: auto auto;
-}
-
-#main_lvl_for_description {
-    display: grid;
-    width: 100%;
-}
-
-.important {
-    display: block;
-    margin: auto;
-    text-align: center;
-    font-size: 25px;
-    width: 70%;
-    height: 30px;
-    line-height: 30px;
-    background: #EFC3C5;
-    border-radius: 20px;
-    border: 2px solid #EFC3C5;
-}
-
-#containertextbox {
-    display: block;
-    font-size: 22px;
-}
-
-.textbox {
-    font-family: "Forum-Regular";
-    font-size: 20px;
-    width: 90%;
-    height: 30px;
-    background: white;
-    border-radius: 20px;
-    border: 2px solid #EFC3C5;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-select {
-    font-family: "Forum-Regular";
-    font-size: 20px;
-    width: 100%;
-    height: 35px;
-    background: white;
-    border-radius: 20px;
-    border: 2px solid #EFC3C5;
-    padding-left: 10px;
-    padding-right: 10px;
-} 
-
-label {
-    margin-left: 20px;
-    font-size: 20px;
-}
-
-input {
-    font-family: "Forum-Regular";
-}
-
-.parent {
-    position: relative;
-    width: 192px;
-    height: 192px;
-    overflow: hidden;
-    margin: 10px auto 10px;
-    border: 8px solid #EFC3C5;
-    border-radius: 25px;
-}
-
-.parent img {
-    width: 192px;
-    height: 192px;
-    object-fit: cover;
-}
-
-.child {
-    position: absolute;
-    top: 2.5%;
-    right: 2.5%;
-}
-
-.child img {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    background: #EFC3C5;
-    border: 5px solid #EFC3C5;
-    border-radius: 10px;
-    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
-}
-
-.child img:hover {
-    background: #EFC3C5;
 }
 
 .mainlogo{
@@ -253,8 +108,7 @@ h3 {
     align-items: center;
     min-width: 60%;
     min-height: 40px;
-    background: #e8babc;
-    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+    background: #EFC3C5;
     border-radius: 50px;
 }
 
@@ -262,6 +116,7 @@ h6 {
     margin-top: 2%;
     font-size: 20px;
 }
+
 .buttons {
     display: flex;
     justify-content: space-evenly;
@@ -274,8 +129,7 @@ h6 {
 .buttons button {
     min-width: 30%;
     min-height: 35px;
-    background: #e8babc;
-    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+    background: #EFC3C5;
     border-radius: 50px;
     border: 0;
     font-family: "Forum-Regular";
@@ -290,8 +144,9 @@ p {
     text-align: justify;
     font-size: 24px;
 }
+
 .buttons button:hover {
-    background: #d8a6a7;
+    background: #e8babc;
 }
 
 @font-face {

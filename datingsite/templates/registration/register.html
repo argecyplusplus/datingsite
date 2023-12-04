@@ -14,9 +14,6 @@
 			<label for="username">Логин</label>
 			<input type="text" name="username" id="username" placeholder="Логин (Login)" required>
 
-			{% comment %} <label for="email">Электронная почта</label>
-			<input type="email" name="email" id="email" placeholder="Электронная почта (e-mail)" required> {% endcomment %}
-
 			<label for="password1">Пароль</label>
 			<input type="password" name="password1" id="password1" placeholder="Пароль (password)" required>
 
@@ -33,46 +30,6 @@
 				<button onclick="location.href='{% url 'login' %}?next=/searching/'" class="important">Войти</button>
 			</div>
 		</div>
-		{% comment %} <div class = "registration">
-			<div class="registration1">
-				<div class = "container_1">
-					<h1>РЕГИСТРАЦИЯ</h1>
-				</div>
-				<div class="container_3">
-					<div class="text">Логин</div>
-					
-						<input class="string" type="text" name="username" placeholder="Логин (Login)" required/>
-					
-				</div>
-				<div class="container_3">
-					<div class="text">Электронная почта</div>
-					
-						<input class="string" type="email" name="email" placeholder="Электронная почта (e-mail)" required/>
-					
-				</div>
-				<div class="container_3">
-					<div class="text">Пароль</div>
-					
-						<input class="string" type="password" name="password1" placeholder="Пароль (password)" required/>
-					
-				</div>
-                <div class="container_3">
-					<div class="text">Подтвердите пароль</div>
-					
-						<input class="string" type="password" name="password2" placeholder="Подтвердите пароль (password)" required/>
-					
-				</div>
-				<div class="container_4">
-					<input type="checkbox" id="Agreed" name="Agreed" value="Agreed" required>
-					<label for="Agreed"><div class="text1">Нажимая галочку, Вы соглашаетесь с нашим пользовательским соглашением и подтверждаете, что понимаете политику конфиденциальности.</div></label>
-				</div>
-				<div class="container_4">
-					<button type="submit" class="text2">Зарегистрироваться</button>
-					<button onclick="location.href='{% url 'login' %}?next=/searching/'" class="text2">Войти</button>
-				</div>
-			</div>
-		</div> {% endcomment %}
-
 	</form>
 	</body>
 </html>

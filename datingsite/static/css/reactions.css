@@ -9,8 +9,6 @@ html {
 
 body {
     display: block;
-    justify-content: center;
-    align-items: center;
     background-image: url("darkhearts.jpg");
     background-size: 50%;
     font-family: "Forum-Regular";
@@ -18,21 +16,30 @@ body {
     font-size: 20px;
 }
 
-header{
+header {
     margin: 0px;
     width: 100%;
     display: flex;
-    float: top;
+    float: left;
     justify-content: space-between;
     align-items: center;
     position: fixed;
     background-color: #FFE5E6;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid #EFC3C5;
 }
 
-header button {
+header button{
+    font-size: 25px;
+    width: 25%;
+    font-family: "Forum-Regular";
     background-color: rgba(0, 0, 0, 0);
+    border: none;
     cursor: pointer;
+}
+
+header button:hover{
+    background-color: rgba(0, 0, 0, 0)
 }
 
 .main_list {
@@ -76,11 +83,6 @@ aside {
     margin-top: 5.5%;
 }
 
-button{
-    font-family: "Forum-Regular";
-
-}
-
 .oneprofile {
     display: flex;
     align-items: center;
@@ -118,31 +120,16 @@ h3:hover {
     background: #e8babc;
 }
 
-header button{
-    font-size: 25px;
-    width: 25%;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-}
-header button:hover{
-    background-color: rgba(0, 0, 0, 0)
-}
-
 .mainlogo{
     max-width: 100%;
     cursor: pointer;
 }
-
 
 .logocontainer{
     max-width: 6%;
     display: flex;
     justify-self: center;
 }
-
-
-
-
 
 @font-face {
     font-family: "Forum-Regular"; 

@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
 html {
     height: 100%;
     font-family: "Forum-Regular";
@@ -14,19 +20,19 @@ body {
 }
 
 header {
-    width: 100%;
     margin: 0px;
+    width: 100%;
     display: flex;
-    z-index: 1;
     float: left;
     justify-content: space-between;
     align-items: center;
     position: fixed;
     background-color: #FFE5E6;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid #EFC3C5;
 }
 
-header button {
+header button{
     font-size: 25px;
     width: 25%;
     background-color: rgba(0, 0, 0, 0);
@@ -34,20 +40,19 @@ header button {
     cursor: pointer;
 }
 
-header button:hover {
+header button:hover{
     background-color: rgba(0, 0, 0, 0)
 }
 
 main {
     display: flex;
-    z-index: 1;
     float: left;
     justify-content: center;
     align-items: center;
     border-radius: 50px;
     background-color: #FFE5E6;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin: 5.5% 20% 0 20%;
+    margin: 6.5% 20% 0 20%;
     width: 55;
     padding: 1% 2.5%;
     height: 90%;
@@ -120,11 +125,6 @@ textarea {
     border: 2px solid #EFC3C5;
 }
 
-#containertextbox {
-    display: block;
-    font-size: 22px;
-}
-
 .textbox {
     font-family: "Forum-Regular";
     font-size: 20px;
@@ -187,7 +187,6 @@ input {
     background: #EFC3C5;
     border: 5px solid #EFC3C5;
     border-radius: 10px;
-    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
 }
 
 .child img:hover {
