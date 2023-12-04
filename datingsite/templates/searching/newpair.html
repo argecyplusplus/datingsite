@@ -1,25 +1,32 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset = 'utf-8'>
-		<title>Новая пара</title>
-		<link rel="stylesheet" href="{% static 'css/newpair.css' %}" type="text/css">
-	</head>
-	<body>
-	
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css">
+        <title>Новая пара</title>
+    </head>
+    <body style="font-size: 20px;">
 		<header>
-            <button onclick="location.href='{% url 'reactions' %}'">Назад</button>
+            <button onclick="location.href='{% if reply == 0 %}{% url 'profiles' %}{% endif %}{% if reply == 1 %}{% url 'reactions' %}{% endif %}'">Назад</button>
 				
 			<a class="logocontainer" href="{% url 'profiles' %}"><img class="mainlogo" src='{% static "css/bg_mini.jpg" %}' ></a>
 
-        <button onclick="location.href='{% url 'myprofile' %}'">Мой профиль</button>
+        <button onclick="location.href='{% url 'reactions' %}'">Мои лайки{% if unchecked_counter != 0 %}({{unchecked_counter}}){% endif %}</button>
         </header>
-	
 		<main>
-			У вас новая пара!
-			<img style="width: 192px; height: 192px;" src = "{{profile.avatar.url}}">
-			{{profile.name}}<br>Начните общаться: <a href={{profile.social}}>{{profile.social}}</a>
-		</main>
-	</body>
+            <div class="oneprofile" style="background: none; width: 100%; border: none; box-shadow: none; padding: 0;">
+                <div class="text">
+                    <h3 style="font-size: 30px;">У вас новая пара!</h3>
+					<img src="{{profile.avatar.url}}" style="max-width: 30%; margin-top: 3%; ">
+                    <p>{{profile.name}},
+                    {{profile.age}},
+                    {{profile.city}}</p>
+                    <div class="buttons" style="justify-content: center; gap: 5px;">
+                        Начните общаться: <a href={{profile.social}}>{{profile.social}}</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
