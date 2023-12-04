@@ -16,13 +16,12 @@
 
 			<label for="password">Пароль</label>
 			<input type="password" name="password" id="password" placeholder="Пароль (password)" required>
-
+			{{form.errors}}
 			<div class="block">
 				<button type="submit" class="important">Войти</button>
 				<button type="button" onclick="location.href='{% url 'register' %}?next=/myprofile'" class="important">Зарегистрироваться</button>
 			</div>
 		</div>
-    	{{form.errors}}
 	</form>
 	</body>
 </html>
