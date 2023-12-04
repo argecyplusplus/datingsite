@@ -27,7 +27,7 @@
                         {% if reply == 0 and showsocial == 0 %}<button onclick="location.href='{% url 'like' profile.id %}'">❤</button>{% endif %}
                         {% if reply == 1 and showsocial == 0 %}<button onclick="location.href='{% url 'like_reply' profile.id %}'">❤</button>
                         <button onclick="location.href='{% url 'dislike_reply' profile.id %}'">✖</button>{% endif %}
-                        {% if showsocial == 1 %}Для общения: {{profile.social}} {% endif %}
+                        {% if showsocial == 1 %}Для общения: <a href={{profile.social}}>{{profile.social}}</a> {% endif %}
                     </div>
                 </div>
             </div>
