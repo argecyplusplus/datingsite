@@ -40,7 +40,7 @@ header button:hover {
 
 main {
     display: flex;
-    z-index: 1;
+    z-index: 0;
     float: left;
     justify-content: center;
     align-items: center;
