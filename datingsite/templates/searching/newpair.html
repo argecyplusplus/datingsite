@@ -15,14 +15,14 @@
         <button onclick="location.href='{% url 'reactions' %}'">Мои лайки{% if unchecked_counter != 0 %}({{unchecked_counter}}){% endif %}</button>
         </header>
 		<main>
-            <div class="oneprofile">
+            <div class="oneprofile" style="background: none; width: 100%; border: none; box-shadow: none; padding: 0;">
                 <div class="text">
-                    <h3>У вас новая пара!</h3>
+                    <h3 style="font-size: 30px;">У вас новая пара!</h3>
 					<img src="{{profile.avatar.url}}" style="max-width: 30%; margin-top: 3%; ">
                     <p>{{profile.name}},
                     {{profile.age}},
                     {{profile.city}}</p>
-                    <div class="buttons">
+                    <div class="buttons" style="justify-content: center; gap: 5px;">
                         Начните общаться: <a href={{profile.social}}>{{profile.social}}</a>
                     </div>
                 </div>
