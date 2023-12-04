@@ -9,6 +9,7 @@ from django.urls import reverse_lazy, reverse
 from django.utils.http import urlencode
 from django.views.generic import RedirectView
 from django.contrib.auth.models import User
+from django.core.exceptions import *
 
 # Create your views here.
 
@@ -16,15 +17,14 @@ def makefilters(request):
     try:
         profile = Profile.objects.get(user = User.objects.get(username = request.user.username))
         return {'profileid':profile.id,'city':profile.city, 'gender': profile.gender}
-    except Exception:
+    except ObjectDoesNotExist:
         return {}
 
 def load_defaults(request):
     try:
         profile = Profile.objects.get(user = User.objects.get(username = request.user.username))
-        print ('ава профиля: ', profile.avatar)
         return {'profileid':profile.id, 'name':profile.name, 'avatar':profile.avatar, 'city':profile.city, 'age': profile.age, 'gender': profile.gender, 'point_of_searching':profile.point_of_searching, 'social':profile.social, 'description':profile.description, 'minage':profile.age_search_min, 'maxage':profile.age_search_max}
-    except Exception:
+    except ObjectDoesNotExist:
         return {'name':'', 'avatar':'', 'city':'', 'age':'', 'gender':'', 'point_of_searching':'', 'social':'', 'description':'', 'minage':'', 'maxage':''}
 
 def cleardata():
@@ -99,8 +99,6 @@ class ProfileView(View):
         #получить профиль
         try:      
             profile = Profile.objects.get(id=pk)
-            
-
             #просмотр анкеты
             try:
                 #это анкета мэтча
@@ -108,27 +106,27 @@ class ProfileView(View):
                 newpair.viewed1 = True
                 newpair.save()
                 return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0, 'showsocial':1})
-            except Exception:
+            except ObjectDoesNotExist:
                 try:
                     newpair = NewPair.objects.get (user2 = request.user, profile1 = profile)
                     newpair.viewed2 = True
                     newpair.save()
                     return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0, 'showsocial':1})
-                except Exception:
+                except ObjectDoesNotExist:
                     #это анкета входящего лайка
                     try:
                         reaction = Reactions.objects.get (like_receiver = request.user, like_sender_profile = profile)
                         reaction.viewed = True
                         reaction.save()
                         return render(request, 'searching/profile.html', {'profile': profile, 'reply': 1, 'showsocial':0})
-                    except Exception:
+                    except ObjectDoesNotExist:
                         #это обычная анкета
                         #проверка доступа
                         defaults = load_defaults(request)
                         if not(defaults['city'] == profile.city and defaults['gender'] != profile.gender and defaults['minage']<=profile.age<=defaults['maxage']):          
                             return redirect('profiles')
                         return render(request, 'searching/profile.html', {'profile': profile, 'reply': 0, 'showsocial':0})
-        except Exception:
+        except ObjectDoesNotExist:
             #анкета не найдена
             return redirect ('profiles')
 
@@ -183,7 +181,7 @@ class CreateMyProfile(RedirectView):
                 old_profile.save()
                 return redirect('profiles')
             return redirect(reverse_lazy ('myprofile'))
-        except Exception:
+        except ObjectDoesNotExist:
             #форма не найдена
             form = MyProfileForm(request.POST, request.FILES)
             if form.is_valid():
