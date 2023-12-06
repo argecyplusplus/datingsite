@@ -50,7 +50,7 @@ main {
     min-height: 94.5%;
 }
 
-button{
+button {
     font-family: "Forum-Regular";
 
 }
@@ -89,6 +89,7 @@ button{
 .profilephoto {
     width: 100%;
 }
+
 .profilephoto a {
     width: 100%;
 }
@@ -106,7 +107,7 @@ button{
 }
 
 
-.logocontainer{
+.logocontainer {
     max-width: 6%;
     display: flex;
     justify-self: center;
