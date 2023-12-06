@@ -9,17 +9,13 @@ html {
 
 body {
     display: block;
-    justify-content: center;
-    align-items: center;
     background-image: url("darkhearts.jpg");
     background-size: 50%;
     font-family: "Forum-Regular";
-    margin: 0px;
     font-size: 20px;
 }
 
 header {
-    margin: 0px;
     width: 100%;
     display: flex;
     float: left;
@@ -31,7 +27,7 @@ header {
     border-bottom: 5px solid #EFC3C5;
 }
 
-header button{
+header button {
     font-size: 25px;
     width: 25%;
     background-color: rgba(0, 0, 0, 0);
@@ -59,7 +55,7 @@ button{
 
 }
 
-.oneprofile{
+.oneprofile {
     display: flex;
     overflow: hidden;
     justify-content: center;
@@ -72,10 +68,8 @@ button{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-
-.oneprofile img{
-    margin-left: auto;
-    margin-right: auto;
+.oneprofile img {
+    margin: 0 auto;
     text-decoration:none;
     color: black;
     height: auto;
@@ -86,28 +80,27 @@ button{
     border-bottom: 1px solid;
 }
 
-.oneprofile a{
-    
+.oneprofile a {
     text-align: center;
     text-decoration:none;
     color: black;
 }
 
-.profilephoto{
+.profilephoto {
     width: 100%;
 }
 .profilephoto a {
     width: 100%;
 }
 
-.profiletext{
+.profiletext {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.mainlogo{
+.mainlogo {
     max-width: 100%;
     cursor: pointer;
 }

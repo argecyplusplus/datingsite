@@ -6,7 +6,6 @@
 html {
     height: 100%;
     font-family: "Forum-Regular";
-    margin: 0%;
 }
 
 body {
@@ -14,11 +13,9 @@ body {
     background-image: url("darkhearts.jpg");
     background-size: 50%;
     font-family: "Forum-Regular";
-    margin: 0px;
 }
 
 header {
-    margin: 0px;
     width: 100%;
     display: flex;
     float: left;
@@ -30,7 +27,7 @@ header {
     border-bottom: 5px solid #EFC3C5;
 }
 
-header button{
+header button {
     font-size: 25px;
     width: 25%;
     background-color: rgba(0, 0, 0, 0);
@@ -38,7 +35,7 @@ header button{
     cursor: pointer;
 }
 
-header button:hover{
+header button:hover {
     background-color: rgba(0, 0, 0, 0)
 }
 
@@ -56,12 +53,12 @@ button {
     max-height: 30px;
 }
 
-.mainlogo{
+.mainlogo {
     max-width: 100%;
     cursor: pointer;
 }
 
-.logocontainer{
+.logocontainer {
     max-width: 6%;
     display: flex;
     justify-self: center;

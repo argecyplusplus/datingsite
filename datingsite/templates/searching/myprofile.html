@@ -28,27 +28,22 @@
                 <img src='{% static "css/Download.png" %}' title="Загрузить изображение" onclick="selectAvatar();">
               </div>
             </div>
-
             <table>
             <tr>
               <td class="column_long45"><label for="id_name">Имя:</label></td>
               <td class="column_short10"></td>
               <td class="column_long45"><label for="id_age">Возраст:</label></td>
             </tr>
-          
             <tr>
               <td class="column_long45"><input type="text" value="{{dname}}" name="name" maxlength="50" required id="id_name" class="textbox"></td>
               <td class="column_short10"></td>
               <td class="column_long45"><input type="number" value="{{dage}}" name="age" required id="id_age" min='18' class="textbox"></td>
             </tr>
-
-
             <tr>
               <td class="column_long45"><label for="id_gender">Пол:</label></td>
               <td class="column_short10"></td>
               <td class="column_long45"><label for="id_point_of_searching">Цель знакомства:</label></td>
             </tr>
-
             <tr>
               <td class="column_long45"><select name="gender" id="id_gender">
                 <option {% if dgender == "Парень" %}selected{% endif %} value="Парень">Парень</option>
@@ -62,19 +57,16 @@
                 <option {% if dpoint_of_searching == "Общение" %}selected{% endif %} value="Общение">Общение</option>
               </select></td>
             </tr>
-
             <tr>
               <td class="column_long45"><label for="id_city">Город:</label></td>
               <td class="column_short10"></td>
               <td class="column_long45"><label for="id_city">Ссылка на соцсеть:</label></td>
             </tr>
-
             <tr>
               <td class="column_long45"><input type="text" name="city" value="{{dcity}}" maxlength="100" required id="id_city" class="textbox"></td>
               <td class="column_short10"></td>
               <td class="column_long45"><input type="text" name="social" value="{{dsocial}}" maxlength="50" required id="id_social" class="textbox"></td>
             </tr>
-
             <tr>
               <td colspan=3 class="column_long100"><label for="id_description">О себе (300 символов):</label></td>
             </tr>
@@ -83,14 +75,12 @@
                 <td colspan=3><textarea name="description" required  id="id_description" maxlength="300">{{ddescription}}</textarea></td>
                 <input type="text" hidden name="user" value="{{username}}" maxlength="50" required id="id_social">
             </div>
-            
             <table>
             <tr>
               <td class="column_long45"><label for="id_minage">Искать от:</label></td>
               <td class="column_short10"></td>
               <td class="column_long45"><label for="id_maxage">Искать до:</label></td>
             </tr>
-            
             <tr>
               <td class="column_long45"><input type="number" value="{{dminage}}" name="age_search_min" required id="minV" min='18' max='100' step='1' value='50' class="textbox"></td>
               <td class="column_short10"></td>

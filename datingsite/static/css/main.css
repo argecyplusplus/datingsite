@@ -12,15 +12,17 @@ body {
     background-position:top;
     font-family: "Forum-Regular";
 }
+
 h2 {
     font-size: 70px;
     text-align: center;
 }
 
 
-.mainlogo{
+.mainlogo {
     max-width: 25%;
     display: flex;
+    vertical-align: center;
 }
 
 
@@ -29,23 +31,19 @@ h2 {
     margin: auto;
     justify-content: center;
     align-items: center;
-    vertical-align: center;
     width: 90%;
     height: 90%;
 }
 
-#logocontainer{
-
+#logocontainer {
     display: flex;
     margin: auto;
-    vertical-align: center;
     align-items: center;
     width: 75%;
     justify-content: center;
 }
 
-
-#slogancontainer{
+#slogancontainer {
     margin: auto;
     vertical-align: center;
     width: 75%;
@@ -55,12 +53,10 @@ h2 {
 #startcontainer{
     display: flex;
     margin: auto;
-    vertical-align: center;
     align-items: center;
     width: 50%;
     justify-content: center;
 }
-
 
 button2 {
     margin: 0px;
@@ -69,8 +65,6 @@ button2 {
     text-align: center;
     background-color: rgba(211, 189, 190, 0.6);
     border-radius: 1vh;
-    /*border-style:solid;
-    border-color: #D4AF37;*/
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -88,7 +82,6 @@ button2:hover{
 button:hover {
     background-color: #ededed;
 }
-
 
 @font-face {
     font-family: "Forum-Regular"; 

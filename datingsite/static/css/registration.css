@@ -1,10 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 *:not(.main_list, label) {
     margin-bottom: 25px;
 }
 
 html {
     font-family: "Forum-Regular";
-    margin: 0%;
 }
 
 body {
@@ -66,8 +70,6 @@ button[class="important"]:hover {
 button[class="important"] {
     width: 45%;
     font-size: 24px;
-    padding: 0;
-    margin: 0;
 }
 
 label {

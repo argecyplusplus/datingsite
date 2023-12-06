@@ -9,10 +9,8 @@
     <body style="font-size: 20px;">
 		<header>
             <button onclick="location.href='{% if reply == 0 %}{% url 'profiles' %}{% endif %}{% if reply == 1 %}{% url 'reactions' %}{% endif %}'">Назад</button>
-				
 			<a class="logocontainer" href="{% url 'profiles' %}"><img class="mainlogo" src='{% static "css/bg_mini.jpg" %}' ></a>
-
-        <button onclick="location.href='{% url 'reactions' %}'">Мои лайки{% if unchecked_counter > 0 %} - {{unchecked_counter}}{% endif %}</button>
+            <button onclick="location.href='{% url 'reactions' %}'">Мои лайки{% if unchecked_counter > 0 %} - {{unchecked_counter}}{% endif %}</button>
         </header>
 		<main>
             <div class="oneprofile" style="background: none; width: 100%; border: none; box-shadow: none; padding: 0;">

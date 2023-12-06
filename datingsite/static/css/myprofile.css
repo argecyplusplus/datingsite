@@ -3,11 +3,9 @@
     padding: 0;
 }
 
-
 html {
     height: 100%;
     font-family: "Forum-Regular";
-    margin: 0%;
 }
 
 body {
@@ -16,12 +14,10 @@ body {
     background-image: url("darkhearts.jpg");
     background-size: 50%;
     font-family: "Forum-Regular";
-    margin: 0px;
 }
 
 header {
 	z-index: 1;
-    margin: 0px;
     width: 100%;
     display: flex;
     float: left;
@@ -34,7 +30,7 @@ header {
     z-index: 1;
 }
 
-header button{
+header button {
     font-size: 25px;
     width: 25%;
     background-color: rgba(0, 0, 0, 0);
