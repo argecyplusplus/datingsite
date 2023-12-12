@@ -3,10 +3,6 @@
     padding: 0;
 }
 
-*:not(.main_list, label) {
-    margin-bottom: 25px;
-}
-
 html {
     font-family: "Forum-Regular";
 	height: 100%;
