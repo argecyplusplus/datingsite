@@ -219,7 +219,7 @@ class ReactionsView(View):
                 if pair.viewed2 == False:
                     marked_profiles.append(pair.profile1.id)
                 my_pairs.append(pair.profile1)
-        return render(request, 'searching/reactions.html', {'profile_list': my_reactions, 'pair_list':my_pairs, 'marked_profiles': marked_profiles})
+        return render(request, 'searching/reactions.html', {'profile_list': my_reactions, 'pair_list':my_pairs, 'marked_profiles': marked_profiles, 'profile_list_count': len(my_reactions), 'pair_list_count':len(my_pairs)})
     
 
 class ReactView(View):

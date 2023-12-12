@@ -21,7 +21,10 @@
                     <img src="{{profile.avatar.url}}" class="profilephoto">
                     <a href="{% url 'oneprofile' profile.id %}"><h3 class="profiletext">{{profile.name}}, {{profile.age}}, {{profile.city}}</h3></a>
                 </div>
-            {% endfor %}
+                {% endfor %}
+                {% if profile_list_count == 0 %}
+                <p class="waitmessage">Пока что здесь ничего нет, подождем пока кому-то понравится ваша анкета</p>
+                {% endif %}
             </div>
         </main>
         <aside>
@@ -33,7 +36,10 @@
                     <img src="{{pair.avatar.url}}">
                     <a href="{% url 'oneprofile' pair.id %}"><h3>{{pair.name}}, {{pair.age}}, {{pair.city}}</h3></a>
                 </div>
-            {% endfor %}
+                {% endfor %}
+                {% if pair_list_count == 0 %}
+                <p class="waitmessage">Пока у вас нет пар, ставьте лайки, чтобы повысить шансы на мэтч!</p>
+                {% endif %}
             </div>
         </aside>
     </body>
