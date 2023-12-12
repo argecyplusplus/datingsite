@@ -9,9 +9,12 @@
 
 html {
     font-family: "Forum-Regular";
+	height: 100%;
 }
 
 body {
+    display: flex;
+    justify-content: center;
     background-image: url("darkhearts.jpg");
     background-size: 50%;
     font-family: "Forum-Regular";
@@ -112,3 +115,41 @@ input::placeholder {
     font-style: normal; 
     font-weight: normal; 
   } 
+  
+  
+  header {
+	z-index: 1;
+    width: 100%;
+    display: flex;
+    float: left;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background-color: #FFE5E6;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid #EFC3C5;
+    z-index: 1;
+}
+
+header button {
+    font-size: 25px;
+    width: 25%;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+}
+
+header button:hover{
+    background-color: rgba(0, 0, 0, 0)
+}
+
+.mainlogo {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.logocontainer {
+    max-width: 6%;
+    display: flex;
+    justify-self: center;
+}
