@@ -69,7 +69,7 @@ header button:hover{
     background: #EFC3C5;
     border-radius: 20px;
     border: 2px solid #EFC3C5;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 main {
@@ -105,12 +105,21 @@ aside {
     margin-bottom: 10px;
 }
 .oneprofile a {
-    width: 100%;
-    min-height: 80px;
-    line-height: 80px;
-    text-align: center;
-    text-decoration:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 90%;
+    margin-left: 10%;
+    background: #EFC3C5;
+    border-radius: 20px;
+    text-decoration: none;
     color: black;
+    text-align: center;
+}
+
+.oneprofile a:hover {
+    background: #e8babc;
 }
 
 .oneprofile img {
@@ -119,7 +128,7 @@ aside {
     border: 5px solid #EFC3C5;
 }
 
-aside a {
+/* aside a {
     height: 80px;
     width: 90%;
     margin-left: 10%;
@@ -129,7 +138,7 @@ aside a {
 
 aside a:hover {
     background: #e8babc;
-}
+} */
 
 .mainlogo{
     max-width: 100%;
