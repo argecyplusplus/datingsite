@@ -32,6 +32,8 @@ header {
 
 header button {
     font-size: 25px;
+    height: 30px;
+    line-height: 30px;
     width: 25%;
     background-color: rgba(0, 0, 0, 0);
     border: none;
@@ -50,7 +52,7 @@ main {
     border-radius: 50px;
     background-color: #FFE5E6;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin: 6.5% 20% 0 20%;
+    margin: 6.5% 20% 3% 20%;
     width: 55;
     padding: 1% 2.5%;
     height: 90%;
@@ -161,6 +163,8 @@ input {
     position: relative;
     width: 192px;
     height: 192px;
+    max-width: 288px;
+    max-height: 288px;
     overflow: hidden;
     margin: 10px auto 10px;
     border: 8px solid #EFC3C5;
@@ -171,6 +175,8 @@ input {
     width: 192px;
     height: 192px;
     object-fit: cover;
+    max-width: 288px;
+    max-height: 288px;
 }
 
 .child {

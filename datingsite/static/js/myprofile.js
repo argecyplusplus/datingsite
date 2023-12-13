@@ -1,5 +1,14 @@
 function selectAvatar() {
-    document.getElementById("id_avatar").click();
+  var input = document.getElementById("id_avatar");
+  input.click();
+  input.onchange = function () {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var img = document.getElementById("user_avatar");
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  };
 };
 
 
