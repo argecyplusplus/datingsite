@@ -23,7 +23,7 @@
               Мой профиль
             </div>
             <div class="parent">
-              <img src={{davatar.url}} title="Аватар пользователя" alt="Аватар пользователя" id="user_avatar">
+              <img src={% if davatar.url == none %}"/media/photos/default_avatar.jpg"{% else %}{{davatar.url}}{% endif %}  title="Аватар пользователя" alt="Аватар пользователя" id="user_avatar">
               <div class="child">
                 <input type="file" name="avatar" value="{{davatar}}" accept="image/*" id="id_avatar" style="display: none">
                 <img src='{% static "css/Download.png" %}' title="Загрузить изображение" onclick="selectAvatar();">
@@ -73,7 +73,7 @@
             </tr>
             </table>
             <div id="main_lvl_for_description">
-                <td colspan=3><textarea name="description" required  id="id_description" maxlength="300">{{ddescription}}</textarea></td>
+                <td colspan=3><textarea name="description" required  id="id_description" maxlength="300" id="textarea">{{ddescription}}</textarea></td>
                 <input type="text" hidden name="user" value="{{username}}" maxlength="50" required id="id_social">
             </div>
             <table>
