@@ -17,7 +17,7 @@
           <button onclick="location.href='{% url 'logout' %}?next=/'">Выйти из аккаунта</button>
         </header>
         <main>
-          <form action="{% url 'createprofile' %}" method="post" enctype="multipart/form-data" id="myForm">
+          <form action="{% url 'createprofile' %}" method="post" enctype="multipart/form-data" id="myForm" onsubmit="validateForm(event);">
             {% csrf_token %}
             <div class="important">
               Мой профиль
@@ -88,7 +88,7 @@
               <td class="column_long45"><input type="number" value="{{dmaxage}}" name="age_search_max" required id="maxV" min='18' max='100' step='1' value='50' class="textbox"></td>
             </tr>
           </table>
-          <button type='submit' class="important" >Начать поиск</button>
+          <button type='submit' class="important">Начать поиск</button>
         </form> 
       </main>
     </body>
