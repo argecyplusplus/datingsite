@@ -185,10 +185,13 @@ class CreateMyProfile(RedirectView):
             #форма не найдена
             form = MyProfileForm(request.POST, request.FILES)
             if form.is_valid():
+                minvalue = form.cleaned_data.get('age_search_min')
+                maxvalue = form.cleaned_data.get('age_search_max')
+                if minvalue > maxvalue:
+                    minvalue, maxvalue = maxvalue, minvalue
                 form = form.save(commit=False)
-                if form.cleaned_data.get('age_search_min') > form.cleaned_data.get('age_search_max'):
-                    form.age_search_min = form.cleaned_data.get('age_search_min')
-                    form.age_search_max = form.cleaned_data.get('age_search_max')
+                form.age_search_min = minvalue
+                form.age_search_max = maxvalue
                 form.user = User.objects.get(username=request.user.username)
                 form.save()
                 return redirect('profiles')
