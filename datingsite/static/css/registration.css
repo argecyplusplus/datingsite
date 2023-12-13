@@ -169,12 +169,19 @@ header button:hover{
 }
 
 .popup-content {
-    background-color: #fff;
-    width: 300px;
-    padding: 20px;
-    text-align: center;
-    margin: auto;
-    margin-top: 100px;
+    gap: 5%;
+    display: grid;
+    width: 65%;
+    height: 70%;
+    padding: 1.5% 0;
+    border-radius: 50px;
+    background-color: #FFE5E6;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 u:hover{
@@ -186,4 +193,6 @@ p{
     text-align: justify;
     margin: auto auto 10px;
     width: 80%;
+    height: 100%;
+    overflow: auto;
 }

@@ -1,6 +1,6 @@
 function showPopup() {
     var popup = document.querySelector('.popup');
-    popup.style.display = 'block';
+    popup.style.display = 'grid';
 }
 
 function hidePopup() {
