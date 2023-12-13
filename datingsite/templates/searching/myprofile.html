@@ -69,11 +69,11 @@
               <td class="column_long45"><input type="text" name="social" value="{{dsocial}}" maxlength="50" required id="id_social" class="textbox"></td>
             </tr>
             <tr>
-              <td colspan=3 class="column_long100"><label for="id_description">О себе (300 символов):</label></td>
+              <td colspan=3 class="column_long100"><label for="id_description">О себе: {{ddescription|length}}/300</label></td>
             </tr>
             </table>
             <div id="main_lvl_for_description">
-                <td colspan=3><textarea name="description" required  id="id_description" maxlength="300" id="textarea">{{ddescription}}</textarea></td>
+                <td colspan=3><textarea name="description" required  id="id_description" maxlength="300" id="textarea" oninput="ChangeLabel(this.value); autoResizeTextarea(this);">{{ddescription}}</textarea></td>
                 <input type="text" hidden name="user" value="{{username}}" maxlength="50" required id="id_social">
             </div>
             <table>

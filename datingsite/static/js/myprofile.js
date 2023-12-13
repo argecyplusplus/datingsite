@@ -1,15 +1,32 @@
 function selectAvatar() {
-  var input = document.getElementById("id_avatar");
+  let input = document.getElementById("id_avatar");
   input.click();
   input.onchange = function () {
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = function(e) {
-      var img = document.getElementById("user_avatar");
+      let img = document.getElementById("user_avatar");
       img.src = e.target.result;
     };
     reader.readAsDataURL(input.files[0]);
   };
 };
+
+function ChangeLabel(value) {
+  len = value.length;
+  var label = document.querySelector("label[for='id_description']");
+  label.innerHTML = "О себе: " + value.length + "/300";
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  let textarea = document.getElementById("id_description");
+  textarea.style.height = 'auto';
+  textarea.style.height = (textarea.scrollHeight) + 'px';
+})
+
+function autoResizeTextarea(element) {
+  element.style.height = 'auto';
+  element.style.height = (element.scrollHeight) + 'px';
+}
 
 function validateForm() {
   var minv = document.getElementById('min').value;
