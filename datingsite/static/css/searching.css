@@ -12,10 +12,12 @@ body {
     background-image: url("darkhearts.jpg");
     background-size: 50%;
     font-family: "Forum-Regular";
+    margin: 0;
     font-size: 20px;
 }
 
 header {
+	z-index: 1;
     width: 100%;
     display: flex;
     float: left;
@@ -25,10 +27,13 @@ header {
     background-color: #FFE5E6;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     border-bottom: 5px solid #EFC3C5;
+    z-index: 1;
 }
 
 header button {
     font-size: 25px;
+    height: 30px;
+    line-height: 30px;
     width: 25%;
     background-color: rgba(0, 0, 0, 0);
     border: none;
@@ -52,7 +57,6 @@ main {
 
 button {
     font-family: "Forum-Regular";
-
 }
 
 .oneprofile {
