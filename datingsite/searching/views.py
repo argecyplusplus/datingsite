@@ -186,6 +186,9 @@ class CreateMyProfile(RedirectView):
             form = MyProfileForm(request.POST, request.FILES)
             if form.is_valid():
                 form = form.save(commit=False)
+                if form.cleaned_data.get('age_search_min') > form.cleaned_data.get('age_search_max'):
+                    form.age_search_min = form.cleaned_data.get('age_search_min')
+                    form.age_search_max = form.cleaned_data.get('age_search_max')
                 form.user = User.objects.get(username=request.user.username)
                 form.save()
                 return redirect('profiles')
