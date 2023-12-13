@@ -6,8 +6,18 @@
 		<title>Регистрация GL</title>
 		<link rel="stylesheet" href="{% static 'css/registration.css' %}">
 		<link rel="icon" href="{% static 'css/favicon.ico' %}" type="image/x-icon">
+		<script src="{% static 'js/register.js' %}"></script>
 	</head>
 	<body>
+
+    <div class="popup">
+        <div class="popup-content">
+            <h3>Всплывающее окно</h3>
+            <p>Пример текста во всплывающем окне.</p>
+            <button onclick="hidePopup()">Закрыть</button>
+        </div>
+    </div>
+
 	<form method="post">
 		{% csrf_token %}
 		<div id="main_list">
@@ -21,7 +31,7 @@
 			<label for="password2">Подтвердите пароль</label>
 			<input type="password" name="password2" id="password2" placeholder="Подтвердите пароль (password)" required>
 
-			<label for="Agreed">Нажимая галочку, Вы соглашаетесь с нашим пользовательским соглашением и подтверждаете, что понимаете политику конфиденциальности.</label>
+			<p>Нажимая галочку, Вы соглашаетесь с нашими <u onclick="showPopup()">пользовательским соглашением и политикой конфиденциальности</u> и подтверждаете, что их понимаете.</p>
 			<input type="checkbox" name="Agreed" id="Agreed" required>
 			{{ form.errors }}
 			<div class="block">
