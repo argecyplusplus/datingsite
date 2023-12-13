@@ -12,6 +12,7 @@ body {
     background-image: url("darkhearts.jpg");
     background-size: 50%;
     font-family: "Forum-Regular";
+    margin: 0;
     font-size: 20px;
 }
 
