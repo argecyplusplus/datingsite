@@ -24,6 +24,9 @@
                 </div>
             </div>
             {% endfor %}
+            {% if profile_list|length == 0 %}
+            <p>Увы, нет подходящих для Вас анкет :(</p>
+            {% endif %}
         </main>
     </body>
 </html>

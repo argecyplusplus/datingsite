@@ -59,6 +59,12 @@ button {
     font-family: "Forum-Regular";
 }
 
+p {
+    margin: 5%;
+    text-align: center;
+    color: rgb(100, 100, 100);
+}
+
 .oneprofile {
     display: flex;
     overflow: hidden;
